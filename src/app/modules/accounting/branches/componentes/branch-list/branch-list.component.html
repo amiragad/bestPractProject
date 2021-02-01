@@ -1,0 +1,152 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'branch.code' | translate }}</label>
+          <input formControlName="code"  type="text" class="form-control" id="code" placeholder="{{ 'branch.code' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="name">{{ 'branch.name' | translate }}</label>
+          <input formControlName="name"  type="text" class="form-control" id="name"
+            placeholder="{{ 'branch.name' | translate }}">
+        </div>
+
+        <div class="form-group col-md-2">
+          <br>
+          <button (click)="clearSearch();" class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button" (click)="findAll();">{{ 'shared.search' | translate }}</button>
+        </div>
+      </div>
+      <br>
+    </form>
+  </div>
+</div>
+
+<app-alert [alertInput]="alertInput"></app-alert>
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a><i class="fas fa-plus-circle" [routerLink]="'../'+FullRoutes.ADD_BRANCH"></i></a>
+  </div>
+  <h2>{{ 'branch.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'branch.code' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'code'" (sortAsc)="sortAsc('code')" (sortDesc)="sortDesc('code')"></app-sort>
+          </th>
+          <th>
+            {{ 'branch.name' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'name'" (sortAsc)="sortAsc('name')" (sortDesc)="sortDesc('name')"></app-sort>
+          </th>
+          <th>
+            {{ 'branch.status' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'active'" (sortAsc)="sortAsc('active')" (sortDesc)="sortDesc('active')"></app-sort>
+          </th>
+  
+          <th>
+            {{ 'shared.options' | translate }}
+
+          </th>
+          <th>
+            {{ 'shared.delete' | translate }}
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr   *ngFor="let item of resultSet.data | paginate:{ 
+          itemsPerPage: resultSet.pagination.pageSize,
+          currentPage: resultSet.pagination.pageNumber,
+          totalItems: resultSet.pagination.total } ">
+          <td>
+            {{item.code}}
+          </td>
+          <td>
+            {{item.name}}
+          </td>
+          <td>
+          <div class="custom-control custom-switch">
+              <input   data-toggle="modal" data-target="#popup"
+               type="checkbox" class="custom-control-input" id="customSwitch{{item.id}}" (change)="id=item.id" [(ngModel)]="item.active" >
+              <label class="custom-control-label" for="customSwitch{{item.id}}"></label>
+            </div>
+          </td>
+         
+          <td>
+            <a [attr.title]="'shared.edit' | translate "
+             [routerLink]="'../'+FullRoutes.ADD_BRANCH+'/'+item.id" 
+             style="margin:5px;">
+              <i class="fas fa-pen"></i>
+            </a>
+
+          </td>
+         
+          <td>
+            <a href="#" data-toggle="modal" data-target="#popupdelete" [attr.title]="'shared.delete' | translate " (click)="id=item.id"
+            style="margin:5px;">
+            <i class="fas fa-trash"></i> </a>
+          </td>
+
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls
+      class="my-pagination"
+      previousLabel=""
+      nextLabel=""
+      (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+
+</div>
+
+ <div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.confirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="activate()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark" (click)="stopActivate()" data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="popupdelete" tabindex="-1" role="dialog" aria-labelledby="popupdelete"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.deleteItem' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.deleteConfirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="deleteItem()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark"  data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

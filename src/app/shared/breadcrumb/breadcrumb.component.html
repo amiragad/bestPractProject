@@ -1,0 +1,8 @@
+<div class="cus-breadcrumb">
+  <ul>
+    <li *ngFor="let item of list" class="cus-breadcrumb-item">
+      <ng-container *ngIf="item.url !== null && item.url !== ''"><a routerLink="item.url">{{ item.label | translate}}</a></ng-container>
+      <ng-container *ngIf="item.url == null || item.url == ''">{{ item.label | translate}}</ng-container>
+    </li>
+  </ul>
+</div>

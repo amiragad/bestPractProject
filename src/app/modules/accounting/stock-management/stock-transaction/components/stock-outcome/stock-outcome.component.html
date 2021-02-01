@@ -1,0 +1,118 @@
+<div class="height750">
+    <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+    <form>
+      <div class="block-div">
+        <h2> <i class="fas fa-info-circle"></i> {{ 'stockManagement.stockBalance.pageTitle' | translate }}</h2>
+        <div class="apex-form">
+          <div class="form-group row">
+            <div class="col-md-3 flex-box">
+              <label for="code" class="inline-label">{{ 'supplierAccounts.code' | translate }}</label>
+              <input type="text" disabled value="1" class="form-control" id="code" placeholder="{{ 'supplierAccounts.code' | translate }}">
+            </div>
+            <div class="col-md-3 flex-box">
+                <label for="branch" class="inline-label">{{ 'stockManagement.stockOutcome.stockConvertFrom' | translate }}</label>
+                <div class="select-box">
+                  <select class="form-control" id="branch">
+                    <option></option>
+                    <option>مخزن 1</option>
+                    <option>2 مخزن</option>
+                    <option>3 مخزن</option>
+    
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3 flex-box">
+                  <label for="branch" class="inline-label">{{ 'stockManagement.stockOutcome.stockConvertTo' | translate }}</label>
+                  <div class="select-box">
+                    <select class="form-control" id="branch">
+                      <option></option>
+                      <option>مخزن 1</option>
+                      <option>2 مخزن</option>
+                      <option>3 مخزن</option>
+      
+                    </select>
+                  </div>
+                </div>
+          </div>
+
+        </div>
+      </div>
+      <div class="block-div">
+        <h2><i class="fab fa-product-hunt"></i> {{ 'purchasing.rebate.categories' | translate }}</h2>
+        <div class="apex-form">
+          <div class="customized-table-holder">
+            <table>
+              <thead>
+                <th>{{ 'purchasing.shared.itemCode' | translate }}</th>
+                <th>{{ 'purchasing.shared.measurementUnit' | translate }}</th>
+                <th>{{ 'purchasing.shared.quantity' | translate }}</th>
+                <th>{{ 'purchasing.shared.price' | translate }}</th>
+                <th>{{ 'purchasing.shared.total'     | translate }}</th>
+                <th>{{ 'purchasing.invoice.options' | translate }}</th>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="select-box">
+                      <select class="form-control">
+                        <option></option>
+                        <option>تيليفون -5</option>
+                        <option>3 - لابتوب</option>
+                        <option> 3 - شاشة</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="select-box">
+                      <select class="form-control" id="branch">
+                          <option></option>
+                        <option>كرتونة</option>
+                        <option>كيلو جرام</option>
+                        <option>لتر</option>
+                      </select>
+                    </div>
+                  </td>
+                  <td>
+                    <input type="number" class="form-control" id="code"
+                      placeholder="{{ 'purchasing.shared.quantity' | translate }}">
+                  </td>
+                  <td> <input type="number" class="form-control" id="code"
+                      placeholder="{{ 'purchasing.shared.price' | translate }}"> </td>
+                  <td> <input type="number" class="form-control" id="code"
+                      placeholder="{{ 'purchasing.shared.total' | translate }}"> </td>
+                      <td> 
+                    <a class="btn btn-primary" class="mlr"><i class="fas fa-save"></i> </a>
+                    <a class="btn btn-primary" class="mlr"><i class="fas fa-window-close"></i> </a>
+                  </td>
+                </tr>
+                <tr *ngFor="let item of list">
+                  <td>{{item.brand}}</td>
+                  <td>{{item.unit  }}</td>
+                  <td> {{item.quantity  }} </td>
+                  <td>{{item.price  }} </td>
+                  <td> {{item.total  }} </td>
+                  <td> <a class="btn btn-primary" class="mlr"><i class="fas fa-trash"></i> </a> </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="block-div">
+        <div class="apex-form">
+          <div class="row">
+            <div class="col-md-12">
+                <button class="button" ><i class="fas fa-save"></i> {{ 'shared.save' | translate }}</button>
+                <button class="button dark"><i class="fas fa-backspace" ></i> {{ 'shared.cancel' | translate }}</button>
+    
+            </div>
+          </div>
+        </div>
+      </div>
+      <br>
+      <br>
+      <br>
+  
+    </form>
+  </div>

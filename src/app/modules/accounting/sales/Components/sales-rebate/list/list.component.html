@@ -1,0 +1,142 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form>
+      <div class="row  searchHeader">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'supplierAccounts.code' | translate }} </label>
+          <input type="text" class="form-control" id="code" placeholder="{{ 'supplierAccounts.code' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="supplierName">{{ 'clientAccounts.clientName' | translate }}</label>
+          <input type="text" class="form-control" id="supplierName"
+            placeholder="{{ 'clientAccounts.clientName' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+            <label for="branch" class="inline-label">{{ 'purchasing.rebate.title' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control" id="branch">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+          </div>
+
+        <div class="form-group col-md-2">
+          <label for="branch" class="inline-label">{{ 'purchasing.invoice.inventory' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch">
+              <option>الرئيسي</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group date-field col-md-2">
+          <label for="fromDate">{{ 'shared.fromDate' | translate }}</label>
+          <input type="text" class="form-control" id="fromDate" placeholder="{{ 'shared.fromDate' | translate }}">
+          <span><i class="fas fa-calendar-alt"></i></span>
+        </div>
+
+        <div class="form-group date-field col-md-2">
+          <label for="toDate">{{ 'shared.toDate' | translate }}</label>
+          <input type="text" class="form-control date-field" id="toDate"
+            placeholder="{{ 'shared.toDate' | translate }}">
+          <span><i class="fas fa-calendar-alt"></i></span>
+        </div>
+      </div>
+      <div class="row searchHeader">
+        <div class="col-md-2">
+          <button class="button"><i class="fas fa-eraser"></i></button>
+          <button class="button">{{ 'shared.search' | translate }}</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a><i class="far fa-file-excel"></i></a>
+    <a routerLink="/sales/sales-rebate/add" routerLinkActive="active"><i class="fas fa-plus-circle"></i></a>
+  </div>
+  <h2>{{ 'sideNav.salesRebate.list' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'purchasing.shared.code' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'clientAccounts.clientName' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'purchasing.invoice.vendorInvoiceCode' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'purchasing.invoice.inventory' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'purchasing.shared.date' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'purchasing.invoice.options' | translate }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of list | paginate: config">
+          <td>
+            {{item.code }}
+          </td>
+          <td>
+            {{item.vendor}}
+          </td>
+          <td>
+            {{item.vendorInvoiceCode}}
+          </td>
+          <td>
+            {{item.inventory}}
+          </td>
+          <td>
+            {{item.date| date: 'dd/MM/yyyy'}}
+          </td>
+          <td>
+            <a [attr.title]="'shared.edit' | translate " style="margin:5px;">
+              <i class="fas fa-pen"></i>
+            </a>
+            <a [attr.title]="'shared.bills' | translate " style="margin:5px;">
+              <i class="fas fa-money-bill"></i>
+            </a>
+            <!-- <a><i class="fas fa-pen"></i></a>
+            <a><i class="fas fa-eye"></i></a> -->
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls
+      class="my-pagination"
+      previousLabel=""
+      nextLabel=""
+      (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+</div>

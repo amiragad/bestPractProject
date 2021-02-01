@@ -1,0 +1,209 @@
+<div class="height750">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+  <div class="block-div">
+    <h2><i class="far fa-user"></i> {{ 'sideNav.addClient' | translate }}</h2>
+    <div class="apex-form template_1">
+      <form>
+        <!--name ,code,phone number -->
+        <div class="block-div">
+          <h2><i class="fas fa-info-circle"></i> {{ 'shared.maininfo' | translate }}</h2>
+          <div class="form-group row">
+            <div class="col-md-3 flex-box">
+              <label for="code" class="inline-label">{{ 'clientAccounts.code' | translate }}</label>
+              <input type="text" class="form-control" disabled value="apex-102" id="code"
+                     placeholder="{{ 'clientAccounts.code' | translate }}">
+            </div>
+
+            <div class="col-md-3 flex-box">
+              <label for="clientName" class="inline-label">{{ 'clientAccounts.clientName' | translate }}</label>
+              <input type="text" class="form-control" id="clientName"
+                     placeholder="{{ 'clientAccounts.clientName' | translate }}">
+            </div>
+
+            <div class="col-md-3 flex-box">
+              <label class="inline-label">{{ 'clientAccounts.mobile' | translate }}</label>
+              <input type="text" class="form-control"
+                     placeholder="{{ 'clientAccounts.mobile' | translate }}">
+            </div>
+
+            <div class="col-md-3 flex-box">
+              <label class="inline-label">{{ 'clientAccounts.telephone' | translate }}</label>
+              <input type="text" class="form-control"
+                     placeholder="{{ 'clientAccounts.telephone' | translate }}">
+            </div>
+          </div>
+          <div class="form-group row">
+
+            <div class="col-md-3 flex-box">
+              <label class="inline-label">{{ 'shared.email' | translate }}</label>
+              <input type="text" class="form-control" id="email" placeholder="{{ 'shared.email' | translate }}">
+            </div>
+            <div class="col-md-3 flex-box">
+              <label class="inline-label">{{ 'clientAccounts.fax' | translate }}</label>
+              <input type="text" class="form-control" id="fax" placeholder="{{ 'clientAccounts.fax' | translate }}">
+            </div>
+            <div class="col-md-3 flex-box">
+              <label for="connectionType" class="inline-label">{{ 'clientAccounts.connectionType' | translate }}</label>
+              <div class="select-box">
+                <select class="form-control" id="connectionType">
+                  <option>{{ 'shared.email' | translate }}</option>
+                  <option>{{ 'clientAccounts.fax' | translate }}</option>
+                  <option>{{ 'clientAccounts.mobile' | translate }}</option>
+                  <option>{{ 'clientAccounts.telephone' | translate }}</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3 flex-box">
+              <label class="inline-label">{{ 'clientAccounts.customerType' | translate }}</label>
+              <div class="select-box">
+                <select class="form-control">
+                  <option>{{ 'users.client' | translate }}</option>
+                  <option>{{ 'users.client/client' | translate }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="form-group row">
+            <div class="col-md-3 flex-box">
+              <label class="inline-label">{{ 'clientAccounts.classification' | translate }}</label>
+              <div class="select-box">
+                <select class="form-control">
+                  <option>A</option>
+                  <option>B</option>
+                  <option>C</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3 flex-box">
+              <label class="inline-label">{{ 'clientAccounts.classification' | translate }}</label>
+              <div class="custom-date-picker">
+                <mat-form-field>
+                  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-3 flex-box">
+              <label class="inline-label">{{ 'clientAccounts.classification' | translate }}</label>
+              <div class="custom-multiselect">
+                <mat-form-field>
+                  <mat-select multiple >
+                    <mat-option [value]="0">hello</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-3">
+              <label class="switch-label">{{ 'clientAccounts.active' | translate }}</label>
+              <label class="switch">
+                <input type="checkbox">
+                <span class="slider"></span>
+              </label>
+            </div>
+
+
+          </div>
+        </div>
+
+
+      </form>
+    </div>
+  </div>
+  <!--End name ,code,phone number -->
+
+  <div class="block-div">
+    <h2><i class="far fa-building"></i> {{ 'shared.address' | translate }}</h2>
+    <div class="apex-form">
+      <form>
+        <div class="form-group row">
+
+          <div class="col-md-3 flex-box">
+            <label class="inline-label">{{ 'shared.country' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control">
+                <option>مصر</option>
+                <option>لبنان</option>
+                <option>الولايات المتحدة الأمريكية</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 flex-box">
+            <label class="inline-label">{{ 'shared.governorate' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control">
+                <option>القاهرة</option>
+                <option>الأسكندرية</option>
+                <option>شرم الشيخ</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 flex-box">
+            <label class="inline-label">{{ 'shared.area' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control">
+                <option>المعادي</option>
+                <option>وسط البلد</option>
+                <option> التجمع الخامس</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 flex-box">
+            <label class="inline-label">{{ 'shared.address' | translate }}</label>
+            <input type="text" class="form-control" placeholder="{{ 'shared.address' | translate }}">
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+
+
+  <div class="block-div">
+    <h2><i class="fas fa-money-check-alt"></i> {{ 'shared.financialInfo' | translate }}</h2>
+    <div class="apex-form">
+      <form>
+        <div class="form-group row">
+
+          <div class="col-md-3 flex-box">
+            <label class="inline-label">{{ 'clientAccounts.dealingType' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control">
+                <option>{{ 'clientAccounts.wholeseller' | translate }}</option>
+                <option>{{ 'clientAccounts.sectoral' | translate }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-3 flex-box">
+            <label class="inline-label">{{ 'clientAccounts.debitCredit' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control">
+                <option>{{ 'clientAccounts.credit' | translate }}</option>
+                <option>{{ 'clientAccounts.debitor' | translate }}</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="col-md-3 flex-box">
+            <label class="inline-label">{{ 'clientAccounts.openingBalance' | translate }}</label>
+            <input type="text" class="form-control"
+                   placeholder="{{ 'clientAccounts.openingBalance' | translate }}">
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="block-div">
+    <div class="apex-form">
+      <div class="row">
+        <div class="col-md-12">
+          <button class="button"><i class="fas fa-save"></i> {{ 'shared.save' | translate }}</button>
+          <button class="button dark"><i class="fas fa-backspace"></i> {{ 'shared.cancel' | translate }}</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

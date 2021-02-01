@@ -1,0 +1,96 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form>
+      <div class="row">
+      <div class="form-group col-md-2">
+        <label for="code">{{ 'stockManagement.stockIncome.code' | translate }}</label>
+        <input type="text" class="form-control" id="code" placeholder="{{ 'lookups.area.code' | translate }}">
+      </div>
+      <div class="form-group col-md-2">
+          <label for="branch" class="inline-label">{{ 'stockManagement.stockIncome.stockConvertFrom' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch">
+                <option> </option>
+              <option>مخزن 1</option>
+              <option>2 مخزن</option>
+              <option>3 مخزن</option>
+              <option>4 مخزن</option>
+              <option>5 مخزن</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-2">
+            <label for="branch" class="inline-label">{{ 'stockManagement.stockIncome.stockConvertTo' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control" id="branch">
+                  <option> </option>
+                <option>مخزن 1</option>
+                <option>2 مخزن</option>
+                <option>3 مخزن</option>
+                <option>4 مخزن</option>
+                <option>5 مخزن</option>
+              </select>
+            </div>
+          </div>
+        <div class="col-md-2">
+          <button class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button">{{ 'shared.search' | translate }}</button>
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+ 
+  <h2>{{ 'stockManagement.stockIncomeList.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+      <tr>
+        <th>
+          {{ 'stockManagement.stockIncome.code' | translate }}
+        </th>
+        <th>
+          {{ 'stockManagement.stockIncome.stockName' | translate }}
+        </th>
+        <th>
+            {{ 'stockManagement.stockIncome.quantity' | translate }}
+       </th>
+       <th>
+          {{ 'stockManagement.stockIncome.date' | translate }}
+     </th>
+
+        <th>
+          {{ 'shared.options' | translate }}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr >
+        <td>
+          1
+        </td>
+        <td>
+مخزن 1
+        </td>
+        <td>55</td>
+        <td>5/5/2019</td>
+        <td>
+          <a [attr.title]="'shared.edit' | translate " [routerLink]="['view']" style="margin:5px;">
+            <i class="fas fa-pen"></i>
+          </a>
+
+        </td>
+      </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>

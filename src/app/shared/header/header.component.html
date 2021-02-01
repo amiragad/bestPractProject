@@ -1,0 +1,32 @@
+<div class="header">
+  <div class="apex-container clearfix">
+  <div class="first-header-div">
+    <div class="block logo">
+   <a  [routerLink]="[ '/home' ]">   <img src="../../../assets/images/logo.png" title="Apex" alt="Apex"/></a>
+    </div>
+    <div class="block" *ngIf="showMenu">
+      <a id="menuIcon" (click)="openNav()"><i class="fas fa-bars"></i></a>
+    </div>
+  </div>
+  <div class="second-header-div">
+    <div class="block">
+      <a><i class="fas fa-cogs"></i></a>
+    </div>
+    <div class="block">
+      <a><i class="far fa-bell"></i></a>
+    </div>
+    <div class="block admin-block">
+      <div *ngIf="currentLang == 'ar'">{{ user.NameAr}}</div>
+      <div *ngIf="currentLang == 'en'">{{ user.NameEn}}</div>
+    {{ user.Name}}
+    </div>
+    <div class="block user">
+      <i class="fas fa-user-circle"></i>
+    </div>
+    <div class="block lang">
+    <a *ngIf="currentLang == 'ar'" (click)="onChangeLang('en')">EN</a>
+    <a *ngIf="currentLang == 'en'" (click)="onChangeLang('ar')">AR</a>
+    </div>
+  </div>
+  </div>
+</div>

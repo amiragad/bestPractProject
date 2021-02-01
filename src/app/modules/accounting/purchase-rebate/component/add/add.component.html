@@ -1,0 +1,194 @@
+<div class="height750">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+  <form>
+    <div class="block-div">
+      <h2> <i class="fas fa-info-circle"></i> {{ 'purchasing.rebate.title' | translate }}</h2>
+      <div class="apex-form">
+        <div class="form-group row">
+          <div class="col-md-3 flex-box">
+            <label for="code" class="inline-label">{{ 'supplierAccounts.code' | translate }}</label>
+            <input type="text" class="form-control" disabled value="apex-102" id="code"
+              placeholder="{{ 'supplierAccounts.code' | translate }}">
+          </div>
+          <div class="col-md-3 flex-box">
+            <label for="branch" class="inline-label">{{ 'purchasing.invoice.title' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control" id="branch">
+                <option></option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 flex-box">
+            <label for="supplierName" class="inline-label">{{ 'supplierAccounts.supplierName' | translate }}</label>
+            <input type="text" class="form-control" id="supplierName"
+              placeholder="{{ 'supplierAccounts.supplierName' | translate }}">
+          </div>
+
+          <div class="col-md-3 flex-box">
+            <label for="branch" class="inline-label">{{ 'purchasing.invoice.inventory' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control" id="branch">
+                <option></option>
+                <option>محمد فاروق</option>
+                <option>مازن حسن</option>
+                <option>احمد جمال</option>
+                <option>احمد حجازي</option>
+              </select>
+            </div>
+          </div>
+         
+        </div>
+        <div class="form-group row">
+            <div class="col-md-3 flex-box">
+                <label for="branch" class="inline-label">{{'purchasing.invoice.invoiceType' | translate }}</label>
+                <div class="select-box">
+                  <select class="form-control" id="branch">
+                    <option></option>
+                    <option>كاش</option>
+                    <option>اجل</option>
+                  </select>
+                </div>
+              </div>
+          <div class="col-md-3 flex-box">
+            <label for="branch" class="inline-label">{{ 'purchasing.shared.safe' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control" id="branch">
+                <option></option>
+                <option>خزينة 1</option>
+                <option>2 خزينة</option>
+                <option>3 خزينة</option>
+
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="block-div">
+      <h2><i class="fab fa-product-hunt"></i> {{ 'purchasing.rebate.categories' | translate }}</h2>
+      <div class="apex-form">
+        <div class="customized-table-holder">
+          <table>
+            <thead>
+              <th>{{ 'purchasing.shared.itemCode' | translate }}</th>
+              <th>{{ 'purchasing.shared.measurementUnit' | translate }}</th>
+              <th>{{ 'purchasing.shared.quantity' | translate }}</th>
+              <th>{{ 'purchasing.shared.price' | translate }}</th>
+              <th>{{ 'purchasing.shared.total'     | translate }}</th>
+              <th>{{ 'purchasing.shared.discount'     | translate }}</th>
+              <th>{{ 'purchasing.shared.expenses' | translate }}</th>
+              <!-- <th>{{ 'purchasing.shared.deduction'     | translate }}</th> -->
+              <th>{{ 'purchasing.shared.net'     | translate }}</th>
+              <th>{{ 'purchasing.invoice.options' | translate }}</th>
+            </thead>
+            <tbody>
+              <tr>
+                <td>
+                  <div class="select-box">
+                    <select class="form-control">
+                      <option></option>
+                      <option>تيليفون -5</option>
+                      <option>3 - لابتوب</option>
+                      <option> 3 - شاشة</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <div class="select-box">
+                    <select class="form-control" id="branch">
+                      <option></option>
+                      <option>كرتونة</option>
+                      <option>كيلو جرام</option>
+                      <option>لتر</option>
+                    </select>
+                  </div>
+                </td>
+                <td>
+                  <input type="number" class="form-control" id="code"
+                    placeholder="{{ 'purchasing.shared.quantity' | translate }}">
+                </td>
+                <td> <input type="number" class="form-control" id="code"
+                    placeholder="{{ 'purchasing.shared.price' | translate }}"> </td>
+                <td> <input type="number" class="form-control" id="code"
+                    placeholder="{{ 'purchasing.shared.total' | translate }}"> </td>
+                <td> <input type="number" class="form-control" id="code"
+                    placeholder="{{ 'purchasing.shared.discount' | translate }}"> </td>
+                <td> <input type="number" class="form-control" id="code"
+                    placeholder="{{ 'purchasing.shared.expenses' | translate }}"> </td>
+                <!-- <td> {{item.totalDiscount  }} </td> -->
+                <td> <input type="number" class="form-control" id="code"
+                    placeholder="{{ 'purchasing.shared.net' | translate }}"> </td>
+                <td>
+                  <a class="btn btn-primary" class="mlr"><i class="fas fa-save"></i> </a>
+                  <a class="btn btn-primary" class="mlr"><i class="fas fa-window-close"></i> </a>
+                </td>
+              </tr>
+              <tr *ngFor="let item of list">
+                <td>{{item.brand}}</td>
+                <td>{{item.unit  }}</td>
+                <td> {{item.quantity  }} </td>
+                <td>{{item.price  }} </td>
+                <td> {{item.total  }} </td>
+                <td> {{item.discount  }} </td>
+                <td> {{item.expenses  }} </td>
+                <!-- <td> {{item.totalDiscount  }} </td> -->
+                <td> {{item.netValue  }} </td>
+                <td> <a class="btn btn-primary" class="mlr"><i class="fas fa-trash"></i> </a> </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="block-div">
+      <h2><i class="fas fa-money-check-alt"></i> {{ 'purchasing.shared.total' | translate }}</h2>
+      <div class="apex-form">
+        <div class="form-group row">
+          <div class="col-md-2 flex-box">
+            <label for="code" class="inline-label"> {{ 'purchasing.shared.totalAmount' | translate }}</label>
+            <input type="number" class="form-control" id="code"
+              placeholder="{{ 'purchasing.shared.totalAmount' | translate }}">
+          </div>
+          <div class="col-md-2 flex-box">
+            <label for="code" class="inline-label">{{ 'purchasing.invoice.taxAmount' | translate }}</label>
+            <input type="number" class="form-control" id="code"
+              placeholder="{{ 'purchasing.invoice.taxAmount' | translate }}">
+          </div>
+          <div class="col-md-2 flex-box">
+            <label for="code" class="inline-label">{{ 'purchasing.shared.totalExpenses' | translate }}</label>
+            <input type="number" class="form-control" id="code"
+              placeholder="{{ 'purchasing.shared.totalExpenses' | translate }}">
+          </div>
+          <div class="col-md-2 flex-box">
+            <label for="code" class="inline-label">{{ 'purchasing.shared.totalDiscount' | translate }}</label>
+            <input type="number" class="form-control" id="code"
+              placeholder="{{ 'purchasing.shared.totalDiscount' | translate }}">
+          </div>
+          <div class="col-md-2 flex-box">
+              <label for="code" class="inline-label">{{ 'purchasing.shared.netAmount' | translate }}</label>
+              <input type="number" class="form-control" id="code"
+                placeholder="{{ 'purchasing.shared.netAmount' | translate }}">
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="block-div">
+      <div class="apex-form">
+        <div class="row">
+          <div class="col-md-12">
+              <button class="button" ><i class="fas fa-save"></i> {{ 'shared.save' | translate }}</button>
+              <button class="button dark"><i class="fas fa-backspace" ></i> {{ 'shared.cancel' | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+
+  </form>
+</div>

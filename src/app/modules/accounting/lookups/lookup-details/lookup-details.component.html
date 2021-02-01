@@ -1,0 +1,217 @@
+
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+
+<div class="block-div">
+  <div class="apex-form">
+    <form [formGroup]="searchForm">
+      <div class="row">
+     
+        <div class=" col-md-2">
+          <!-- <label for="name">{{ 'lookups.name' | translate }}</label> -->
+          <input type="text" autocomplete="off" formControlName="name" class="form-control" id="name" placeholder="{{ 'lookups.name' | translate }}">
+        </div>
+
+        <div class="col-md-6">
+          <button class="button dark" (click)="clearSearch()"><i class="fas fa-eraser"></i></button>
+          <button class="button" (click)="findAll()">{{ 'shared.search' | translate }}</button>
+
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<app-alert [alertInput]="alertInput"></app-alert>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a data-toggle="modal" data-target="#exampleModal" #openAddEditModel  data-backdrop='static' data-keyboard='false'><i class="fas fa-plus-circle"></i></a>
+  </div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">{{'lookups.addEdit.header' | translate}}</h5>
+        <button type="button" class="close" (click)="clearModal()" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="apex-form">
+          <form [formGroup]="createForm" class="margin-15px-lr">
+            <div class="row ">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">{{'lookups.addEdit.nameAr' | translate}} <i class="text-danger">*</i></label>
+                            <input type="email" class="form-control margin-10px-top" formControlName="NameAr" id="NameAr">
+                            <span class="font-size-13px col-md-12 text-center red-text" *ngIf="createForm.get('NameAr').hasError('required') && createForm.get('NameAr').touched">
+                              {{ 'sharedValidation.required' | translate }}
+                          </span>
+                      
+                          </div>
+                        </div>
+                        <div class="row  margin-bottom-20px flex-box margin-15px-lr align-items-center">
+                          <label class="checkk font-size-13px">{{ 'supplierAccounts.addSupplier.nameRepeate' | translate }}
+                            <!-- <input  class="checkbox ng-untouched ng-pristine ng-valid" (change)="updateform()" formcontrolname="nameRepeate" id="nameRepeate" type="checkbox" ng-reflect-name="nameRepeate"> -->
+                            <input type="checkbox"  checked="checked" class="checkbox" formControlName="nameRepeate" id="nameRepeate">
+                            <span _ngcontent-c4="" class="checkmark"></span>
+                          </label>
+                        </div>
+                        <div class="col-md-12" *ngIf="!this.createForm.get('nameRepeate').value">
+                          <div class="form-group">
+                            <label for="exampleInputEmail1">{{'lookups.addEdit.nameEn' | translate}}</label>
+                            <input type="email" class="form-control margin-10px-top" formControlName="NameEn" id="NameEn">
+                            <span class="font-size-13px col-md-12 text-center red-text" *ngIf="createForm.get('NameEn').hasError('required') && createForm.get('NameEn').touched">
+                              {{ 'sharedValidation.required' | translate }}
+                          </span>
+                          </div>
+                        </div>
+
+                        
+        </div>
+        <div class="row" *ngIf="showParentControl">
+          <div class="col-md-6">
+            <div class="form-group">
+              <label for="exampleInputEmail1">{{'lookups.addEdit.belongTo' | translate}}<i class="text-danger">*</i></label>
+              <select type="email" class="form-control" formControlName="ParentId" id="ParentId">
+                <option *ngFor="let item of lookupParentList" value="{{item.id}}"> 
+                  {{item.name}}
+                </option>
+                </select>
+              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="createForm.get('NameEn').hasError('required') && createForm.get('NameEn').touched">
+                {{ 'sharedValidation.required' | translate }}
+            </span>
+            </div>
+          </div>
+        </div>
+
+    
+              </form>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button cancel" (click)="clearModal()" #cancelAddEditModal data-dismiss="modal">{{ 'shared.cancel' | translate }}</button>
+        <button (click)="save()" class="button green" ><i class="fas fa-check"></i> {{ 'shared.save' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--   <h2>{{ 'lookups.lookup' | translate }}</h2> -->
+<h2>{{lookupName}}</h2>
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+      <tr>
+        <th>
+          {{ 'lookups.id' | translate }}
+          <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Id'" (sortAsc)="sortAsc('Id')" (sortDesc)="sortDesc('Id')"></app-sort>
+        </th>
+        <th>
+          {{ 'lookups.name' | translate }}
+          <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'NameAr'" (sortAsc)="sortAsc('NameAr')" (sortDesc)="sortDesc('NameAr')"></app-sort>
+        </th>
+        <th>
+          {{ 'shared.status' | translate }}
+          <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'isActive'" (sortAsc)="sortAsc('isActive')" (sortDesc)="sortDesc('isActive')"></app-sort>
+        </th>
+     
+        <th>
+          {{ 'shared.options' | translate }}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of resultSet.data | paginate:{ 
+      itemsPerPage: resultSet.pagination.pageSize,
+      currentPage: resultSet.pagination.pageNumber,
+      totalItems: resultSet.pagination.total } ">
+
+              <td>
+                {{item.id}}
+              </td>
+              <td>
+                {{item.name}}
+              </td>
+              <td>
+              <div class="custom-control custom-switch">
+                <input   data-toggle="modal" data-target="#activate"
+                 type="checkbox" class="custom-control-input" id="customSwitch{{item.id}}" (change)="id=item.id" [(ngModel)]="item.active" >
+                <label class="custom-control-label" for="customSwitch{{item.id}}"></label>
+              </div>
+            </td>
+              <td>
+                 <!--  <button class="button" >popup</button> -->
+                <a data-toggle="modal" (click)="getForEdit(item.id)" data-target="#modalForm" [attr.title]="'shared.edit' | translate " style="margin:5px;" >
+                  <i class="fas fa-pen"></i>
+                </a>
+                |
+                <a data-toggle="modal" data-target="#deleteModel" [attr.title]="'shared.edit' | translate " style="margin:5px;" >
+                  <i class="fas fa-trash"></i>
+                </a>
+            
+<!-- Modal -->
+<div class="modal fade" id="deleteModel" tabindex="-1" role="dialog" aria-labelledby="DeleteLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="DeleteLabel">{{'lookups.deleteItem' | translate}}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <h5>{{ 'shared.deleteConfirmMessage' | translate }}</h5>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="button cancel" #closeDeleteModal data-dismiss="modal">{{ 'shared.cancel' | translate }}</button>
+        <button (click)="delete(item.id)" class="button delete"> {{ 'shared.delete' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+              </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls
+      class="my-pagination"
+      previousLabel=""
+      nextLabel=""
+      (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+
+</div>
+
+<div class="modal fade" id="activate" tabindex="-1" role="dialog" aria-labelledby="activate"
+aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+<div class="modal-content">
+ <div class="modal-header">
+   <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+   <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+     <span aria-hidden="true">&times;</span>
+   </button>
+ </div>
+ <div class="modal-body">
+   <p>{{ 'shared.confirmMessage' | translate }}</p>
+ </div>
+ <div class="modal-footer">
+   <button class="button" (click)="activate()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+   <button class="button dark" (click)="stopActivate()" data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+ </div>
+</div>
+</div>
+</div>

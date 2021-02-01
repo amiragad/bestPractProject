@@ -1,0 +1,188 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'lookups.area.code' | translate }}</label>
+          <input autocomplete="off" type="text" formControlName="code" class="form-control" id="code"
+            placeholder="{{ 'lookups.area.code' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="name">{{ 'systemData.product.name' | translate }}</label>
+          <input autocomplete="off" type="text" class="form-control" id="name" formControlName="name"
+            placeholder="{{ 'systemData.product.name' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="groupname">{{ 'systemData.product.groupname' | translate }}</label>
+          <div class="select-box">
+            <select formControlName="groupName" class="form-control" id="groupName">
+              <option *ngFor="let item of productGroups" [value]="item.id">{{item.name}}</option>
+
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="connectionType" >{{ 'systemData.product.productKind' | translate }}</label>
+          <div class="select-box">
+            <select formControlName="collectAndManufactur" class="form-control" id="collectAndManufactur">
+              <option *ngFor="let item of collectAndManufacturs" [value]="item.id">{{item.name}}</option>
+
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="branch">{{ 'systemData.product.status' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch" formControlName="active">
+              <option value="true">{{ 'systemData.product.active' | translate }}</option>
+              <option value="false">{{ 'systemData.product.inactive' | translate }}</option>
+            </select>
+          </div>
+        </div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <button (click)="clearSearch();" class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button" (click)="findAll();">{{ 'shared.search' | translate }}</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a><i class="fas fa-plus-circle" [routerLink]="'../'+FullRoutes.ADD_PRODUCT"></i></a>
+  </div>
+  <h2>{{ 'systemData.product.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'systemData.product.code' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Code'" (sortAsc)="sortAsc('Code')" (sortDesc)="sortDesc('Code')"></app-sort>
+          </th>
+          <th>
+            {{ 'systemData.product.name' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Name'" (sortAsc)="sortAsc('Name')" (sortDesc)="sortDesc('Name')"></app-sort>
+          </th>
+          <th>
+            {{ 'systemData.product.groupname' | translate }}
+            <!-- <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Name'" (sortAsc)="sortAsc('Name')" (sortDesc)="sortDesc('Name')"></app-sort> -->
+          </th>
+          <th>
+            {{ 'systemData.product.productKind' | translate }}
+            <!-- <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'CollectAndManufacturId'" (sortAsc)="sortAsc('CollectAndManufacturId')" (sortDesc)="sortDesc('CollectAndManufacturId')"></app-sort> -->
+          </th>
+          <th>
+            {{ 'systemData.product.buyingprice' | translate }}
+          </th>
+          <th>
+            {{ 'systemData.product.sellPrice' | translate }}
+          </th>
+          <th>
+            {{ 'systemData.product.status' | translate }}
+          </th>
+          <th>
+            {{ 'shared.options' | translate }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of resultSet.data | paginate:{ 
+          itemsPerPage: resultSet.pagination.pageSize,
+          currentPage: resultSet.pagination.pageNumber,
+          totalItems: resultSet.pagination.total } ">
+          <td>
+            {{item.code}}
+          </td>
+          <td>
+            {{item.name}}
+          </td>
+          <td>
+            {{item.group}}
+          </td>
+          <td>
+            {{item.collectAndManufactur}}
+          </td>
+          <td>
+            {{item.purchasingPrice}}
+          </td>
+          <td>
+            {{item.sellingPrice}}
+          </td>
+          <td>
+            <div class="custom-control custom-switch">
+              <input data-toggle="modal" data-target="#popup" type="checkbox" class="custom-control-input"
+                id="customSwitch{{item.id}}" (change)="id=item.id" [(ngModel)]="item.active">
+              <label class="custom-control-label" for="customSwitch{{item.id}}"></label>
+            </div>
+          </td>
+          <td>
+            <a [attr.title]="'shared.edit' | translate " [routerLink]="'../'+FullRoutes.EDIT_PRODUCT+'/'+item.id"
+              style="margin:5px;">
+              <i class="fas fa-pen"></i>
+            </a>
+            <a [attr.title]="'shared.delete' | translate " data-toggle="modal" data-target="#deleteProduct" 
+                 (click)="deletedId=item.id" style="margin:5px;">
+              <i class="fas fa-trash"></i>
+             </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="pageChanged($event)">
+    </pagination-controls>
+  </div>
+</div>
+
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.confirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="activate()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark" (click)="stopActivate()" data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog" aria-labelledby="deleteProduct" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.deleteConfirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="deleteProduct()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark"  data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

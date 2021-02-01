@@ -1,0 +1,198 @@
+
+<div class="block-div">
+  <div class="apex-form">
+    <form>
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'clientAccounts.code' | translate }}</label>
+          <input type="text" class="form-control" id="code" placeholder="{{ 'clientAccounts.code' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="clientName">{{ 'clientAccounts.clientName' | translate }}</label>
+          <input type="text" class="form-control" id="clientName"
+            placeholder="{{ 'clientAccounts.clientName' | translate }}">
+        </div>
+        <div class="col-md-2">
+          <label for="branch" class="inline-label">{{ 'clientAccounts.customerType' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch">
+              <option>{{ 'users.client' | translate }}</option>
+              <option>{{ 'users.client/client' | translate }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label for="branch" class="inline-label">{{ 'clientAccounts.debitCredit' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch">
+              <option>{{ 'clientAccounts.credit' | translate }}</option>
+              <option>{{ 'clientAccounts.debitor' | translate }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-md-2">
+          <label for="branch" class="inline-label">{{ 'clientAccounts.status' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch">
+              <option>{{ 'clientAccounts.active' | translate }}</option>
+              <option>{{ 'clientAccounts.inactive' | translate }}</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <label for="branch" class="inline-label">{{ 'clientAccounts.classification' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch">
+              <option>A</option>
+              <option>B</option>
+              <option>c</option>
+            </select>
+          </div>
+        </div>
+        <!-- 
+        <div class="form-group date-field col-md-2">
+          <label for="toDate">{{ 'shared.toDate' | translate }}</label>
+          <input type="text" class="form-control date-field" id="toDate" placeholder="{{ 'shared.toDate' | translate }}">
+          <span><i class="fas fa-calendar-alt"></i></span>
+        </div> -->
+
+
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button">{{ 'shared.search' | translate }}</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    
+    <a><i class="fas fa-plus-circle" routerLink="../add-client"></i></a>
+  </div>
+  <h2>{{ 'clientAccounts.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'clientAccounts.code' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'clientAccounts.clientName' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'clientAccounts.customerType' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'clientAccounts.debitCredit' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'shared.amount' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'clientAccounts.classification' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'clientAccounts.status' | translate }}
+            <app-sort></app-sort>
+          </th>
+
+          <th>
+            {{ 'shared.options' | translate }}
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of clientsList  | paginate: config">
+          <td>
+            {{user.code}}
+          </td>
+          <td>
+            {{user.name}}
+          </td>
+          <td>
+            {{user.type}}
+          </td>
+          <td>
+            <span *ngIf="user.cridtortOrDebitor">
+              {{'clientAccounts.credit' | translate}}
+            </span>
+
+            <span *ngIf="!user.cridtortOrDebitor">
+              {{'clientAccounts.debitor' | translate}}
+            </span>
+          </td>
+          <td>
+            {{user.amount}}
+          </td>
+          <td>
+            {{user.clientclassification}}
+          </td>
+          <td>
+            <label class="switch">
+              <input data-toggle="modal" data-target="#popup" type="checkbox" [attr.checked]="user.status">
+              <span class="slider"></span>
+            </label> </td>
+          <td>
+            <a [attr.title]="'shared.edit' | translate " style="margin:5px;">
+              <i class="fas fa-pen"></i>
+            </a>
+            <a [attr.title]="'shared.bills' | translate "
+            routerLink="../client-bills"
+            style="margin:5px;">
+              <i class="fas fa-money-bill"></i> </a>
+
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+      <pagination-controls
+        class="my-pagination"
+        previousLabel=""
+        nextLabel=""
+        (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>
+
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.confirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark" data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

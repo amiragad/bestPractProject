@@ -1,0 +1,36 @@
+export class AddEditCustomer{
+    id:number;
+    code: string;
+    nameAr: string;
+    nameEn: string;
+    status: number;
+    dealingNaturityId:number;
+    taxNumber: number;
+    countryId: number;
+    cityId: number;
+    areaId: number;
+    address: string;
+    phone:string;
+    mobile: string;
+    fax: number;
+    email:string;
+    website: string;
+    debtor: number;
+    amount: number;
+    notes: string;
+    customer: number;
+    creditLimit: number;
+    creditDays:number;
+    discountPercentage: number;
+    achievementConditionId: number;
+    supplierCustomer:number;
+    creditLimitPurchase: number;
+    creditDaysPurchase: number;
+    discountPercentagePurchase: number;
+    paymentConditionIdPurchase:number;
+    file:FormData;
+    creditLimitationId:number;
+    reditLimitationPurchaseId:number;
+    image:any;
+    imageName:any;
+}

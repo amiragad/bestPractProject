@@ -1,0 +1,21 @@
+@mixin slash-content($dir) {
+  @if ($dir == 'ltr') {
+    content: "\\";
+  } @else {
+    content: "/";
+  }
+}
+
+@mixin switch-slide($dir){
+
+  @if ($dir == 'ltr') {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  } @else {
+    -webkit-transform: translateX(-26px);
+    -ms-transform: translateX(-26px);
+    transform: translateX(-26px);
+  }
+
+}

@@ -1,0 +1,434 @@
+<div class="">
+    <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+    <div class="block-div no-padding-tp ">
+        <div class=" sec-title row">
+
+            <h2 class="col-md-4"><i class="fas fa-server"></i> {{ 'priceList.addEdit.title' | translate }}</h2>
+
+            <div class="col-md-8 product-actions padding-15px-tb">
+                <button (click)=" clearForm();" class="button orange"><i class="fas fa-plus"></i>
+                    {{ 'shared.new' | translate }}</button>
+                <button (click)="addEdit()" class="button green"><i class="fas fa-check"></i>
+                    {{ 'shared.save' | translate }}</button>
+                <button (click)=" AddEditRest();" class="button save-open"><i class="fas fa-save"></i>
+                    {{ 'shared.saveOpen' | translate }}</button>
+                <button (click)="cancal();" class="button cancel"><i class="fas fa-times"></i>
+                    {{ 'shared.cancel' | translate }}</button>
+
+            </div>
+        </div>
+
+        <app-alert [alertInput]="alertInput"></app-alert>
+        <div class="apex-form">
+            <form [formGroup]="addEditForm">
+
+
+                <div class="row">
+
+                    <div class="form-group col-md-5 ">
+
+                        <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                            <label for="code" class="col-md-5 inline-label">{{ 'priceList.addEdit.code' | translate }}
+                                <span class="red">*</span>
+                            </label>
+                            <div class="col-md-7 ">
+                                <input type="text" class="form-control" [readonly]="autoCoding==1"
+                                    formControlName="code" id="code"
+                                    placeholder="{{ 'priceList.addEdit.code' | translate }}">
+                                <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="addEditForm.get('code').hasError('required') && addEditForm.get('code').touched">
+                                    {{ 'priceList.addEdit.code' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                </span>
+                                <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="addEditForm.get('code').hasError('maxlength') && addEditForm.get('code').touched">
+                                    {{ 'priceList.addEdit.code' | translate }}
+                                    {{ 'sharedValidation.maxlength' | translate }}100
+                                    {{ 'sharedValidation.char' | translate }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row  margin-bottom-20px flex-box margin-15px-lr">
+                            <label for="code" class="col-md-5 inline-label">{{ 'priceList.addEdit.nameAr' | translate }}
+                                <span class="red">*</span>
+                            </label>
+                            <div class="col-md-7">
+                                <input type="text" class="form-control" formControlName="nameAr" id="nameAr"
+                                    placeholder="{{ 'priceList.addEdit.nameAr' | translate }}">
+                                <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="addEditForm.get('nameAr').hasError('required') && addEditForm.get('nameAr').touched">
+                                    {{ 'priceList.addEdit.nameAr' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                </span>
+                                <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="addEditForm.get('nameAr').hasError('maxlength') && addEditForm.get('nameAr').touched">
+                                    {{ 'priceList.addEdit.nameAr' | translate }}
+                                    {{ 'sharedValidation.maxlength' | translate }}100
+                                    {{ 'sharedValidation.char' | translate }}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="row  margin-bottom-20px flex-box margin-15px-lr align-items-center">
+           
+             
+                            <label class="checkk font-size-13px">{{ 'supplierAccounts.addSupplier.nameRepeate' | translate }}
+                              <input type="checkbox"  checked="checked" class="checkbox" formControlName="nameRepeate" id="nameRepeate">
+                              <span class="checkmark"></span>
+                            </label>
+                          </div>
+                        <div *ngIf="!this.addEditForm.get('nameRepeate').value"  class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label for="clientName"
+                                class="col-md-5 inline-label">{{ 'priceList.addEdit.nameEn' | translate }}
+                               
+                            </label>
+
+                            <div class="col-md-7">
+                                <input type="text" formControlName="nameEn" class="form-control" id="clientName"
+                                    placeholder="{{ 'priceList.addEdit.nameEn' | translate }}">
+                                <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="addEditForm.get('nameEn').hasError('required') && addEditForm.get('nameEn').touched">
+                                    {{ 'priceList.addEdit.nameEn' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                </span>
+                                <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="addEditForm.get('nameEn').hasError('maxlength') && addEditForm.get('nameEn').touched">
+                                    {{ 'priceList.addEdit.nameEn' | translate }}
+                                    {{ 'sharedValidation.maxlength' | translate }}100
+                                    {{ 'sharedValidation.char' | translate }}
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label class="col-md-5 inline-label">{{ 'shared.status' | translate }}
+                                <span class="red">*</span>
+                            </label>
+                            <div class="col-md-7">
+                                <div class=" select-box no-padding">
+                                    <select class="form-control" formControlName="active" id="status">
+                                        <option value="true" selected>{{'shared.active' | translate}} </option>
+                                        <option value="false">{{'shared.inActive' | translate}}</option>
+                                    </select>
+                                    <span class="font-size-13px col-md-12 text-center red-text"
+                                        *ngIf="addEditForm.get('active').hasError('required') && addEditForm.get('active').touched">
+                                        {{ 'shared.status' | translate }}
+                                        {{ 'sharedValidation.required' | translate }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label class="col-md-5 inline-label">{{ 'priceList.addEdit.durationType' | translate }}
+                                <span class="red">*</span>
+                            </label>
+                            <div class="col-md-7">
+                                <div class=" select-box no-padding">
+                                    <select (change)="updateDateValidation($event.target.value)" class="form-control" formControlName="durationType" id="status">
+                                        <option value="true" selected>{{'priceList.addEdit.openDuration' | translate}}
+                                        </option>
+                                        <option value="false">{{'priceList.addEdit.limitDuration' | translate}}</option>
+                                    </select>
+                                    <span class="font-size-13px col-md-12 text-center red-text"
+                                        *ngIf="addEditForm.get('durationType').hasError('required') && addEditForm.get('durationType').touched">
+                                        {{ 'priceList.addEdit.durationType' | translate }}
+                                        {{ 'sharedValidation.required' | translate }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--date from-->
+                   
+                        <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label class="col-md-5 inline-label">{{ 'priceList.addEdit.dateFrom' | translate }}
+                                <span class="red">*</span>
+                            </label>
+                            <div class="col-md-7">
+                                <div class=" select-box no-padding">
+                                    
+                                    <div class="custom-date-picker">
+                                      
+                                        <mat-form-field>
+                                            <input  matInput formControlName="dateFrom" [matDatepicker]="dateFrom" readonly  [max]="addEditForm.controls['dateTo'].value"   (click)="dateFrom.open()" placeholder="{{ 'priceList.addEdit.dateFrom' | translate }}">
+                                            <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+                                            <mat-datepicker #dateFrom></mat-datepicker>
+                                          </mat-form-field>
+
+                                    </div>
+                                    <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="addEditForm.get('dateFrom').hasError('required') && addEditForm.get('dateFrom').touched">
+                                    {{ 'priceList.addEdit.dateFrom' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                </span>
+                                <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="addEditForm.get('dateFrom').hasError('max') && addEditForm.get('dateFrom').touched">
+                                    {{ 'priceList.addEdit.dateFrom' | translate }}
+                                    {{ 'sharedValidation.max' | translate }}
+                                    
+                                </span>
+                                </div>
+                            </div>
+                        </div>
+
+<!--date to-->
+<div class="row margin-15px-lr  margin-bottom-20px flex-box">
+    <label class="col-md-5 inline-label">{{ 'priceList.addEdit.dateTo' | translate }}
+        <span class="red">*</span>
+    </label>
+    <div class="col-md-7">
+        <div class=" select-box no-padding">
+            
+            <div class="custom-date-picker">
+                <mat-form-field>
+                    <input matInput  formControlName="dateTo" [matDatepicker]="picker" placeholder="{{ 'priceList.addEdit.dateTo' | translate }}"  readonly  [min]="addEditForm.controls['dateFrom'].value"   (click)="picker.open()">
+                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                    <mat-datepicker #picker></mat-datepicker>
+                </mat-form-field>
+            </div>
+            <span class="font-size-13px col-md-12 text-center red-text"
+            *ngIf="addEditForm.get('dateTo').hasError('required') && addEditForm.get('dateTo').touched">
+            {{ 'priceList.addEdit.dateTo' | translate }}
+            {{ 'sharedValidation.required' | translate }}
+        </span>
+        <span class="font-size-13px col-md-12 text-center red-text"
+            *ngIf="addEditForm.get('dateTo').hasError('min') && addEditForm.get('dateTo').touched">
+            {{ 'priceList.addEdit.dateTo' | translate }}
+            {{ 'sharedValidation.min' | translate }}
+            
+        </span>
+        </div>
+    </div>
+</div>
+                    </div>
+
+                    <div class="col-md-2 col-xs-12"></div>
+
+                    <div class="form-group col-md-5">
+                        <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label class="col-md-5 inline-label">{{ 'priceList.addEdit.pricingType' | translate }}
+                                <span class="red">*</span>
+                            </label>
+                            <div class="col-md-7">
+                                <div class=" select-box no-padding">
+                                    <select class="form-control" formControlName="pricingType" id="status">
+                                        <option value="true" selected>{{'priceList.addEdit.upPrice' | translate}}
+                                        </option>
+                                        <option value="false">{{'priceList.addEdit.downPrice' | translate}}</option>
+                                    </select>
+                                    <span class="font-size-13px col-md-12 text-center red-text"
+                                        *ngIf="addEditForm.get('pricingType').hasError('required') && addEditForm.get('pricingType').touched">
+                                        {{ 'priceList.addEdit.pricingType' | translate }}
+                                        {{ 'sharedValidation.required' | translate }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label class="col-md-5 inline-label">{{ 'priceList.addEdit.priceFrom' | translate }}
+                                <span class="red">*</span>
+                            </label>
+                            <div class="col-md-7">
+                                <div class=" select-box no-padding">
+                                    <select class="form-control" formControlName="priceFrom" id="priceFrom">
+                                        <option [value]="item.id" *ngFor="let item of priceFromList">{{item.name}}
+                                        </option>
+                                    
+                                    </select>
+                                    <span class="font-size-13px col-md-12 text-center red-text"
+                                        *ngIf="addEditForm.get('priceFrom').hasError('required') && addEditForm.get('priceFrom').touched">
+                                        {{ 'priceList.addEdit.priceFrom' | translate }}
+                                        {{ 'sharedValidation.required' | translate }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label class="col-md-5 inline-label">{{ 'priceList.addEdit.types' | translate }}
+                                <span class="red">*</span>
+                            </label>
+                            <div class="col-md-7">
+                                <div class=" select-box no-padding">
+                                    <select class="form-control" (change)="updateValidationType($event.target.value)" formControlName="types" id="types">
+                                        <option [value]="item.key" *ngFor="let item of typesList">{{item.name}}
+                                        </option>
+                                    
+                                    </select>
+                                    <span class="font-size-13px col-md-12 text-center red-text"
+                                        *ngIf="addEditForm.get('types').hasError('required') && addEditForm.get('types').touched">
+                                        {{ 'priceList.addEdit.types' | translate }}
+                                        {{ 'sharedValidation.required' | translate }}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div *ngIf="this.addEditForm.get('types').value=='Percentage'" class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label for="percentage"
+                                   class="col-md-5 inline-label">{{ 'priceList.addEdit.percentage' | translate }}
+                                   <span class="red">*</span>
+                                  </label>
+        
+                            <div class="col-md-7">
+                                <input type="number" (keypress)="numberOnly($event)"  formControlName="percentage" class="form-control" id="percentage" placeholder="{{ 'priceList.addEdit.percentage' | translate }}">
+                                <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('percentage').hasError('required') && addEditForm.get('percentage').touched">
+                                    {{ 'priceList.addEdit.percentage' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                </span>
+                                <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('percentage').hasError('min') && addEditForm.get('percentage').touched">
+                                    {{ 'priceList.addEdit.percentage' | translate }}
+                                    {{ 'sharedValidation.min' | translate }}
+                                 
+                                </span>
+                            </div>
+                        </div>
+
+                        <div *ngIf="this.addEditForm.get('types').value!='Percentage'" class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label for="value"
+                                   class="col-md-5 inline-label">{{ 'priceList.addEdit.value' | translate }}
+                                   <span class="red">*</span>
+                                  </label>
+        
+                            <div class="col-md-7">
+                                <input type="number" (keypress)="numberOnly($event)" formControlName="value" class="form-control" id="value" placeholder="{{ 'priceList.addEdit.value' | translate }}">
+                                <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('value').hasError('required') && addEditForm.get('value').touched">
+                                    {{ 'priceList.addEdit.value' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                </span>
+                                <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('value').hasError('min') && addEditForm.get('value').touched">
+                                    {{ 'priceList.addEdit.value' | translate }}
+                                    {{ 'sharedValidation.min' | translate }}
+                                 
+                                </span>
+                            </div>
+                        </div>
+                        <div *ngIf="this.addEditForm.get('types').value=='Value'"  class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label for="expenses"
+                                   class="col-md-5 inline-label">{{ 'priceList.addEdit.expenses' | translate }}
+                                 
+                                  </label>
+        
+                            <div class="col-md-7">
+                                <input type="number" (keypress)="numberOnly($event)" formControlName="expenses" class="form-control" id="expenses" placeholder="{{ 'priceList.addEdit.expenses' | translate }}">
+                                <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('expenses').hasError('required') && addEditForm.get('expenses').touched">
+                                    {{ 'priceList.addEdit.expenses' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                </span>
+                                <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('expenses').hasError('min') && addEditForm.get('expenses').touched">
+                                    {{ 'priceList.addEdit.expenses' | translate }}
+                                    {{ 'sharedValidation.min' | translate }}
+                                 
+                                </span>
+                            </div>
+                        </div>
+                        <div *ngIf="this.addEditForm.get('types').value=='Value'"  class="row margin-15px-lr  margin-bottom-20px flex-box">
+                            <label for="profitMargin"
+                                   class="col-md-5 inline-label">{{ 'priceList.addEdit.profitMargin' | translate }}
+                                   
+                                  </label>
+        
+                            <div class="col-md-7">
+                                <input type="number" (keypress)="numberOnly($event)" formControlName="profitMargin" class="form-control" id="profitMargin" placeholder="{{ 'priceList.addEdit.profitMargin' | translate }}">
+                                <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('profitMargin').hasError('required') && addEditForm.get('profitMargin').touched">
+                                    {{ 'priceList.addEdit.profitMargin' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                </span>
+                                <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('profitMargin').hasError('min') && addEditForm.get('profitMargin').touched">
+                                    {{ 'priceList.addEdit.profitMargin' | translate }}
+                                    {{ 'sharedValidation.min' | translate }}
+                                 
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="row"  >
+                    <div class="col-md-12 padding-15px-all">
+                      <table class="table table-striped table-bordered">
+                        <thead>
+                          <tr>  
+                            <th scope="col">{{ 'priceList.addEdit.product' | translate }} </th>
+                            <th scope="col">{{ 'priceList.addEdit.unit' | translate }}</th>
+         
+                          </tr>
+                        </thead>
+                        <tbody formArrayName="products"
+                          *ngFor="let pro of addEditForm['controls'].products['controls']; let proIndex=index">
+                          <tr formGroupName="{{proIndex}}">
+                            <td>
+               
+                                <div class="select-box no-padding">
+              
+              
+                                  <div class="auto-complete-control">
+                                    <mat-form-field>
+                                      <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto"  
+                                      autocomplete="off"  (keypress)="startAutoCompleteProduct($event.target.value,proIndex)" formControlName="productId">
+                                      <span class="search-icon"><i class="fas fa-search"></i></span>
+                                      <mat-autocomplete #auto="matAutocomplete" [displayWith]="getOptionText.bind(this)"
+                                       (optionSelected)="uniqueval(proIndex);getMeasuringUnits(proIndex)">
+                                        <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                                        <ng-container *ngIf="!isLoading">
+                                          <mat-option *ngFor="let item of products" [value]="item.id">
+                                            {{item.name}} 
+                                          </mat-option>
+                                        </ng-container>
+                                      </mat-autocomplete>
+                                    </mat-form-field>
+                                      <span class="error-message" *ngIf="errorMsg!==null">
+                                       {{errorMsg}}
+                                      </span>
+                                    </div> 
+             
+                                  <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="pro.get('productId').hasError('required') && pro.get('productId').touched">
+                                    {{ 'priceList.addEdit.product' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                                  <span class="font-size-13px col-md-12 text-center red-text"
+                                  *ngIf="pro.get('productId').hasError('notUnique') && pro.get('productId').touched">
+                                  {{ 'priceList.addEdit.product' | translate }}
+                                  {{ 'sharedValidation.notUnique' | translate }}
+                                </span>
+                                </div>
+                              </td>
+              
+                              <td>
+                                <div class="select-box no-padding">
+                                  <select  formControlName="productUnitId"
+                                    class="form-control" id="productUnitId">
+                                    <option *ngFor="let item of pro.get('units').value" [value]="item.id">{{item.name}}</option>
+              
+                                  </select>
+                                  <span class="font-size-13px col-md-12 text-center red-text"
+                                    *ngIf="pro.get('productUnitId').hasError('required') && pro.get('productUnitId').touched">
+                                    {{ 'priceList.addEdit.unit' | translate }}
+                                    {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                                </div>
+                              </td>
+                            <td>
+                              <a [attr.title]="'shared.delete' | translate" (click)="deleteProduct(proIndex)" 
+                                *ngIf="proIndex>0" style="margin:5px;">
+                                <i   class="fas fa-trash"></i> </a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                      <div>
+                        <button class="button" (click)="addProducts();">{{ 'shared.new' | translate }}</button>
+                      </div>
+                    </div>
+                  </div>
+            </form>
+        </div>
+
+
+
+
+    </div>
+</div>

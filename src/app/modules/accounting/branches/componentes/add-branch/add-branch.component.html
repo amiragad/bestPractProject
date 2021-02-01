@@ -1,0 +1,170 @@
+<div class="">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+  <div class="block-div no-padding-tp ">
+      <div class=" sec-title row">
+
+          <h2 class="col-md-4"><i class="fas fa-server"></i> {{ 'branch.addEdit.title' | translate }}</h2>
+
+          <div class="col-md-8 product-actions padding-15px-tb">
+              <button (click)=" clearForm();" class="button orange"><i class="fas fa-plus"></i> {{ 'shared.new' | translate }}</button>
+              <button (click)="addEdit()" class="button green"><i class="fas fa-check"></i> {{ 'shared.save' | translate }}</button>
+              <button (click)=" AddEditRest();" class="button save-open"><i class="fas fa-save"></i> {{ 'shared.saveOpen' | translate }}</button>
+              <button (click)="cancal();" class="button cancel"><i class="fas fa-times"></i> {{ 'shared.cancel' | translate }}</button>
+
+          </div>
+      </div>
+
+      <app-alert [alertInput]="alertInput"></app-alert>
+      <div class="apex-form">
+          <form [formGroup]="addEditForm">
+
+
+              <div class="row">
+
+                  <div class="form-group col-md-5 ">
+
+                      <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                          <label for="code" class="col-md-5 inline-label">{{ 'branch.addEdit.code' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7 ">
+                              <input type="text" class="form-control" [readonly]="autoCoding==1" formControlName="code" id="code"
+                                     placeholder="{{ 'branch.addEdit.code' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('required') && addEditForm.get('code').touched">
+                                  {{ 'branch.addEdit.code' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('maxlength') && addEditForm.get('code').touched">
+                                  {{ 'branch.addEdit.code' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr">
+                          <label for="code" class="col-md-5 inline-label">{{ 'branch.addEdit.nameAr' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <input type="text" class="form-control" formControlName="nameAr" id="nameAr"
+                                     placeholder="{{ 'branch.addEdit.nameAr' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('required') && addEditForm.get('nameAr').touched">
+                                  {{ 'branch.addEdit.nameAr' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('maxlength') && addEditForm.get('nameAr').touched">
+                                  {{ 'branch.addEdit.nameAr' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr align-items-center">
+           
+             
+                        <label class="checkk font-size-13px">{{ 'supplierAccounts.addSupplier.nameRepeate' | translate }}
+                          <input type="checkbox"  checked="checked" class="checkbox" formControlName="nameRepeate" id="nameRepeate">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div *ngIf="!this.addEditForm.get('nameRepeate').value" class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label for="clientName"
+                                 class="col-md-5 inline-label">{{ 'branch.addEdit.nameEn' | translate }}
+                           
+                                </label>
+                                <div class="col-md-7">
+                                  <input type="text" class="form-control" formControlName="nameEn" id="nameEn"
+                                         placeholder="{{ 'branch.addEdit.nameEn' | translate }}">
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('required') && addEditForm.get('nameEn').touched">
+                                      {{ 'branch.addEdit.nameEn' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('maxlength') && addEditForm.get('nameEn').touched">
+                                      {{ 'branch.addEdit.nameEn' | translate }}
+                                      {{ 'sharedValidation.maxlength' | translate }}100
+                                      {{ 'sharedValidation.char' | translate }}
+                                  </span>
+                              </div>
+                         
+                         
+                      </div>
+
+
+
+                  </div>
+
+                  <div class="col-md-2 col-xs-12"></div>
+
+                  <div class="form-group col-md-5">
+
+                    <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                      <label class="col-md-5 inline-label">{{ 'shared.status' | translate }}
+                        <span class="red">*</span>
+                      </label>
+                      <div class="col-md-7">
+                          <div class=" select-box no-padding">
+                              <select class="form-control" formControlName="active" id="status">
+                                  <option value="true" selected>{{'shared.active' | translate}} </option>
+                                  <option value="false">{{'shared.inActive' | translate}}</option>
+                              </select>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('active').hasError('required') && addEditForm.get('active').touched">
+                                  {{ 'shared.status' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="row  margin-bottom-20px flex-box margin-15px-lr">
+                    <label for="code" class="col-md-5 inline-label">{{ 'branch.addEdit.phone' | translate }}
+                      
+                    </label>
+                    <div class="col-md-7">
+                        <input type="number" (keypress)="numberOnly($event)" class="form-control" formControlName="phone" id="phone"
+                               placeholder="{{ 'branch.addEdit.phone' | translate }}">
+                        <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('phone').hasError('required') && addEditForm.get('phone').touched">
+                            {{ 'branch.addEdit.phone' | translate }}
+                            {{ 'sharedValidation.required' | translate }}
+                        </span>
+                        <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('phone').hasError('maxlength') && addEditForm.get('phone').touched">
+                            {{ 'branch.addEdit.phone' | translate }}
+                            {{ 'sharedValidation.maxlength' | translate }}100
+                            {{ 'sharedValidation.char' | translate }}
+                        </span>
+                    </div>
+                </div>
+                <div class="row  margin-bottom-20px flex-box margin-15px-lr">
+                  <label for="code" class="col-md-5 inline-label">{{ 'branch.addEdit.address' | translate }}
+                    
+                  </label>
+                  <div class="col-md-7">
+                      <input type="text" class="form-control" formControlName="address" id="address"
+                             placeholder="{{ 'branch.addEdit.address' | translate }}">
+                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('address').hasError('required') && addEditForm.get('address').touched">
+                          {{ 'branch.addEdit.address' | translate }}
+                          {{ 'sharedValidation.required' | translate }}
+                      </span>
+                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('address').hasError('maxlength') && addEditForm.get('address').touched">
+                          {{ 'branch.addEdit.address' | translate }}
+                          {{ 'sharedValidation.maxlength' | translate }}100
+                          {{ 'sharedValidation.char' | translate }}
+                      </span>
+                  </div>
+              </div>
+                  </div>
+
+              </div>
+
+
+
+        
+          </form>
+      </div>
+
+
+
+
+  </div>
+</div>

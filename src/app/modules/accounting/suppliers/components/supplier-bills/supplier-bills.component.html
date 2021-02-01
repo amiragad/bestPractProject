@@ -1,0 +1,129 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form>
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'supplierAccounts.code' | translate }}</label>
+          <input type="text" class="form-control" id="code" placeholder="{{ 'supplierAccounts.code' | translate }}">
+        </div>
+        
+ 
+        <div class="form-group date-field col-md-2">
+          <label for="toDate">{{ 'shared.fromDate' | translate }}</label>
+          <input type="date" class="form-control date-field" id="fromDate" placeholder="{{ 'shared.fromDate' | translate }}">
+          <!-- <span><i class="fas fa-calendar-alt"></i></span> -->
+        </div>
+
+        <div class="form-group date-field col-md-2">
+          <label for="toDate">{{ 'shared.toDate' | translate }}</label>
+          <input type="date" class="form-control date-field" id="toDate" placeholder="{{ 'shared.toDate' | translate }}">
+        
+                  <!-- <span><i class="fas fa-calendar-alt"></i></span> -->
+</div>
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <button class="button"><i class="fas fa-eraser"></i></button>
+          <button class="button">{{ 'shared.search' | translate }}</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+
+  <h2>{{ 'supplierAccounts.bills' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'bill.code' | translate }}
+          </th>
+          <th>
+            {{ 'bill.type' | translate }}
+          </th>
+          <th>
+            {{ 'bill.name' | translate }}
+
+          </th>
+          <th>
+            {{ 'bill.date' | translate }}
+
+          </th>
+          <th>
+            {{ 'bill.discount' | translate }}
+          </th>
+          <th>
+            {{ 'bill.total' | translate }}
+          </th>
+          <th>
+            {{ 'bill.totalafterdiscount' | translate }}
+
+          </th>
+          <th>
+            {{ 'bill.paidOrNot' | translate }}
+
+          </th>
+
+          <th>
+            {{ 'shared.options' | translate }}
+
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let bill of billsList">
+          <td>
+            {{bill.code}}
+          </td>
+          <td>
+            {{bill.type}}
+          </td>
+          <td>
+            {{bill.clientname}}
+          </td>
+          <td>
+            {{bill.date}}
+          </td>
+          <td>
+            {{bill.discount}} %
+          </td>
+          <td>
+            {{bill.total}}
+          </td>
+          <td>
+            {{bill.totalAfterDiscount}}
+          </td>
+          <td>
+            <span *ngIf="bill.paid">
+              {{'bill.paid' | translate}}
+            </span>
+
+            <span *ngIf="!bill.paid">
+              {{'bill.unpaid' | translate}}
+            </span>
+          </td>
+          <td>
+            <a [attr.title]="'shared.details' | translate " style="margin:5px;">
+              <i class="fas fa-info"></i>
+            </a>
+            <a [attr.title]="'shared.delete' | translate " style="margin:5px;">
+              <i class="fas fa-trash"></i> </a>
+
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,596 @@
+<div class="">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+  <div class="block-div no-padding-tp ">
+      <div class=" sec-title row">
+
+          <h2 class="col-md-4"><i class="fas fa-server"></i> {{ 'supplierAccounts.addSupplier.title' | translate }}</h2>
+
+          <div class="col-md-8 product-actions padding-15px-tb">
+              <button (click)=" clearForm();" class="button orange"><i class="fas fa-plus"></i> {{ 'shared.new' | translate }}</button>
+              <button (click)="addEdit()" class="button green"><i class="fas fa-check"></i> {{ 'shared.save' | translate }}</button>
+              <button (click)=" AddEditRest();" class="button save-open"><i class="fas fa-save"></i> {{ 'shared.saveOpen' | translate }}</button>
+              <button (click)="cancal();" class="button cancel"><i class="fas fa-times"></i> {{ 'shared.cancel' | translate }}</button>
+
+          </div>
+      </div>
+
+      <app-alert [alertInput]="alertInput"></app-alert>
+      <div class="apex-form">
+          <form [formGroup]="addEditForm">
+
+
+              <div class="row">
+
+                  <div class="form-group col-md-5 ">
+
+                      <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                          <label for="code" class="col-md-5 inline-label">{{ 'supplierAccounts.addSupplier.code' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7 ">
+                              <input type="text" class="form-control" [readonly]="autoCoding==1" formControlName="code" id="code"
+                                     placeholder="{{ 'supplierAccounts.addSupplier.code' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('required') && addEditForm.get('code').touched">
+                                  {{ 'supplierAccounts.addSupplier.code' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('maxlength') && addEditForm.get('code').touched">
+                                  {{ 'supplierAccounts.addSupplier.code' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr">
+                          <label for="code" class="col-md-5 inline-label">{{ 'supplierAccounts.addSupplier.nameAR' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <input type="text" class="form-control" formControlName="nameAr" id="nameAr"
+                                     placeholder="{{ 'supplierAccounts.addSupplier.nameAR' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('required') && addEditForm.get('nameAr').touched">
+                                  {{ 'supplierAccounts.addSupplier.nameAR' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('maxlength') && addEditForm.get('nameAr').touched">
+                                  {{ 'supplierAccounts.addSupplier.nameAR' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr align-items-center">
+           
+             
+                        <label class="checkk font-size-13px">{{ 'supplierAccounts.addSupplier.nameRepeate' | translate }}
+                          <input type="checkbox"  checked="checked" class="checkbox" formControlName="nameRepeate" id="nameRepeate">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div  *ngIf="!this.addEditForm.get('nameRepeate').value"  class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label for="clientName"
+                                 class="col-md-5 inline-label">{{ 'supplierAccounts.addSupplier.nameEN' | translate }}
+                                
+                                </label>
+
+                          <div class="col-md-7">
+                              <input type="text" formControlName="nameEn" class="form-control" id="clientName" placeholder="{{ 'supplierAccounts.addSupplier.nameEN' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('required') && addEditForm.get('nameEn').touched">
+                                  {{ 'supplierAccounts.addSupplier.nameEN' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('maxlength') && addEditForm.get('nameEn').touched">
+                                  {{ 'supplierAccounts.addSupplier.nameEN' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+
+                      <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label class="col-md-5 inline-label">{{ 'shared.status' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <div class=" select-box no-padding">
+                                  <select class="form-control" formControlName="status" id="status">
+                                      <option value="1" selected>{{'shared.active' | translate}} </option>
+                                      <option value="0">{{'shared.inActive' | translate}}</option>
+                                  </select>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('status').hasError('required') && addEditForm.get('status').touched">
+                                      {{ 'shared.status' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label class="col-md-5 inline-label">{{ 'supplierAccounts.addSupplier.dealingNaturity' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <div class="select-box no-padding">
+                                  <select class="form-control" formControlName="dealingNaturityId" id="dealingNaturity">
+                                      <option *ngFor="let item of dealingNaturity" [value]="item.key">{{item.name}}</option>
+                                  </select>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('dealingNaturityId').hasError('required') && addEditForm.get('dealingNaturityId').touched">
+                                      {{ 'supplierAccounts.addSupplier.dealingNaturity' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                          <label for="taxNumber"
+                                 class="col-md-5 inline-label">{{ 'supplierAccounts.addSupplier.taxNumber' | translate }}
+                                 </label>
+                          <div class="col-md-7">
+                              <input type="number" (keypress)="numberOnly($event)" formControlName="taxNumber" class="form-control" id="taxNumber" placeholder="{{'supplierAccounts.addSupplier.taxNumber' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('taxNumber').hasError('required') && addEditForm.get('taxNumber').touched">
+                                  {{ 'supplierAccounts.addSupplier.taxNumber' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('taxNumber').hasError('min') && addEditForm.get('taxNumber').touched">
+                                {{ 'customerAccounts.addCustomer.taxNumber' | translate }}
+                                {{ 'sharedValidation.min' | translate }}
+                            </span>
+                          </div>
+                      </div>
+
+                  </div>
+
+                  <div class="col-md-2 col-xs-12"></div>
+
+                  <div class="form-group col-md-5">
+
+                      <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label for="brsanch" class="col-md-5  inline-label">{{ 'supplierAccounts.addSupplier.country' | translate }}
+                          
+                          </label>
+                          <div class="col-md-7">
+                              <div class="select-box no-padding">
+                                  <select (change)="getCites(addEditForm.get('countryId').value);" formControlName="countryId" class="form-control" id="countryId">
+                                      <option *ngFor="let item of countries" [value]="item.id">{{item.name}}</option>
+
+                                  </select>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('countryId').hasError('required') && addEditForm.get('countryId').touched">
+                                      {{ 'supplierAccounts.addSupplier.country' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label for="cityId" class="col-md-5  inline-label">{{ 'supplierAccounts.addSupplier.city' | translate }}
+                    
+                          </label>
+                          <div class="col-md-7">
+                              <div class="select-box no-padding">
+                                  <select (change)="getAreas(addEditForm.get('cityId').value);" formControlName="cityId" class="form-control" id="cityId">
+                                      <option *ngFor="let item of cites" [value]="item.id">{{item.name}}</option>
+
+                                  </select>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('cityId').hasError('required') && addEditForm.get('cityId').touched">
+                                      {{ 'supplierAccounts.addSupplier.city' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label for="areaId" class="col-md-5  inline-label">{{ 'supplierAccounts.addSupplier.area' | translate }}
+                          
+                          </label>
+                          <div class="col-md-7">
+                              <div class="select-box no-padding">
+                                  <select formControlName="areaId" class="form-control" id="areaId">
+                                      <option *ngFor="let item of areas" [value]="item.id">{{item.name}}</option>
+
+                                  </select>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('areaId').hasError('required') && addEditForm.get('areaId').touched">
+                                      {{ 'supplierAccounts.addSupplier.area' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                          <label for="address"
+                                 class="col-md-5 inline-label">{{ 'supplierAccounts.addSupplier.address' | translate }}
+                      </label>
+                          <div class="col-md-7">
+                              <input type="text" formControlName="address" class="form-control" id="address" placeholder="{{'supplierAccounts.addSupplier.address' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('address').hasError('required') && addEditForm.get('address').touched">
+                                  {{ 'supplierAccounts.addSupplier.address' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('address').hasError('maxlength') && addEditForm.get('address').touched">
+                                  {{ 'supplierAccounts.addSupplier.address' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                      <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                        <label class="col-md-5 inline-label">{{ 'systemData.product.image' | translate }}</label>
+                        <div class="col-md-7">
+                          <img src="{{imageSrc}}"  class="fixed" alt="image">
+                        </div>
+                        <div class="col-md-5"></div>
+                        <div class="col-md-7">
+                            <div class="inputfile-holder">
+     
+                                       <input #file id="file" accept="image/*" type="file" class="inputfile inputfile-1"
+                                       (change)="uploadImage($event)" />
+                                <!--    <label for="file" [ngClass]="{'file-uploaded': fileName !== null}"> -->
+                                <!--when file uploaded-->
+                                <span *ngIf="fileName!=null"><i class="fa fa-paperclip" aria-hidden="true"></i> {{fileName}}</span>
+                                <label for="file" *ngIf="fileName == null" [ngClass]="{'file-uploaded': fileName !== null}">
+                                    <span><i class="fa fa-upload" aria-hidden="true"></i> {{ 'shared.uploadImage' | translate }}</span>
+                                </label>
+                            </div>
+  
+                            <!--when file uploaded-->
+                            <span class="icon-button smaller-icon" (click)="removeAttachment()" *ngIf="fileName != null">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </span>
+  
+  
+                        </div>
+  
+                    </div>
+  
+
+
+                  </div>
+
+              </div>
+
+              <div class="row seprator"></div>
+
+              <div class="col-md-12 margin-30px-tb">
+                  <div class="row">
+                      <div class="tabs-container">
+                          <ul class="tabs">
+                              <li class="active">{{ 'supplierAccounts.addSupplier.contacts' | translate }}</li>
+                              <li>{{ 'supplierAccounts.addSupplier.balance' | translate }}</li>
+                              <li>{{ 'supplierAccounts.addSupplier.salePurchase' | translate }}</li>
+                          </ul>
+
+                          <ul class="tab__content apex-form">
+                              <li class="active">
+                                  <div class="content__wrapper">
+
+                                      <div class="row">
+                                       
+                                          <div class="form-group col-md-5">
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="phone">{{ 'supplierAccounts.addSupplier.phone' | translate }}</label>
+                                                  <div class="col-md-7 ">
+                                                      <input class="form-control" id="phone" placeholder="{{ 'supplierAccounts.addSupplier.phone' | translate }}" type="text" formControlName="phone">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('phone').hasError('maxlength') && addEditForm.get('phone').touched">
+                                                          {{ 'supplierAccounts.addSupplier.phone' | translate }}
+                                                          {{ 'sharedValidation.maxlength' | translate }}100
+                                                          {{ 'sharedValidation.char' | translate }}
+                                                      </span>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="mobile">{{ 'supplierAccounts.addSupplier.mobile' | translate }}
+                                                    <span class="red">*</span>
+                                                  </label>
+                                                   <div class="col-md-7">
+                                                      <input class=" form-control" id="mobile" placeholder="{{ 'supplierAccounts.addSupplier.mobile' | translate }}" type="text" formControlName="mobile">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('mobile').hasError('required') && addEditForm.get('mobile').touched">
+                                                          {{ 'supplierAccounts.addSupplier.mobile' | translate }}
+                                                          {{ 'sharedValidation.required' | translate }}
+                                                      </span>
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('mobile').hasError('maxlength') && addEditForm.get('mobile').touched">
+                                                          {{ 'supplierAccounts.addSupplier.mobile' | translate }}
+                                                          {{ 'sharedValidation.maxlength' | translate }}100
+                                                          {{ 'sharedValidation.char' | translate }}
+                                                      </span>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="fax">{{ 'supplierAccounts.addSupplier.fax' | translate }}</label>
+                                                  <div class="col-md-7">
+                                                      <input class="form-control" id="fax" placeholder="{{ 'supplierAccounts.addSupplier.fax' | translate }}" formControlName="fax" type="number" (keypress)="numberOnly($event)">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('fax').hasError('maxlength') && addEditForm.get('fax').touched">
+                                                          {{ 'supplierAccounts.addSupplier.fax' | translate }}
+                                                          {{ 'sharedValidation.maxlength' | translate }}100
+                                                          {{ 'sharedValidation.char' | translate }}
+                                                      </span>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+
+                                          <div class="col-md-2"></div>
+                                          <div class="form-group col-md-5">
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="email">{{ 'supplierAccounts.addSupplier.email' | translate }}</label>
+                                                  <div class="col-md-7">
+                                                      <input class="form-control" formControlName="email" id="email" placeholder="{{ 'supplierAccounts.addSupplier.email' | translate }}" type="text">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('email').hasError('maxlength') && addEditForm.get('email').touched">
+                                                          {{ 'supplierAccounts.addSupplier.email' | translate }}
+                                                          {{ 'sharedValidation.maxlength' | translate }}100
+                                                          {{ 'sharedValidation.char' | translate }}
+                                                      </span>
+                                                   </div>
+                                                </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="website">{{ 'supplierAccounts.addSupplier.website' | translate }}</label>
+                                                  <div class="col-md-7">
+                                                      <input class=" form-control" formControlName="website" id="website" placeholder="{{ 'supplierAccounts.addSupplier.website' | translate }}" type="text">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('website').hasError('maxlength') && addEditForm.get('website').touched">
+                                                          {{ 'supplierAccounts.addSupplier.website' | translate }}
+                                                          {{ 'sharedValidation.maxlength' | translate }}100
+                                                          {{ 'sharedValidation.char' | translate }}
+                                                      </span>
+                                                  </div>
+                                              </div>
+
+                                          </div>
+
+                                      </div>
+
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="content__wrapper">
+
+                                      <div class="row">
+                                          <div class="form-group col-md-5">
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="debtor">{{ 'supplierAccounts.addSupplier.debtor' | translate }}
+                                                  
+                                                  </label>
+                                                  <div class="col-md-7 ">
+                                                      <div class="select-box no-padding">
+                                                          <select class="form-control" id="debtor" formControlName="debtor">
+                                                              <option value="1">{{ 'supplierAccounts.addSupplier.debitor' | translate }}</option>
+                                                              <option value="0">{{ 'supplierAccounts.addSupplier.creditor' | translate }}</option>
+                                                          </select>
+                                                          <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('debtor').hasError('required') && addEditForm.get('debtor').touched">
+                                                              {{ 'supplierAccounts.addSupplier.debtor' | translate }}
+                                                              {{ 'sharedValidation.required' | translate }}
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="amount">{{ 'supplierAccounts.addSupplier.initBalance' | translate }}  </label>
+                                                  <div class="col-md-7">
+                                                      <input class=" form-control" id="amount" formControlName="amount" placeholder="{{ 'supplierAccounts.addSupplier.initBalance' | translate }}" type="number" (keypress)="numberOnly($event)">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('amount').hasError('required') && addEditForm.get('amount').touched">
+                                                          {{ 'supplierAccounts.addSupplier.initBalance' | translate }}
+                                                          {{ 'sharedValidation.required' | translate }}
+                                                      </span>
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('amount').hasError('min') && addEditForm.get('amount').touched">
+                                                        {{ 'customerAccounts.addCustomer.initBalance' | translate }}
+                                                        {{ 'sharedValidation.min' | translate }}
+                                                    </span>
+                                                  </div>
+                                               </div>
+
+                                          </div>
+                                          <div class="col-md-2"></div>
+                                          <div class="form-group col-md-5">
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="notes">{{ 'supplierAccounts.addSupplier.notes' | translate }}</label>
+                                                  <textarea formControlName="notes" class="col-md-7 form-control" placeholder="{{ 'supplierAccounts.addSupplier.notes' | translate }}" rows="4"></textarea>
+                                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('notes').hasError('maxlength') && addEditForm.get('notes').touched">
+                                                      {{ 'supplierAccounts.addSupplier.notes' | translate }}
+                                                      {{ 'sharedValidation.maxlength' | translate }}200
+                                                      {{ 'sharedValidation.char' | translate }}
+                                                  </span>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                  </div>
+                              </li>
+                              <li>
+                                  <div class="content__wrapper">
+                                      <div class="row">
+                                          <div class="form-group col-md-5 ">
+                                              <label>{{ 'supplierAccounts.addSupplier.purchase' | translate }}</label>
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="supplier">{{ 'supplierAccounts.addSupplier.supplier' | translate }}</label>
+                                                  <div class="col-md-7">
+                                                        <div class="custom-control custom-switch">
+                                                            <input class="custom-control-input" type="checkbox" name="supplier" id="supplier" disabled checked>
+                                                            <label class="custom-control-label" for="supplier"></label>
+                                                        </div>
+                                                   </div>
+
+
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="creditLimit">{{ 'supplierAccounts.addSupplier.creditLimit' | translate }}
+                                                 
+                                                  </label>
+                                                  <div class="col-md-7">
+                                                      <input class=" form-control" formControlName="creditLimit" id="creditLimit" placeholder="{{ 'supplierAccounts.addSupplier.creditLimit' | translate }}" type="number" (keypress)="numberOnly($event)">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditLimit').hasError('required') && addEditForm.get('creditLimit').touched">
+                                                          {{ 'supplierAccounts.addSupplier.creditLimit' | translate }}
+                                                          {{ 'sharedValidation.required' | translate }}
+                                                      </span>
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditLimit').hasError('min') && addEditForm.get('creditLimit').touched">
+                                                        {{ 'customerAccounts.addCustomer.creditLimit' | translate }}
+                                                        {{ 'sharedValidation.min' | translate }}
+                                                    </span>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="creditDays">{{ 'supplierAccounts.addSupplier.creditDays' | translate }}
+                                                   
+                                                  </label>
+                                                  <div class="col-md-7">
+                                                      <input class=" form-control" formControlName="creditDays" id="creditDays" placeholder="{{ 'supplierAccounts.addSupplier.creditDays' | translate }}" type="number" (keypress)="numberOnly($event)">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditDays').hasError('required') && addEditForm.get('creditDays').touched">
+                                                          {{ 'supplierAccounts.addSupplier.creditDays' | translate }}
+                                                          {{ 'sharedValidation.required' | translate }}
+                                                      </span>
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditDays').hasError('min') && addEditForm.get('creditDays').touched">
+                                                        {{ 'customerAccounts.addCustomer.creditDays' | translate }}
+                                                        {{ 'sharedValidation.min' | translate }}
+                                                    </span>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="discountPercentage">{{ 'supplierAccounts.addSupplier.discountPercentage' | translate }}
+                                                    
+                                                  </label>
+                                                  <div class="col-md-7 ">
+                                                      <input class="form-control" formControlName="discountPercentage" id="discountPercentage" placeholder="{{ 'supplierAccounts.addSupplier.discountPercentage' | translate }}" type="number" (keypress)="numberOnly($event)">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('discountPercentage').hasError('required') && addEditForm.get('discountPercentage').touched">
+                                                          {{ 'supplierAccounts.addSupplier.discountPercentage' | translate }}
+                                                          {{ 'sharedValidation.required' | translate }}
+                                                      </span>
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('discountPercentage').hasError('min') && addEditForm.get('discountPercentage').touched">
+                                                        {{ 'customerAccounts.addCustomer.discountPercentage' | translate }}
+                                                        {{ 'sharedValidation.min' | translate }}
+                                                    </span>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row  margin-bottom-20px flex-box">
+                                                  <label for="achievementConditionId" class="col-md-5  inline-label">{{ 'supplierAccounts.addSupplier.achievementCondition' | translate }}
+                                                 
+                                                  </label>
+                                                  <div class="col-md-7">
+                                                      <div class="select-box no-padding">
+                                                          <select formControlName="achievementConditionId" class="form-control" id="achievementConditionId">
+                                                              <option *ngFor="let item of paymentCondition" [value]="item.id">{{item.name}}</option>
+
+                                                          </select>
+                                                          <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('achievementConditionId').hasError('required') && addEditForm.get('achievementConditionId').touched">
+                                                              {{ 'supplierAccounts.addSupplier.achievementCondition' | translate }}
+                                                              {{ 'sharedValidation.required' | translate }}
+                                                          </span>
+                                                      </div>
+                                                  </div>
+
+                                              </div>
+
+                                          </div>
+                                          <div class="col-md-2"></div>
+                                          <div class="form-group col-md-5">
+
+                                              <label>{{ 'supplierAccounts.addSupplier.sale' | translate }}</label>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="supplier">{{ 'supplierAccounts.addSupplier.customerSupplier' | translate }}</label>
+
+                                                  <div class="col-md-7">
+                                                    <div class="custom-control custom-switch">
+                                                        <input type="checkbox" class="custom-control-input" id="customSwitch1" (click)="updateForm($event.target.value)" formControlName="customerSupplier">
+                                                        <label class="custom-control-label" for="customSwitch1"></label>
+                                                    </div>
+                                                </div>
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="creditLimitPurchase">{{ 'supplierAccounts.addSupplier.creditLimit' | translate }}
+                                                   
+                                                  </label>
+                                                  <div class="col-md-7">
+                                                      <input [readonly]="this.addEditForm.get('customerSupplier').value=='false'||this.addEditForm.get('customerSupplier').value==false" class="form-control" formControlName="creditLimitPurchase" id="creditLimitPurchase" placeholder="{{ 'supplierAccounts.addSupplier.creditLimit' | translate }}" type="number" (keypress)="numberOnly($event)">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditLimitPurchase').hasError('required') && addEditForm.get('creditLimitPurchase').touched">
+                                                          {{ 'supplierAccounts.addSupplier.creditLimit' | translate }}
+                                                          {{ 'sharedValidation.required' | translate }}
+                                                      </span>
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditLimitPurchase').hasError('min') && addEditForm.get('creditLimitPurchase').touched">
+                                                        {{ 'customerAccounts.addCustomer.creditLimit' | translate }}
+                                                        {{ 'sharedValidation.min' | translate }}
+                                                    </span>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="creditDays">{{ 'supplierAccounts.addSupplier.creditDays' | translate }}
+                                                   
+                                                  </label>
+                                                  <div class="col-md-7">
+                                                      <input [readonly]="this.addEditForm.get('customerSupplier').value=='false'||this.addEditForm.get('customerSupplier').value==false" class="form-control" formControlName="creditDaysPurchase" id="creditDaysPurchase" placeholder="{{ 'supplierAccounts.addSupplier.creditDays' | translate }}" type="number" (keypress)="numberOnly($event)">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditDaysPurchase').hasError('required') && addEditForm.get('creditDaysPurchase').touched">
+                                                          {{ 'supplierAccounts.addSupplier.creditDays' | translate }}
+                                                          {{ 'sharedValidation.required' | translate }}
+                                                      </span>
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditDaysPurchase').hasError('min') && addEditForm.get('creditDaysPurchase').touched">
+                                                        {{ 'customerAccounts.addCustomer.creditDays' | translate }}
+                                                        {{ 'sharedValidation.min' | translate }}
+                                                    </span>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row margin-bottom-20px flex-box">
+                                                  <label class="col-md-5 inline-label" for="discountPercentagePurchase">{{ 'supplierAccounts.addSupplier.discountPercentage' | translate }}
+                                                  
+                                                  </label>
+                                                  <div class="col-md-7">
+                                                      <input [readonly]="this.addEditForm.get('customerSupplier').value=='false'||this.addEditForm.get('customerSupplier').value==false" class="form-control" formControlName="discountPercentagePurchase" id="discountPercentagePurchase" placeholder="{{ 'supplierAccounts.addSupplier.discountPercentage' | translate }}" type="number" (keypress)="numberOnly($event)">
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('discountPercentagePurchase').hasError('required') && addEditForm.get('discountPercentagePurchase').touched">
+                                                          {{ 'supplierAccounts.addSupplier.discountPercentage' | translate }}
+                                                          {{ 'sharedValidation.required' | translate }}
+                                                      </span>
+                                                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('discountPercentagePurchase').hasError('min') && addEditForm.get('discountPercentagePurchase').touched">
+                                                        {{ 'customerAccounts.addCustomer.discountPercentage' | translate }}
+                                                        {{ 'sharedValidation.min' | translate }}
+                                                    </span>
+                                                  </div>
+                                              </div>
+
+                                              <div class="row  margin-bottom-20px flex-box">
+                                                  <label for="areaId" class="col-md-5  inline-label">{{ 'supplierAccounts.addSupplier.paymentCondition' | translate }}
+                                                
+                                                  </label>
+                                                  <div class="col-md-7">
+                                                      <div class="select-box no-padding">
+                                                          <select  disabled="this.addEditForm.get('customerSupplier').value=='false'||this.addEditForm.get('customerSupplier').value==false" formControlName="paymentConditionIdPurchase" class="form-control" id="paymentConditionId">
+                                                              <option *ngFor="let item of paymentCondition" [value]="item.id">{{item.name}}</option>
+
+                                                          </select>
+                                                          <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('paymentConditionIdPurchase').hasError('required') && addEditForm.get('paymentConditionIdPurchase').touched">
+                                                              {{ 'supplierAccounts.addSupplier.paymentCondition' | translate }}
+                                                              {{ 'sharedValidation.required' | translate }}
+                                                          </span>
+                                                      </div>
+                                                  </div>
+                                              </div>
+
+
+                                          </div>
+                                      </div>
+                                  </div>
+                              </li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </form>
+      </div>
+
+
+
+
+  </div>
+</div>

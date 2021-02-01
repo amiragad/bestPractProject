@@ -1,0 +1,56 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form [formGroup]="searchForm">
+      <div class="row">
+     
+        <div class=" col-md-2">
+          <!-- <label for="name">{{ 'lookups.name' | translate }}</label> -->
+          <input type="text" formControlName="name" class="form-control" id="name" placeholder="{{ 'lookups.name' | translate }}">
+        </div>
+
+        <div class="col-md-6">
+          <button class="button dark" (click)="clearSearch()"><i class="fas fa-eraser"></i></button>
+          <button class="button" (click)="findAll()">{{ 'shared.search' | translate }}</button>
+
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+<div id="lookup-list" class="block-div">
+  <!--Branches-->
+  <div class="row">
+    <div class="list col-md-2 col-xs-12" *ngFor="let item of resultSet.data | paginate:{ 
+      itemsPerPage: resultSet.pagination.pageSize,
+      currentPage: resultSet.pagination.pageNumber,
+      totalItems: resultSet.pagination.total } ">
+      <a class="dashboard-stat dashboard-stat-light blue-soft" href="javascript:;">
+        <div class="visual">
+          <i class="fa fa-qrcode"></i>
+        </div>
+        <div class="details">
+          <div class="title">
+            {{item.name}}
+          </div>
+          <div class="desc">
+            <a routerLink="/stock/lookups/details" 
+              [queryParams]="{ masterId:item.id,masterKey:item.key}">
+              المزيد
+            </a>
+            <i class="fa fa-caret-left"></i>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div *ngIf="resultSet?.data!=null&&resultSet?.data.length!=0">
+    <div class="pagination-holder">
+      <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="pageChanged($event)">
+      </pagination-controls>
+    </div>
+  </div>
+</div>

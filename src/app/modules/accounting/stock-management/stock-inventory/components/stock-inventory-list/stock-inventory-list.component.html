@@ -1,0 +1,120 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+<div class="block-div">
+  <div class="apex-form">
+    <form>
+      <div class="row">
+      <div class="form-group col-md-2">
+        <label for="codeInventory">{{ 'stockManagement.inventoryList.codeInventory' | translate }}</label>
+        <input type="text" class="form-control" id="codeInventory" placeholder="{{ 'stockManagement.inventoryList.codeInventory' | translate }}">
+      </div>
+        <div class="form-group col-md-2">
+          <label for="codeStock">{{ 'stockManagement.inventoryList.codeStock' | translate }}</label>
+          <input type="text" class="form-control" id="codeStock" placeholder="{{ 'stockManagement.inventoryList.codeStock' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="stockName">{{ 'stockManagement.inventoryList.stockName' | translate }}</label>
+          <input type="text" class="form-control" id="stockName" placeholder="{{ 'stockManagement.inventoryList.stockName' | translate }}">
+        </div>
+        <div class="form-group date-field col-md-2">
+          <label for="fromDate">{{ 'shared.fromDate' | translate }}</label>
+          <input type="text" class="form-control" id="fromDate" placeholder="{{ 'shared.fromDate' | translate }}">
+          <span><i class="fas fa-calendar-alt"></i></span>
+        </div>
+        <div class="form-group date-field col-md-2">
+          <label for="toDate">{{ 'shared.toDate' | translate }}</label>
+          <input type="text" class="form-control date-field" id="toDate"
+            placeholder="{{ 'shared.toDate' | translate }}">
+          <span><i class="fas fa-calendar-alt"></i></span>
+        </div>
+        <div class="col-md-2">
+          <button class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button">{{ 'shared.search' | translate }}</button>
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a routerLink="/stock/add"><i class="fas fa-plus-circle"></i></a>
+  </div>
+  <h2>{{ 'stockManagement.inventoryList.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+      <tr>
+        <th>
+          {{ 'stockManagement.inventoryList.table.codeInventory' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'stockManagement.inventoryList.table.codeStock' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'stockManagement.inventoryList.table.nameInventory' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'stockManagement.inventoryList.table.nameEmployee' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'stockManagement.inventoryList.table.dateInventory' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'stockManagement.inventoryList.table.totalQuantity' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'stockManagement.inventoryList.table.spendQuantity' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'stockManagement.inventoryList.table.restQuantity' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'shared.options' | translate }}
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let item of items | paginate: config">
+        <td>
+          1
+        </td>
+        <td>1
+        </td>
+        <td>
+           المخزن الرئيسي
+        </td>
+        <td>احمد</td>
+        <td>5/5/2017</td>
+        <td>100</td>
+        <td>60</td>
+        <td>40</td>
+        <td>
+          <a [attr.title]="'shared.edit' | translate "  [routerLink]="[ 'view' ]" style="margin:5px;">
+            <i class="fas fa-pen"></i>
+          </a>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+      <pagination-controls
+        class="my-pagination"
+        previousLabel=""
+        nextLabel=""
+        (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>

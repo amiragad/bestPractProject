@@ -1,0 +1,152 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+<div class="block-div">
+  <div class="apex-form">
+    <form [formGroup]="searchForm">
+      <div class="row  searchHeader">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'purchasing.shared.docNumber' | translate }} </label>
+          <input type="text" class="form-control" id="code"  formControlName="invoiceId"
+            placeholder="{{ 'purchasing.shared.docNumber' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="supplierName">{{ 'supplierAccounts.supplierName' | translate }}</label>
+          <input type="text" class="form-control" id="supplierName"  formControlName="supplierName"
+            placeholder="{{ 'supplierAccounts.supplierName' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="branch">{{'purchasing.invoice.noteNumber' | translate }}</label>
+          <input type="text" class="form-control" id="branch"   formControlName="ledgerNumber"
+            placeholder="{{'purchasing.invoice.noteNumber' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="branch">{{ 'purchasing.invoice.inventory' | translate }}</label>
+          <input type="text" class="form-control" id="branch"  formControlName="inventoryName"
+            placeholder="{{'purchasing.invoice.inventory' | translate }}">
+        </div>
+        <div class="col-md-2">
+          <label >{{ 'shared.fromDate' | translate }}</label>
+          <div class="custom-date-picker">
+            <mat-form-field>
+              <input matInput formControlName="invoiceDateFrom" [matDatepicker]="invoiceDateFrom" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="invoiceDateFrom"></mat-datepicker-toggle>
+              <mat-datepicker #invoiceDateFrom></mat-datepicker>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group col-md-2">
+          <label >{{ 'shared.toDate' | translate }}</label>
+          <div class="custom-date-picker">
+            <mat-form-field>
+              <input matInput formControlName="invoiceDateTo" [matDatepicker]="picker" placeholder="Choose a date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </div>         
+        </div>
+      </div>
+      <div class="row searchHeader">
+        <div class="col-md-2">
+          <button (click)="clearSearch();" class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button" (click)="findAll();">{{ 'shared.search' | translate }}</button>      
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a><i class="far fa-file-excel"></i></a>
+    <a routerLink="../add" routerLinkActive="active"><i class="fas fa-plus-circle"></i></a>
+  </div>
+  <h2>{{ 'sideNav.invoice.list' | translate }}</h2>
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'purchasing.shared.docNumber' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'invoiceId'" (sortAsc)="sortAsc('invoiceId')" (sortDesc)="sortDesc('invoiceId')"></app-sort>
+          </th>
+          <th>
+            {{ 'supplierAccounts.supplierName' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'supplierName'" (sortAsc)="sortAsc('supplierName')" (sortDesc)="sortDesc('supplierName')"></app-sort>
+          </th>
+          <th>
+            {{ 'purchasing.invoice.inventory' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'inventory'" (sortAsc)="sortAsc('inventory')" (sortDesc)="sortDesc('inventory')"></app-sort>
+          </th>
+          <th>
+            {{ 'purchasing.shared.date' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'invoiceDate'" (sortAsc)="sortAsc('invoiceDate')" (sortDesc)="sortDesc('invoiceDate')"></app-sort>
+          </th>
+          <th>
+            {{  'purchasing.shared.total'| translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'invoiceTotalValue'" (sortAsc)="sortAsc('invoiceTotalValue')" (sortDesc)="sortDesc('invoiceTotalValue')"></app-sort>
+          </th>
+          <th>
+            {{ 'purchasing.invoice.options' | translate }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of resultSet.data | paginate:{ 
+          itemsPerPage: resultSet.pagination.pageSize,
+          currentPage: resultSet.pagination.pageNumber,
+          totalItems: resultSet.pagination.total } ">
+          <td>
+            {{item.invoiceId }}
+          </td>
+          <td>
+            {{item.supplierName}}
+          </td>
+          <td>
+            {{item.inventory}}
+          </td>          
+          <td>
+            {{item.invoiceDate| date: 'dd/MM/yyyy'}}
+          </td>
+          <td>
+            {{item.invoiceTotalValue}}
+          </td>
+          <td>
+            <a [attr.title]="'shared.edit' | translate " [routerLink]="'../'+item.invoiceId"
+              style="margin:5px;">
+              <i class="fas fa-pen"></i>
+            </a>
+            <a [attr.title]="'shared.delete' | translate " data-toggle="modal" data-target="#deleteProduct" 
+                 (click)="deletedId=item.invoiceId" style="margin:5px;">
+              <i class="fas fa-trash"></i>
+             </a>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="pageChanged($event)">
+    </pagination-controls>
+  </div>
+
+</div>
+
+<div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog" aria-labelledby="deleteProduct" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.deleteConfirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="deleteProduct()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark"  data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="sideNav">
+  <ul>
+    <li><a class="cus-nav-link" routerLink="/home" routerLinkActive="active"><i
+          class="fas fa-home"></i>{{ 'sideNav.home' | translate }}</a></li>
+          <li routerLinkActive="active"><a class="cus-nav-link"><i class="fas fa-info"></i>{{ 'sideNav.basicData' | translate }}</a>
+            <ul>
+             <li><a  [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.LOOKUPS+'/'+FullRoutes.LOOKUP" routerLinkActive="active"><i class="fas fa-asterisk"></i>{{'sideNav.lookup' | translate }}</a></li>
+             <li><a  [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.SYSTEM_DATA+'/'+FullRoutes.CATEGORY_LIST" routerLinkActive="active"><i class="fas fa-server"></i>{{ 'sideNav.category' | translate }}</a></li>
+             <li><a  [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.SYSTEM_DATA+'/'+FullRoutes.STOCK_LIST" routerLinkActive="active"><i class="fas fa-boxes"></i>{{ 'sideNav.stock' | translate }}</a></li>
+             <li><a [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.BRANCHES_MODULE+'/'+FullRoutes.BRANCH_LIST" routerLinkActive="active"><i class="fas fa-store"></i>{{ 'sideNav.branches' | translate }}</a></li>
+            </ul>
+            </li>
+  
+    <li routerLinkActive="active"><a class="cus-nav-link"><i class="fas fa-user"></i>{{ 'sideNav.clients' | translate }}</a>
+      <ul>
+        <li><a [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.CUSTOMER_MODULE+'/'+FullRoutes.ADD_CUSTOMER" routerLinkActive="active">{{ 'sideNav.addClient' | translate }}</a></li>
+        <li><a [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.CUSTOMER_MODULE+'/'+FullRoutes.CUSTOMER_LIST" routerLinkActive="active">{{ 'sideNav.clients' | translate }}</a></li>
+        <li><a [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.CONTACT_PERSON_MODULE+'/'+FullRoutes.ADD_CONTACT_PERSON" routerLinkActive="active">{{ 'sideNav.addContactperson' | translate }}</a></li>
+        <li><a [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.CONTACT_PERSON_MODULE+'/'+FullRoutes.CONTACT_PERSON_LIST" routerLinkActive="active">{{ 'sideNav.contactperson' | translate }}</a></li>
+        <li><a  [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.SYSTEM_DATA+'/'+FullRoutes.ROSTER_LIST" routerLinkActive="active"><i class="fas fa-scroll"></i>{{ 'sideNav.roster' | translate }}</a></li>
+       </ul>
+      </li>
+    <li routerLinkActive="active"><a class="cus-nav-link">
+         <i class="fas fa-shield-alt"></i>{{ 'sideNav.safeBox' | translate }}</a>
+      <ul>
+        <li><a routerLink="/purchases/safeBoxTrans/add"
+            routerLinkActive="active"><i class="fas fa-random"></i>{{ 'sideNav.addSafeBoxTrans' | translate }}</a></li>
+        <li><a routerLink="/purchases/safeBoxTrans/safeBoxTrans"
+            routerLinkActive="active"><i class="fas fa-tasks"></i>{{ 'sideNav.safeBoxTransList' | translate }}</a></li>
+      </ul>
+    </li>
+    <li routerLinkActive="active"><a class="cus-nav-link"><i class="fas fa-home"></i>{{ 'sales.sales' | translate }}</a>
+      <ul>
+     <!--    <li><a routerLink="/sales/dashboard" routerLinkActive="active">
+            {{ 'sideNav.home' | translate }}</a>
+        </li> -->
+        <li><a routerLink="/sales/sales-invoice/add"
+            routerLinkActive="active">{{ 'sideNav.salesInvoice.add' | translate }}</a></li>
+        <li><a routerLink="/sales/sales-invoice/list"
+            routerLinkActive="active">{{ 'sideNav.salesInvoice.list' | translate }}</a></li>
+        <li><a routerLink="/sales/sales-rebate/add"
+            routerLinkActive="active">{{ 'sideNav.salesRebate.add' | translate }}</a></li>
+        <li><a routerLink="/sales/sales-rebate/list"
+            routerLinkActive="active">{{ 'sideNav.salesRebate.list' | translate }}</a></li>
+            <li><a [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.CUSTOMER_MODULE+'/'+FullRoutes.CUSTOMER_LIST" routerLinkActive="active">{{ 'sideNav.clients' | translate }}</a></li>
+            <li><a  [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.SYSTEM_DATA+'/'+FullRoutes.ROSTER_LIST" routerLinkActive="active"><i class="fas fa-scroll"></i>{{ 'sideNav.roster' | translate }}</a></li>
+            <li><a [routerLink]="'/'+FullRoutes.SALES_MODULE+'/'+FullRoutes.CONTACT_PERSON_MODULE+'/'+FullRoutes.CONTACT_PERSON_LIST" routerLinkActive="active">{{ 'sideNav.contactperson' | translate }}</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,254 @@
+<div class="">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+  <div class="block-div no-padding-tp ">
+      <div class=" sec-title row">
+
+          <h2 class="col-md-4"><i class="fas fa-server"></i> {{ 'contactperson.addEdit.title' | translate }}</h2>
+
+          <div class="col-md-8 product-actions padding-15px-tb">
+              <button (click)=" clearForm();" class="button orange"><i class="fas fa-plus"></i> {{ 'shared.new' | translate }}</button>
+              <button (click)="addEdit()" class="button green"><i class="fas fa-check"></i> {{ 'shared.save' | translate }}</button>
+              <button (click)=" AddEditRest();" class="button save-open"><i class="fas fa-save"></i> {{ 'shared.saveOpen' | translate }}</button>
+              <button (click)="cancal();" class="button cancel"><i class="fas fa-times"></i> {{ 'shared.cancel' | translate }}</button>
+
+          </div>
+      </div>
+
+      <app-alert [alertInput]="alertInput"></app-alert>
+      <div class="apex-form">
+          <form [formGroup]="addEditForm">
+
+
+              <div class="row">
+
+                  <div class="form-group col-md-5 ">
+
+                      <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                          <label for="code" class="col-md-5 inline-label">{{ 'contactperson.addEdit.code' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7 ">
+                              <input type="text" class="form-control" [readonly]="autoCoding==1" formControlName="code" id="code"
+                                     placeholder="{{ 'contactperson.addEdit.code' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('required') && addEditForm.get('code').touched">
+                                  {{ 'contactperson.addEdit.code' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('maxlength') && addEditForm.get('code').touched">
+                                  {{ 'contactperson.addEdit.code' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr">
+                          <label for="code" class="col-md-5 inline-label">{{ 'contactperson.addEdit.nameAr' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <input type="text" class="form-control" formControlName="nameAr" id="nameAr"
+                                     placeholder="{{ 'contactperson.addEdit.nameAr' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('required') && addEditForm.get('nameAr').touched">
+                                  {{ 'contactperson.addEdit.nameAr' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('maxlength') && addEditForm.get('nameAr').touched">
+                                  {{ 'contactperson.addEdit.nameAr' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr align-items-center">
+           
+             
+                        <label class="checkk font-size-13px">{{ 'supplierAccounts.addSupplier.nameRepeate' | translate }}
+                          <input type="checkbox"  checked="checked" class="checkbox" formControlName="nameRepeate" id="nameRepeate">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div *ngIf="!this.addEditForm.get('nameRepeate').value" class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label for="clientName"
+                                 class="col-md-5 inline-label">{{ 'contactperson.addEdit.nameEn' | translate }}
+                                 
+                                </label>
+                                <div class="col-md-7">
+                                  <input type="text" class="form-control" formControlName="nameEn" id="nameEn"
+                                         placeholder="{{ 'contactperson.addEdit.nameEn' | translate }}">
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('required') && addEditForm.get('nameEn').touched">
+                                      {{ 'contactperson.addEdit.nameEn' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('maxlength') && addEditForm.get('nameEn').touched">
+                                      {{ 'contactperson.addEdit.nameEn' | translate }}
+                                      {{ 'sharedValidation.maxlength' | translate }}100
+                                      {{ 'sharedValidation.char' | translate }}
+                                  </span>
+                              </div>
+                         
+                         
+                      </div>
+
+                      <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label class="col-md-5 inline-label">{{ 'shared.status' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <div class=" select-box no-padding">
+                                  <select class="form-control" formControlName="active" id="status">
+                                      <option value="true" selected>{{'shared.active' | translate}} </option>
+                                      <option value="false">{{'shared.inActive' | translate}}</option>
+                                  </select>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('active').hasError('required') && addEditForm.get('active').touched">
+                                      {{ 'shared.status' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+                    
+                      <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                        <label class="col-md-5 inline-label">{{ 'contactperson.addEdit.clientId' | translate }}
+                          <span class="red">*</span>
+                        </label>
+                        <div class="col-md-7">
+                          <div class="auto-complete-control">
+                          <mat-form-field>
+                            <input matInput placeholder="Search" aria-label="State" [matAutocomplete]="auto"  formControlName="clientId">
+                            <span class="search-icon"><i class="fas fa-search"></i></span>
+                            <mat-autocomplete #auto="matAutocomplete" [displayWith]="getOptionText.bind(this)">
+                              <mat-option *ngIf="isLoading" class="is-loading">Loading...</mat-option>
+                              <ng-container *ngIf="!isLoading">
+                                <mat-option *ngFor="let item of autoCompleteResults" [value]="item.id">
+                                  <span><b>{{item.name}}</b></span>
+                                </mat-option>
+                              </ng-container>
+                            </mat-autocomplete>
+                          </mat-form-field>
+                            <span class="error-message" *ngIf="errorMsg!==null">
+                             {{errorMsg}}
+                            </span>
+                          </div>
+          
+                        </div>
+                    </div>
+
+
+                  </div>
+
+                  <div class="col-md-2 col-xs-12"></div>
+
+                  <div class="form-group col-md-5">
+
+             
+                    <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                      <label for="limitationDays"
+                             class="col-md-5 inline-label">{{ 'contactperson.addEdit.limitationDays' | translate }}
+                             <span class="red">*</span>
+                            </label>
+
+                      <div class="col-md-7">
+                          <input type="number" (keypress)="numberOnly($event)" formControlName="limitationDays" class="form-control" id="limitationDays" placeholder="{{ 'contactperson.addEdit.limitationDays' | translate }}">
+                          <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('limitationDays').hasError('required') && addEditForm.get('limitationDays').touched">
+                              {{ 'contactperson.addEdit.limitationDays' | translate }}
+                              {{ 'sharedValidation.required' | translate }}
+                          </span>
+                          <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('limitationDays').hasError('min') && addEditForm.get('limitationDays').touched">
+                              {{ 'contactperson.addEdit.limitationDays' | translate }}
+                              {{ 'sharedValidation.min' | translate }}
+                             
+                          </span>
+                      </div>
+                  </div>
+                  <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                    <label for="creditLimit"
+                           class="col-md-5 inline-label">{{ 'contactperson.addEdit.creditLimit' | translate }}
+                           <span class="red">*</span>
+                          </label>
+
+                    <div class="col-md-7">
+                        <input type="number" (keypress)="numberOnly($event)" formControlName="creditLimit" class="form-control" id="creditLimit" placeholder="{{ 'contactperson.addEdit.creditLimit' | translate }}">
+                        <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditLimit').hasError('required') && addEditForm.get('creditLimit').touched">
+                            {{ 'contactperson.addEdit.creditLimit' | translate }}
+                            {{ 'sharedValidation.required' | translate }}
+                        </span>
+                        <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('creditLimit').hasError('min') && addEditForm.get('creditLimit').touched">
+                            {{ 'contactperson.addEdit.creditLimit' | translate }}
+                            {{ 'sharedValidation.min' | translate }}
+                           
+                        </span>
+                    </div>
+                </div>
+                <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                  <label for="discountPercentage"
+                         class="col-md-5 inline-label">{{ 'contactperson.addEdit.discountPercentage' | translate }}
+                         <span class="red">*</span>
+                        </label>
+
+                  <div class="col-md-7">
+                      <input type="number" (keypress)="numberOnly($event)" formControlName="discountPercentage" class="form-control" id="discountPercentage" placeholder="{{ 'contactperson.addEdit.discountPercentage' | translate }}">
+                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('discountPercentage').hasError('required') && addEditForm.get('discountPercentage').touched">
+                          {{ 'contactperson.addEdit.discountPercentage' | translate }}
+                          {{ 'sharedValidation.required' | translate }}
+                      </span>
+                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('discountPercentage').hasError('min') && addEditForm.get('discountPercentage').touched">
+                          {{ 'contactperson.addEdit.discountPercentage' | translate }}
+                          {{ 'sharedValidation.min' | translate }}
+                         
+                      </span>
+                  </div>
+              </div>
+              
+            <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+              <label class="col-md-5 inline-label">{{ 'contactperson.addEdit.subjectCommission' | translate }}
+                <span class="red">*</span>
+              </label>
+              <div class="col-md-7">
+                  <div class=" select-box no-padding">
+                      <select class="form-control" formControlName="subjectCommission" id="subjectCommission">
+                          <option  value="true" selected>{{'contactperson.addEdit.subjectCommission' | translate}} </option>
+                          <option value="false">{{'contactperson.addEdit.noSubjectCommission' | translate}}</option>
+                      </select>
+                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('subjectCommission').hasError('required') && addEditForm.get('subjectCommission').touched">
+                          {{ 'contactperson.addEdit.subjectCommission' | translate }}
+                          {{ 'sharedValidation.required' | translate }}
+                      </span>
+                  </div>
+              </div>
+          </div>
+          <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+            <label class="col-md-5 inline-label">{{ 'contactperson.addEdit.rosterId' | translate }}
+              <span class="red">*</span>
+            </label>
+            <div class="col-md-7">
+                <div class="select-box no-padding">
+                    <select class="form-control" formControlName="rosterId" id="rosterId">
+                        <option *ngFor="let item of rosters" [value]="item.id">{{item.name}}</option>
+                    </select>
+                    <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('rosterId').hasError('required') && addEditForm.get('rosterId').touched">
+                        {{ 'contactperson.addEdit.rosterId' | translate }}
+                        {{ 'sharedValidation.required' | translate }}
+                    </span>
+                </div>
+            </div>
+        </div>
+
+
+                  </div>
+
+              </div>
+
+
+
+        
+          </form>
+      </div>
+
+
+
+
+  </div>
+</div>

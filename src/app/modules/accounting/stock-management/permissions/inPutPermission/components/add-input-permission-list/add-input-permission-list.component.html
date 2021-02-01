@@ -1,0 +1,182 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'permissions.bookCode' | translate }}</label>
+          <input autocomplete="off" type="text" formControlName="BookCode" class="form-control" id="Bookcode"
+            placeholder="{{ 'permissions.bookCode' | translate }}">
+        </div>
+     
+        <div class="form-group col-md-2">
+          <label for="name">{{ 'permissions.documentCode' | translate }}</label>
+          <input autocomplete="off" type="text" class="form-control" id="DocumentCode" formControlName="DocumentCode"
+            placeholder="{{ 'permissions.documentCode' | translate }}">
+        </div>
+
+        <div class="form-group col-md-2">
+          <label for="name">{{ 'permissions.inventory' | translate }}</label>
+          <input autocomplete="off" type="text" class="form-control" id="inventory" formControlName="InverntoryName"
+            placeholder="{{ 'permissions.inventory' | translate }}">
+        </div>
+        
+        <div class="col-md-2">
+          <label for="toDate">{{ 'shared.fromDate' | translate }}</label>
+          <div class=" select-box no-padding">
+                                    
+            <div class="custom-date-picker">
+              
+                <mat-form-field>
+                    <input  matInput formControlName="From" [matDatepicker]="dateFrom" readonly  [max]="searchForm.controls['To'].value"   (click)="dateFrom.open()" placeholder="{{ 'shared.fromDate' | translate }}">
+                    <mat-datepicker-toggle matSuffix [for]="dateFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #dateFrom></mat-datepicker>
+                  </mat-form-field>
+
+            </div>
+            
+        </div>
+   
+     
+          <!-- <span><i class="fas fa-calendar-alt"></i></span>  -->
+        </div>
+
+        <div class=" col-md-2">
+          <label for="toDate">{{ 'shared.toDate' | translate }}</label>
+        
+          <div class=" select-box no-padding">
+                                    
+            <div class="custom-date-picker">
+              
+                <mat-form-field>
+                    <input  matInput formControlName="To" [matDatepicker]="dateTo" readonly  [min]="searchForm.controls['From'].value"   (click)="dateFrom.open()" placeholder="{{ 'shared.fromDate' | translate }}">
+                    <mat-datepicker-toggle matSuffix [for]="dateTo"></mat-datepicker-toggle>
+                    <mat-datepicker #dateTo></mat-datepicker>
+                  </mat-form-field>
+
+            </div>
+            
+        </div>
+          <!-- <span><i class="fas fa-calendar-alt"></i></span>  -->
+          </div>
+
+
+       
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <button (click)="clearSearch();" class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button" (click)="findAll();">{{ 'shared.search' | translate }}</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a><i class="fas fa-plus-circle" [routerLink]="'../'+FullRoutes.INPUT_PERMISSION_ADD"></i></a>
+  </div>
+  <h2>{{ 'stockManagement.permissions.inputPermission' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'permissions.list.bookCode' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'BookCode'" (sortAsc)="sortAsc('BookCode')" (sortDesc)="sortDesc('BookCode')"></app-sort>
+          </th>
+          <th>
+            {{ 'permissions.documentCode' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'DocumnetCode'" (sortAsc)="sortAsc('DocumnetCode')" (sortDesc)="sortDesc('DocumnetCode')"></app-sort>
+          </th>
+          <th>
+            {{ 'permissions.list.inventory' | translate }}
+             <!-- <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Name'" (sortAsc)="sortAsc('Name')" (sortDesc)="sortDesc('Name')"></app-sort>  -->
+          </th>
+          <th>
+            {{ 'permissions.list.date' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Date'" (sortAsc)="sortAsc('Date')" (sortDesc)="sortDesc('Date')"></app-sort>
+          </th>
+          <th>
+            {{ 'permissions.list.totalCost' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'TotalCost'" (sortAsc)="sortAsc('TotalCost')" (sortDesc)="sortDesc('TotalCost')"></app-sort>
+
+          </th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of resultSet.data | paginate:{ 
+          itemsPerPage: resultSet.pagination.pageSize,
+          currentPage: resultSet.pagination.pageNumber,
+          totalItems: resultSet.pagination.total } ">
+          <td>
+            {{item.bookCode}}
+          </td>
+          <td>
+            {{item.documnetCode}}
+          </td>
+          <td>
+            {{item.invName}}
+          </td>
+          <td>
+            {{item.date | date:'medium'}}
+          </td>
+          <td>
+            {{item.totalCost}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="pageChanged($event)">
+    </pagination-controls>
+  </div>
+</div>
+
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.confirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="activate()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark" (click)="stopActivate()" data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="deleteProduct" tabindex="-1" role="dialog" aria-labelledby="deleteProduct" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.deleteConfirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="deleteProduct()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark"  data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

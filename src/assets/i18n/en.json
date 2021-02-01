@@ -1,0 +1,796 @@
+{
+  "shared": {
+    "admin": "user",
+    "welcome": "Welcome",
+    "copyRights": "All Rights Reservied",
+    "fromDate": "From Date",
+    "toDate": "To Date",
+    "date":"Date",
+    "from":"From",
+    "to":"To",
+   
+    "search": "Search",
+    "mobileNumber": "Mobile",
+    "email": "Email",
+    "options": "Options",
+    "amount": "Amount L.E",
+    "edit": "Edit",
+    "bills": "Show Bills",
+    "maininfo": "Main Info",
+    "productCard":"Product Card",
+    "address": "Detailed Address",
+    "country": "Country",
+    "governorate": "governorate",
+    "area": "Area",
+    "fulladdress": "Detailed Address",
+    "creditInit":"Credit Init",
+    "financialInfo": "Financial Info",
+    "delete": "Delete",
+    "details": "Details",
+    "save": "Save",
+    "new":"New",
+    "printBarCode":"Print BarCode",
+    "saveOpen":"Save & Open New",
+    "cancel": "Cancel",
+    "status": "Status",
+    "accept": "Accept",
+    "reject": "Reject",
+    "active": "Active",
+    "inActive": "InActive",
+    "confirm": "Confirm",
+    "confirmMessage": "Do You Want Save Changes?",
+    "deleteConfirmMessage": "Do You Want Delete Item ?",
+    "yes": "Yes",
+    "no": "No",
+    "history": "History",
+    "import": "Import",
+    "uploadImage":"Upload image",
+    "savedsuccess":"Saved Successfully",
+    "deletedSuccess":"Deleted Successfully",
+    "newLine":"New Line"
+  },
+  "error":{
+    "error500":"Internal server error happen",
+    "error406":"you can't delete this item",
+    "error405":"you can't delete default item",
+    "error4020":"you can't deactivate default item",
+    "error401":"username or password incorrect"
+
+   },
+  "sharedValidation":{
+    "required":"Required",
+    "maxlength":"must be less than",
+    "min":"must be more than 0",
+    "char":"Char"
+   },
+  "sideNav": {
+    "lookup":"system keys",
+    "outputPermission":"Output Permission",
+    "inputPermission":"Add Permission",
+
+    "home": "Home",
+    "basicData": "Basic Info",
+    "measruingUnit": "Measuring Unit",
+    "category": "Category",
+    "addCategory": "Add Product Category",
+    "categoriesManagement": "Categories",
+    "addContactperson": "Add Delegate",
+    "contactperson": "delegates",
+    "priceList":"Pricing List",
+    "addPriceList":"Add List",
+    "storesManagement": "Stock",
+    "productNaturity":"Product Naturity",
+    "roster":"Roster",
+    "addRoster":"Add Roster",
+    "country":"Countries",
+    "city":"City",
+    "area":"Area",
+    "currency":"Currency",
+    "stock":"Stock",
+    "addStock":"Add Stock",
+    "viewStock":"View Stock",
+    "product":"Products",
+    "dashboard":"Dashboard",
+    "stockBalance":"Stock Balance",
+    "inventoryList":"Inventory List",
+    "inventoryAdd":"Inventory Stock",
+    "stockIncome":"Incoming Transformation",
+    "stockIncomeList":"Incoming Requests",
+    "stockOutcome":"Outcoming Transformation",
+    "safeBox":"SafeBox",
+    "addSafeBoxTrans":"Add SafeBox Transaction",
+    "safeBoxTransList":"Transaction List",
+    "clients":"Customers",  
+    "addClient":"Add Customers",
+    "clientAccounts":"Customers Accounts",
+    "clientBill":"Client Bill",
+    "suppliersbill":"Suppliers Bill",
+    "suppliersManagement": {
+      "title": "Suppliers",
+      "addSupplier": "Add Suppliers",
+      "supplierAccountsView": "Suppliers",
+      "supplierAccountView": "Suppliers Account",
+      "bills": "Bills"
+    },
+    "cutomersManagement": {
+      "title": "Customers",
+      "addCustomer": "Add Customer",
+      "customerAccountsView": "Customers Accounts",
+      "customerAccountView": "Customers Accounts",
+      "bills": "Bills"
+    },
+    "customerService": "Customers",
+    "purchasing": "Purchasing",
+    "products": {
+      "products": "Products",
+      "productList": "Product List",
+      "productAdd": "Add Product"
+    },
+    "invoice": {
+      "add": "Purchase Invoice",
+      "list": "Purchases Invoices"
+    },
+    "rebate": {
+      "add": "Rebate Purchases",
+      "list": "Rebates Purchases"
+    },
+    "salesInvoice": {
+      "add": "Sales Invoice",
+      "list": "Sales Invoices"
+    },
+    "salesRebate": {
+      "add": "Sales Rebate",
+      "list": "Sales Rebates"
+    },
+    "branches":"Branches",
+    "addBranch":"Add Branch"
+  },
+  "modules":{
+    "welcomeSystem":"Welecome In ERP System",
+    "stockModule":"Stock Management System",
+    "purchasesModule":"Purchases Management System",
+    "salesModule":"Sales Management System",
+    "accountingModule":"Accounting System",
+    "pointOfSale":"Point Of Sale System",
+    "assetesModule":"Assetes Management System",
+    "hrModule":"Human Resource System",
+    "attendanceModule":"Attendance System"
+  },
+  "login":{
+    "btnEnter":"Login",
+    "username":"User Name",
+    "password":"Password",
+    "rememberMe":"Remember Me"
+  },
+  "supplierAccounts": {
+    "code": "Product Code",
+    "supplierName": "Supplier Name",
+    "branch": "Branch",
+    "pageTitle": "Suppliers",
+    "supplier": "Supplier",
+    "fax": "Fax",
+    "type": "Supplier Type",
+    "classification": "Classification",
+    "mobile": "Mobile",
+    "telephone": "Telephone",
+    "supplierClient": "Customer Supplier",
+    "communicationData": "Communication Data",
+    "connectionType": "Connection Type",
+    "customerType": "Customer Type",
+    "debitCredit": "Debitor/Creditor",
+    "credit": "Creditor",
+    "debitor": "Debitor",
+    "openingBalance": "Init Balance",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "Inactive",
+    "dealingType": "Dealing Type",
+    "wholeseller": "Wholeseller",
+    "Sectoral": "Sectoral",
+    "bills": "Bills",
+    "customerSupplier":"Supplier/Customer",
+    "addSupplier":{
+      "title":"Add Supplier",
+      "code":"Code",
+      "nameAR":"Arabic Name",
+      "nameRepeate":"English name is written like an Arabic.",
+      "nameEN":"English Name",
+      "dealingNaturity":"Dealing Naturity",
+      "country":"Country",
+      "city":"City",
+      "area":"Area",
+      "taxNumber":"Tax Number",
+      "address":"Address",
+      "contacts":"Contacts Data",
+      "balance":"Balance",
+      "salePurchase":"Sale & Purchase",
+      "phone":"Telephone",
+      "mobile":"Mobile",
+      "fax":"Fax",
+      "email":"Email",
+      "website":"WebSite",
+      "debtor":"Debitor/Creditor",
+      "creditor": "Creditor",
+      "debitor": "Debitor",
+      "initBalance":"Init Balance",
+      "notes":"Notes",
+      "creditLimit":"Credit Limit",
+      "creditDays":"Credit Days",
+      "discountPercentage":"Discount Percentage",
+      "achievementCondition":"Achievement Condition",
+      "paymentCondition":"Payment Condition",
+      "sale":"Sale",
+      "purchase":"Purchase",
+      "supplier":"Supplier",
+      "customerSupplier":"Customer"
+    }
+  },
+  "bill": {
+    "bill": "bill",
+    "code": "code",
+    "name": " name",
+    "date": "date",
+    "total": "total",
+    "discount": "discount",
+    "totalafterdiscount": "total after discount",
+    "type": "type",
+    "paidOrNot": "paid Or Not",
+    "paid": "paid",
+    "unpaid": "unpaid "
+  },
+  "customerAccounts": {
+    "code": "Customer Code",
+    "name": "Customer Name",
+    "branch": "Branch",
+    "pageTitle": "Customers",
+    "supplier": "supplier",
+    "fax": "Fax",
+    "type": "Customer Type",
+    "classification": "Classification",
+    "mobile": "Mobile",
+    "telephone": "Telephone",
+    "supplierClient": "Supplier/Customer",
+    "communicationData": "Communication Data",
+    "connectionType": "Connection Type",
+    "customerType": "Customer Type",
+    "debitCredit": "Creditor/Debitor",
+    "credit": "Creditor",
+    "debitor": "Debitor",
+    "openingBalance": "Init Balance",
+    "status": "Status",
+    "active": "Active",
+    "inactive": "InActive",
+    "dealingType": "Dealing Type",
+    "wholeseller": "Wholeseller",
+    "Sectoral": "Sectoral",
+    "bills": "Bills",
+    "customerSupplier":"Customer/Supplier",
+    "addCustomer":{
+      "title":"Add Customer",
+      "code":"Code",
+      "nameAR":"Arabic Name",
+      "nameEN":"English Name",
+      "dealingNaturity":"Dealing Naturity",
+      "country":"Country",
+      "city":"City",
+      "area":"Area",
+      "taxNumber":"Tax Number",
+      "address":"Address",
+      "contacts":"Contacts Data",
+      "balance":"Balance",
+      "salePurchase":"Sale & Purchase",
+      "phone":"Telephone",
+      "mobile":"Mobile",
+      "fax":"Fax",
+      "email":"Email",
+      "website":"Website",
+      "debtor":"Creditor/Debitor",
+      "creditor": "Creditor",
+      "debitor": "Debitor",
+      "initBalance":"Init Balance",
+      "notes":"Notes",
+      "creditLimit":"Credit Limit",
+      "creditDays":"Credit Days",
+      "discountPercentage":"Discount Percentage",
+      "achievementCondition":"Achievement Condition",
+      "paymentCondition":"Payment Condition",
+      "sale":"Sale",
+      "purchase":"Purchase",
+      "customer":"customer",
+      "customerSupplier":"Supplier"
+    }
+
+  },
+  "contactperson":{
+    "pageTitle": "Delegates",
+    "code": "Code",
+    "name": "Name",
+    "status":"Status",
+    "clientName":"Customer Name",
+    "subjectCommission":"Subject Commission",
+    "addEdit": {
+      "code": "Code",
+      "title":  "Add / Edit Delegate",
+      "nameAr": "Name Ar",
+      "nameEn": "Name En",
+      "clientId":"Customer Name",
+      "creditLimit":"Credit Limit",
+      "limitationDays":"limitation Days",
+      "discountPercentage":"Discount Percentage",
+      "subjectCommission":"Subject Commission",
+      "noSubjectCommission":"No Subject Commission",
+      "rosterId":"Roster"
+    }
+  },
+   "priceList":{
+    "pageTitle": "Pricing List",
+    "code": "Code",
+    "name": "Name",
+    "status":"Status",
+    "DurationType":"Duration Type",
+    "openDuration":"open Duration",
+    "limitDuration":"limit Duration",
+    "PricingType":"Pricing Type ",
+    "upPrice":"up Price",
+    "downPrice":"down Price",
+    "Types":"Type",
+    "PriceFrom":"Price From",
+    "addEdit": {
+      "code": "Code",
+      "title":  "Add/Edit List",
+      "nameAr": "Name Ar",
+      "nameEn": "Name En",
+      "durationType":"Duration Type",
+      "openDuration":"open Duration",
+      "limitDuration":"limit Duration",
+      "pricingType":"pricing Type",
+      "upPrice":"up Price",
+      "downPrice":"down Price",
+      "types":"types",
+      "priceFrom":"price From",
+      "dateFrom":"From",
+      "dateTo":"To",
+      "percentage":"percentage",
+      "expenses":"expenses",
+      "value":"value",
+      "profitMargin":"profit Margin",
+      "product":"Product",
+      "unit":"Unit"
+    }
+  },
+  "purchasing": {
+    "shared": {
+      "code": "Invoice code",
+      "docNumber": "Document number",
+      "addValue": "Value Added",
+      "date": "date",
+      "vendor": "vendor",
+      "paid": "Paid",
+      "rest": "The Rest",
+      "safe": "safe",
+      "stock": "stock",
+      "cash": "cash",
+      "postpone": "postpone",
+      "partial": "Partial",
+      "credit": "credit",
+      "amount": "amount",
+      "discount": "discount",
+      "discountPerMax": "The largest percentage value is 100",
+      "totalAmountBeforeTax": "total Amount Before Tax",
+      "totalAmountAfterTax": "total Amount After Tax",
+      "totalAmount": "total Amount",
+      "totalExpenses": "total Expenses",
+      "totalDiscount": "Total discount",
+      "netAmount": "Net Amount",
+      "itemCode": "Item Code",
+      "measurementUnit": "Measuring Unit",
+      "productCode": "Product Code",
+      "quantity": "Quantity",
+      "price": "Price",
+      "total": "Total",
+      "net": "Net",
+      "expenses": "Expenses",
+      "deduction": "deduction",
+      "inventory": "Stock"
+    },
+    "invoice": {
+      "title": "Purchases Bill",
+      "vendorInvoiceCode": "vendor Invoice Code ",
+      "noteNumber": "Notebook number",
+      "delegateMan": "Delegate Name",
+      "inventory": "Stock",
+      "cash": "Cash",
+      "postpaid": "Postpaid",    
+      "invoiceType": "Invoice Type",
+      "additionalExpenses": "Additional Expenses",
+      "taxAmount": "Tax Amount",
+      "options": "Options"
+    },
+    "rebate": {
+      "title": "Rebate Purchases",
+      "totalAmount": "Total Amount",
+      "categories": "Categories",
+      "productReq": "Should Select One At Leadt",
+      "costCenteReq": "Should Select Cost Center",
+      "safeReq": "Should Select SafeBox",
+      "additionalExpensesReq": "Should Enter additional Expenses",
+      "discountReq": "Should Enter Discount Amount "
+    }
+  },
+  "sales": {
+    "salesInvoice": "Sales Invoice",
+    "salesRebate": "Rebate Sales",
+    "sales":"Sales"
+  },
+  "lookups": {
+    "lookup":"lookup keys",
+    "name":"name",
+    "code":"code",
+    "id":"Id",
+    "deleteItem":"Delete Item",
+        "addEdit": {
+        "header": "Add/Edit",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "belongTo":"Belong To"
+      },
+    "measruingUnit": {
+      "pageTitle": "Measuring Unit",
+      "code": "Code",
+      "name": "Name",
+      "table": {
+        "code": "Code",
+      "name": "Name"
+      },
+      "addEdit": {
+        "header": "Add/Edit Measuring Unit",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En"
+      }
+    },
+    "productNaturity": {
+      "pageTitle": "Product Naturity",
+      "code": "Code",
+      "name": "Name",
+      "table": {
+        "code": "Code",
+        "name": "Name"
+      },
+      "addEdit": {
+        "header": "Add/Edit Product Naturity",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En"
+      }
+    },
+    "country": {
+      "pageTitle": "Countries",
+      "code": "Code",
+      "name": "Name",
+      "table": {
+        "code": "Code",
+      "name": "Name",
+        "cities": "Cities"
+      },
+      "addEdit": {
+        "header": "Add /Edit Country",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En"
+      }
+    },
+    "city": {
+      "pageTitle": "Cities",
+      "code": "Code",
+      "name": "Name",
+      "table": {
+        "code": "Code",
+        "name": "Name",
+        "areas": "Areas"
+      },
+      "addEdit": {
+        "header": "Add/Edit City",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "country": "Country"
+      }
+    },
+    "area": {
+      "pageTitle": "Areas",
+      "code": "Code",
+      "name": "Name",
+      "table": {
+        "code": "Code",
+        "name": "Name"
+      },
+      "addEdit": {
+        "header": "Add/Edit Area",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "country": "Country",
+        "city": "City"
+      }
+    },
+    "currency": {
+      "pageTitle": "Currency",
+      "code": "Code",
+      "name": "Name",
+      "table": {
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "country": "Country"
+      },
+      "addEdit": {
+        "header": "Add /Edit Measuring Unit",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "country": "Country"
+      }
+    }
+  },
+  "systemData": {
+    "category": {
+      "pageTitle": "Categories",
+      "code": "Code",
+      "name": "name",
+      "measruingUnit": "Measring Unit",
+      "parentCategory": "Parent Category",
+      "active": "Active",
+      "table": {
+        "code": "Code",
+        "name": "name",
+        "parentCategory": "Parent Category",
+        "active": "Active"
+      },
+      "addEdit": {
+        "title": "Add /Edit Category ",
+        "code":"Code",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "measureUnit": "Measure Unit",
+        "baseCategory": "Base Category",
+        "parentCategory": "Parent Category"
+      }
+    },
+    "stock": {
+      "pageTitle": "Stocks",
+      "code": "Code",
+      "name": "Name",
+      "status":"Status",
+      "stockKeeper": "Stock Keeper",
+      "initBalancStatus":"Init Balance Status",
+      "initBalance":"Init Balance",
+      "addEdit": {
+        "code": "الكود",
+        "title":  "Add / Edit Stock",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "stockKeeper": "Stock Keeper",
+        "phone":"Phone",
+        "fax":"Fax",
+        "addressEn":"Address Arabic",
+        "addressAr":"Address English",
+        "branchId":"Branch"
+      }
+    },
+    "roster": {
+      "pageTitle": "Roster",
+      "code": "Code",
+      "name": "Name",
+      "status":"Status",
+      "target":"Target",
+      "percentage":"Percentage",
+      "rosterType":"Type",
+      "addEdit": {
+        "code": "Code",
+        "title": "Add/Edit Roster",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "status":"Status",
+        "target":"Target",
+        "percentage":"Percentage",
+        "rosterType":"Type",
+        "staticPercentage":"Static Percentage",
+        "slices":"Slices",
+        "sliceNumber":"Slice",
+        "Total":"Total",
+        "slice0":"The first",
+        "slice1":"the second",
+        "slice2":"the third",
+        "slice3":"Fourth",
+        "slice4":"Fifth"
+      }
+    },
+    "safeBox": {
+      "pageTitle": "Safeboxe",
+      "code": "Code",
+      "name": "Name",
+      "active": "Active",
+      "table": {
+        "code": "Code",
+        "name": "Name",
+        "active": "Active",
+        "currency": "Currency"
+      },
+      "addEdit": {
+        "header": "Add /Edit SafeBox",
+        "nameAr": "Name Ar",
+        "nameEn": "Name En",
+        "currency": "Currency"
+      }
+    },
+    "product": {
+      "pageTitle": "Products",
+      "code": "code",
+      "productName":"Product Name",
+      "barCode":"Barcode",
+      "documentCode":"Document Code",
+
+      "product": "Product",
+      "name": "Name",
+      "namear": "Name Ar",
+      "nameEn": "Name En",
+      "color":"Color",
+      "size":"Size",
+      "type": "Type",
+      "classification":"Classification",
+      "description":"Description",
+      "cost":"Cost",
+      "productKind": "Product Kind",
+      "groupname": "Group Name",
+      "orderLimit":"Order Limit",
+      "model":"Model",
+      "image":"Image",
+      "storagelocation":"Storage Location",
+      "measurementunit": "Measurement Unit",
+      "sellPrice": "Sell Price",
+      "buyingprice": "buying Price",
+      "taxPercentage": "Tax Percentage % ",
+      "exporationDate": "Exporation Date",
+      "isTaxable": "Is Taxable",
+      "taxable": "Taxable",
+      "freeTax": "Tax-free",
+      "country": "Country",
+      "status": "Status",
+      "active": "Active",
+      "default": "Default",
+      "inactive": "Inactive",
+      "conversionFactor": "Conversion Factor",
+      "cashing": "Cashing",
+      "addition": "Addition",
+      "reports": "Reports",
+      "quantity": "Quantity",
+      "expirationDate": "Expiration Date",
+      "purchasingPrice": "purchasing Price",
+      "sellingPrice": "selling Price",
+      "unit":"Unit",
+      "uniqueItem":"The item cannot be repeated",
+      "uniqueConversionFactor":"The Conversion Factor cannot be repeated"
+    }
+  },
+  "stockManagement": {
+    "title": "Stock management",
+    "dashboard": "Dashboard",
+    "inventoryList": {
+      "pageTitle": "Inventory List",
+      "codeInventory": "Inventory Code",
+      "codeStock": "Stock Code",
+      "stockName": "Stock Name",
+      "table": {
+        "codeInventory": "Inventory Code",
+        "codeStock": "Stock Code",
+        "nameInventory": "Stock",
+        "nameEmployee": "Employee name",
+        "dateInventory": "Inventory Date",
+        "totalQuantity": "Total Quantity",
+        "spendQuantity": "Spend Quantity",
+        "restQuantity": "Rest Quantity"
+      }
+    },
+    "inventoryAdd": {
+      "pageTitle": "Inventory Stock",
+      "codeStock": "Stock Code",
+      "stockName": "Stock Name",
+      "categories": "Category",
+      "table": {
+        "code": "Inventory Code",
+        "brand": "csdfds -5",
+        "totalQuantity": "Total Quantity",
+        "spendQuantity": "Spend Quantity",
+        "restQuantity": "Rest Quantity"
+      },
+      "total": "Total",
+      "totalQuantity": "Total Quantity",
+      "totalValue": "Total Value",
+      "totalSectoral": "Total Sectoral",
+      "totalAll": "Total All"
+    },
+    "stockBalance": {
+      "pageTitle": "Stock Balance",
+      "openingBalance": "Opening Balance",
+      "description": "Description",
+      "descriptionAr": "Arabic Description",
+      "descriptionEn": "English Description"
+    },
+    "stockIncomeList": {
+      "pageTitle": "Income TransFormation"
+    },
+    "stockIncome": {
+      "pageTitle": "Income TransFormation",
+      "code": "Code",
+      "stockConvertFrom": "Stock Convert From",
+      "stockConvertTo": "Stock Convert To",
+      "stockName": "Stock",
+      "quantity": "Quantity",
+      "date": "Date"
+    },
+    "stockOutcome": {
+      "pageTitle": "Outcome Transformation",
+      "stockConvertFrom": "Stock Convert From",
+      "stockConvertTo": "Stock Convert To"
+    },
+    "permissions":{
+      "permissions":"permissions",
+      "outPutPermission":"Output Permission",
+      "inputPermission":"Add Permission"
+
+    }
+  },
+  "safeBoxTransaction": {
+    "code": "Code",
+    "pageTitle": "Transaction List",
+    "safeBox": "SafeBox",
+    "type": "Type",
+    "grantee": "Grantee",
+    "amount": "Amount",
+    "payment": "Payment",
+    "check": "Check Number",
+    "safeBoxBalance": "SafeBox Balance",
+    "safeBoxTransList": "Transaction List"
+  },
+  "users": {
+    "client": "Client",
+    "supplier": "Supplier",
+    "client/supplier": "Client/Supplier"
+  }
+  ,
+  "permissions":{
+     "permissions":"Permission",
+     "outputPermission":"Output Permission",
+     "inputPermission":"Add Permission",
+
+     "code": "entry Code",
+    "title": "Add/Edit",
+    "documentCode":"Document Code",
+     "bookCode":" Book Code",
+     "inventory":"Inventory",
+     "products":"Products",
+     "repated":"product already selected"  ,
+     "notes":"notes",
+     "repatedBookCode":"Book Code Used before",
+     "noProducts":"you should at least select one product.",
+     "list":{
+      "bookCode":" Book Code",
+      "code": "Entry Code",
+      "inventory":"Inventory Name",
+      "from":"From Date",
+      "to":"To Date",
+      "date":"Date",
+      "totalCost":"Total cost"
+     }
+
+
+  },
+  "branch":{
+    "pageTitle": "Branches",
+    "code": "Code",
+    "name": "Name",
+    "status":"Status",
+    "addEdit": {
+      "code": "Code",
+      "title":"Add / Edit Branch",
+      "nameAr":"Name Ar",
+      "nameEn":"Name En",
+      "phone":"Phone",
+      "address":"Address"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+<div class="height750">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+  <form>
+    <div class="block-div">
+      <h2> <i class="fas fa-info-circle"></i> {{ 'stockManagement.inventoryAdd.pageTitle' | translate }}</h2>
+      <div class="apex-form">
+        <div class="form-group row">
+    
+
+          <div class="col-md-3 flex-box">
+            <label for="branch" class="inline-label">{{ 'stockManagement.inventoryAdd.codeStock' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control" id="branch">
+                <option></option>
+                <option>مخزن 1</option>
+                <option> مخزن 2</option>
+                <option> مخزن 3</option>
+                <option> مخزن 4</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group date-field col-md-2">
+            <label for="fromDate">{{ 'shared.fromDate' | translate }}</label>
+            <input type="text" class="form-control" id="fromDate" placeholder="{{ 'shared.fromDate' | translate }}">
+            <span><i class="fas fa-calendar-alt"></i></span>
+          </div>
+          <div class="form-group date-field col-md-2">
+            <label for="toDate">{{ 'shared.toDate' | translate }}</label>
+            <input type="text" class="form-control date-field" id="toDate"
+              placeholder="{{ 'shared.toDate' | translate }}">
+            <span><i class="fas fa-calendar-alt"></i></span>
+          </div>
+          <div class="col-md-2">
+            <button class="button dark"><i class="fas fa-eraser"></i></button>
+            <button class="button">{{ 'shared.search' | translate }}</button>
+          </div>
+       
+      
+      </div>
+    </div>
+  </div>
+    <div class="block-div">
+      <h2><i class="fab fa-product-hunt"></i> {{ 'stockManagement.inventoryAdd.categories' | translate }}</h2>
+      <div class="apex-form">
+        <div class="customized-table-holder">
+          <table>
+            <thead>
+              <th>{{ 'stockManagement.inventoryAdd.table.code' | translate }}</th>
+              <th>{{ 'stockManagement.inventoryAdd.table.brand' | translate }}</th>
+              <th>{{ 'stockManagement.inventoryAdd.table.spendQuantity' | translate }}</th>
+              <th>{{ 'stockManagement.inventoryAdd.table.restQuantity' | translate }}</th>
+              <th>{{ 'stockManagement.inventoryAdd.table.totalQuantity'     | translate }}</th>
+        
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of list">
+                <td>{{item.code}}</td>
+                <td>{{item.brand  }}</td>
+                <td> {{item.spendQuantity  }} </td>
+                <td>{{item.restQuantity  }} </td>
+                <td> {{item.totalQuantity  }} </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class="block-div">
+      <h2><i class="fas fa-money-check-alt"></i> {{ 'stockManagement.inventoryAdd.total' | translate }}</h2>
+      <div class="apex-form">
+       
+        <div class="form-group row">
+          <div class="col-md-3 flex-box">
+            <label for="code" class="inline-label"> {{ 'stockManagement.inventoryAdd.totalQuantity' | translate }}</label>
+            <input type="text" class="form-control" id="code"
+              placeholder="{{ 'stockManagement.inventoryAdd.totalQuantity' | translate }}">
+          </div>
+          <div class="col-md-3 flex-box">
+            <label for="code" class="inline-label">{{ 'stockManagement.inventoryAdd.totalValue' | translate }}</label>
+            <input type="text" class="form-control" id="code"
+              placeholder="{{ 'stockManagement.inventoryAdd.totalValue' | translate }}">
+          </div>
+          <div class="col-md-3 flex-box">
+            <label for="code" class="inline-label">{{ 'stockManagement.inventoryAdd.totalSectoral' | translate }}</label>
+            <input type="text" class="form-control" id="code"
+              placeholder="{{ 'stockManagement.inventoryAdd.totalSectoral' | translate }}">
+          </div>
+          <div class="col-md-3 flex-box">
+            <label for="code" class="inline-label">{{ 'stockManagement.inventoryAdd.totalAll' | translate }}</label>
+            <input type="text" class="form-control" id="code"
+              placeholder="{{ 'stockManagement.inventoryAdd.totalAll' | translate }}">
+          </div>
+        </div>
+    
+      </div>
+    </div>
+    <div class="block-div">
+      <div class="apex-form">
+        <div class="row">
+          <div class="col-md-12">
+              <button class="button" ><i class="fas fa-save"></i> {{ 'shared.save' | translate }}</button>
+              <button class="button dark"><i class="fas fa-backspace" ></i> {{ 'shared.cancel' | translate }}</button>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <br>
+    <br>
+  </form>
+</div>

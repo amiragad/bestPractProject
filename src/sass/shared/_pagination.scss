@@ -1,0 +1,23 @@
+.pagination-holder{
+  text-align: center;
+  margin-top: 30px;
+  .ngx-pagination{
+    display: inline-block;
+    //margin: auto !important;
+    .current{
+      background: $base_color !important;
+      padding: 1px 10px !important;
+      border-radius: 50%;
+    }
+    .pagination-next{
+      &.disabled, a{
+        font-size: 20px;
+      }
+    }
+    .pagination-previous{
+      &.disabled, a{
+        font-size: 20px;
+      }
+    }
+  }
+}

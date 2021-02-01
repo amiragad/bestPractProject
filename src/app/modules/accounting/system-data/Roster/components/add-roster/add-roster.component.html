@@ -1,0 +1,283 @@
+<div class="">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+  <div class="block-div no-padding-tp ">
+      <div class=" sec-title row">
+
+          <h2 class="col-md-4"><i class="fas fa-server"></i> {{ 'systemData.roster.addEdit.title' | translate }}</h2>
+
+          <div class="col-md-8 product-actions padding-15px-tb">
+              <button (click)=" clearForm();" class="button orange"><i class="fas fa-plus"></i> {{ 'shared.new' | translate }}</button>
+              <button (click)="addEdit()" class="button green"><i class="fas fa-check"></i> {{ 'shared.save' | translate }}</button>
+              <button (click)=" AddEditRest();" class="button save-open"><i class="fas fa-save"></i> {{ 'shared.saveOpen' | translate }}</button>
+              <button (click)="cancal();" class="button cancel"><i class="fas fa-times"></i> {{ 'shared.cancel' | translate }}</button>
+
+          </div>
+      </div>
+
+      <app-alert [alertInput]="alertInput"></app-alert>
+      <div class="apex-form">
+          <form [formGroup]="addEditForm">
+
+
+              <div class="row">
+
+                  <div class="form-group col-md-5 ">
+
+                      <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                          <label for="code" class="col-md-5 inline-label">{{ 'systemData.roster.addEdit.code' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7 ">
+                              <input type="text" class="form-control" [readonly]="autoCoding==1" formControlName="code" id="code"
+                                     placeholder="{{ 'systemData.roster.addEdit.code' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('required') && addEditForm.get('code').touched">
+                                  {{ 'systemData.roster.addEdit.code' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('maxlength') && addEditForm.get('code').touched">
+                                  {{ 'systemData.roster.addEdit.code' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr">
+                          <label for="code" class="col-md-5 inline-label">{{ 'systemData.roster.addEdit.nameAr' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <input type="text" class="form-control" formControlName="nameAr" id="nameAr"
+                                     placeholder="{{ 'systemData.roster.addEdit.nameAr' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('required') && addEditForm.get('nameAr').touched">
+                                  {{ 'systemData.roster.addEdit.nameAr' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('maxlength') && addEditForm.get('nameAr').touched">
+                                  {{ 'systemData.roster.addEdit.nameAr' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr align-items-center">
+                        <label class="checkk font-size-13px">{{ 'supplierAccounts.addSupplier.nameRepeate' | translate }}
+                          <input type="checkbox"  checked="checked" class="checkbox" formControlName="nameRepeate" id="nameRepeate">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div *ngIf="!this.addEditForm.get('nameRepeate').value"  class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label for="clientName"
+                                 class="col-md-5 inline-label">{{ 'systemData.roster.addEdit.nameEn' | translate }}
+                                 
+                                </label>
+
+                          <div class="col-md-7">
+                              <input type="text" formControlName="nameEn" class="form-control" id="clientName" placeholder="{{ 'systemData.roster.addEdit.nameEn' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('required') && addEditForm.get('nameEn').touched">
+                                  {{ 'systemData.roster.addEdit.nameEn' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('maxlength') && addEditForm.get('nameEn').touched">
+                                  {{ 'systemData.roster.addEdit.nameEn' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+
+                      <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label class="col-md-5 inline-label">{{ 'shared.status' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <div class=" select-box no-padding">
+                                  <select class="form-control" formControlName="active" id="status">
+                                      <option value="true" selected>{{'shared.active' | translate}} </option>
+                                      <option value="false">{{'shared.inActive' | translate}}</option>
+                                  </select>
+                                  <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('active').hasError('required') && addEditForm.get('active').touched">
+                                      {{ 'shared.status' | translate }}
+                                      {{ 'sharedValidation.required' | translate }}
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+
+
+                  </div>
+
+                  <div class="col-md-2 col-xs-12"></div>
+
+                  <div class="form-group col-md-5">
+
+                   
+
+                    <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                      <label class="col-md-5 inline-label">{{ 'systemData.roster.addEdit.rosterType' | translate }}
+                        <span class="red">*</span>
+                      </label>
+                      <div class="col-md-7">
+                          <div class=" select-box no-padding">
+                              <select class="form-control" (change)="updateValidation($event)" formControlName="rosterType" id="rosterType">
+                                  <option value="true" selected>{{'systemData.roster.addEdit.staticPercentage' | translate}} </option>
+                                  <option value="false">{{'systemData.roster.addEdit.slices' | translate}}</option>
+                              </select>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('rosterType').hasError('required') && addEditForm.get('rosterType').touched">
+                                  {{ 'systemData.roster.addEdit.rosterType' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                  <div *ngIf="this.addEditForm.get('rosterType').value=='true'||this.addEditForm.get('rosterType').value==true" class="row margin-15px-lr  margin-bottom-20px flex-box">
+                    <label for="percentage"
+                           class="col-md-5 inline-label">{{ 'systemData.roster.addEdit.percentage' | translate }}
+                           <span class="red">*</span>
+                          </label>
+
+                    <div class="col-md-7">
+                        <input type="number" (keypress)="numberOnly($event)"  formControlName="percentage" class="form-control" id="percentage" placeholder="{{ 'systemData.roster.addEdit.percentage' | translate }}">
+                        <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('percentage').hasError('required') && addEditForm.get('percentage').touched">
+                            {{ 'systemData.roster.addEdit.percentage' | translate }}
+                            {{ 'sharedValidation.required' | translate }}
+                        </span>
+                        <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('percentage').hasError('min') && addEditForm.get('percentage').touched">
+                            {{ 'systemData.roster.addEdit.percentage' | translate }}
+                            {{ 'sharedValidation.min' | translate }}
+                         
+                        </span>
+                    </div>
+                </div>
+                <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                  <label for="target"
+                         class="col-md-5 inline-label">{{ 'systemData.roster.addEdit.target' | translate }}
+                         <span class="red">*</span>
+                        </label>
+
+                  <div class="col-md-7">
+                      <input type="number" (keypress)="numberOnly($event)"  formControlName="target" class="form-control" id="target" placeholder="{{ 'systemData.roster.addEdit.target' | translate }}">
+                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('target').hasError('required') && addEditForm.get('target').touched">
+                          {{ 'systemData.roster.addEdit.target' | translate }}
+                          {{ 'sharedValidation.required' | translate }}
+                      </span>
+                      <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('target').hasError('min') && addEditForm.get('target').touched">
+                          {{ 'systemData.roster.addEdit.target' | translate }}
+                          {{ 'sharedValidation.min' | translate }}
+                       
+                      </span>
+                  </div>
+              </div>
+                  </div>
+
+              </div>
+              <div class="row"  *ngIf="this.addEditForm.get('rosterType').value=='false'||this.addEditForm.get('rosterType').value==false">
+                <div class="col-md-12 padding-15px-all">
+                  <table class="table table-striped table-bordered">
+                    <thead>
+                      <tr>
+                        <th scope="col">{{ 'systemData.roster.addEdit.sliceNumber' | translate }}</th>
+                        <th scope="col">{{ 'shared.from' | translate }} </th>
+                        <th scope="col">{{ 'shared.to' | translate }}</th>
+                        <th scope="col">{{ 'systemData.roster.addEdit.percentage' | translate }}</th>
+                        <th scope="col">{{ 'systemData.roster.addEdit.Total' | translate }}</th>
+                      </tr>
+                    </thead>
+                    <tbody formArrayName="slices"
+                      *ngFor="let slice of addEditForm['controls'].slices['controls']; let sliceIndex=index">
+                      <tr formGroupName="{{sliceIndex}}">
+                        <td >
+                          <div class="select-box no-padding">
+                              {{ 'systemData.roster.addEdit.slice'+sliceIndex | translate }}
+                           
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <input (change)="updateTotal(sliceIndex)" type="number" min="1" (keypress)="numberOnly($event)"  class="form-control" formControlName="sliceFrom"
+                              autocomplete="off" id="sliceFrom{{sliceIndex}}" 
+                             placeholder="{{ 'shared.from' | translate }}">
+                            <span class="font-size-13px col-md-12 text-center red-text"
+                              *ngIf="slice.get('sliceFrom').hasError('required') && slice.get('sliceFrom').touched">
+                              {{ 'shared.from' | translate }}
+                              {{ 'sharedValidation.required' | translate }}
+                            </span>
+                            <span class="font-size-13px col-md-12 text-center red-text" *ngIf="slice.get('sliceFrom').hasError('min') && slice.get('sliceFrom').touched">
+                              {{ 'shared.from' | translate }}
+                              {{ 'sharedValidation.min' | translate }}
+                           
+                          </span>
+                          </div>
+                        </td>
+                   
+                        <td>
+                          <div>
+                            <input (change)="updateTotal(sliceIndex)" (keypress)="numberOnly($event)"  type="number" min="1"  class="form-control" formControlName="sliceTo"
+                              autocomplete="off" id="sliceTo{{sliceIndex}}" 
+                             placeholder="{{ 'shared.to' | translate }}">
+                            <span class="font-size-13px col-md-12 text-center red-text"
+                              *ngIf="slice.get('sliceTo').hasError('required') && slice.get('sliceTo').touched">
+                              {{ 'shared.to' | translate }}
+                              {{ 'sharedValidation.required' | translate }}
+                            </span>
+                            <span class="font-size-13px col-md-12 text-center red-text" *ngIf="slice.get('sliceTo').hasError('min') && slice.get('sliceTo').touched">
+                              {{ 'shared.to' | translate }}
+                              {{ 'sharedValidation.min' | translate }}
+                           
+                          </span>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <input (change)="updateTotal(sliceIndex)" type="number" min="1" (keypress)="numberOnly($event)"   class="form-control" formControlName="slicePercentge"
+                              autocomplete="off" id="slicePercentge{{sliceIndex}}" 
+                             placeholder="{{ 'systemData.roster.addEdit.percentage' | translate }}">
+                            <span class="font-size-13px col-md-12 text-center red-text"
+                              *ngIf="slice.get('slicePercentge').hasError('required') && slice.get('slicePercentge').touched">
+                              {{ 'systemData.roster.addEdit.percentage' | translate }}
+                              {{ 'sharedValidation.required' | translate }}
+                            </span>
+                            <span class="font-size-13px col-md-12 text-center red-text" *ngIf="slice.get('slicePercentge').hasError('min') && slice.get('slicePercentge').touched">
+                              {{ 'systemData.roster.addEdit.percentage' | translate }}
+                              {{ 'sharedValidation.min' | translate }}
+                           
+                          </span>
+                          </div>
+                        </td>
+                        <td>
+                          <div>
+                            <input type="number" min="1" [attr.disabled]="true"   class="form-control" formControlName="total"
+                              autocomplete="off" id="total{{sliceIndex}}" 
+                             placeholder="{{ 'systemData.roster.addEdit.Total' | translate }}">
+                            <span class="font-size-13px col-md-12 text-center red-text"
+                              *ngIf="slice.get('total').hasError('required') && slice.get('total').touched">
+                              {{ 'systemData.roster.addEdit.Total' | translate }}
+                              {{ 'sharedValidation.required' | translate }}
+                            </span>
+                          </div>
+                        </td>
+                        <td>
+                          <a [attr.title]="'shared.delete' | translate " (click)="deleteslices(sliceIndex);"
+                            *ngIf="sliceIndex>0" style="margin:5px;">
+                            <i class="fas fa-trash"></i> </a>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div>
+                    <button class="button" (click)="addslices();">{{ 'shared.new' | translate }}</button>
+                  </div>
+                </div>
+              </div>
+
+
+        
+          </form>
+      </div>
+
+
+
+
+  </div>
+</div>

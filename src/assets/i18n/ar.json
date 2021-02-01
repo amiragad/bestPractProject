@@ -1,0 +1,796 @@
+{
+  "shared": {
+    "admin": "المستخدم",
+    "welcome": "مرحبا",
+    "copyRights": "جميع الحقوق محفوظة.",
+    "fromDate": "من تاريخ",
+    "toDate": "الى تاريخ",
+    "date":"التاريخ",
+    "from":"من",
+    "to":"الي",
+    "search": "بحث",
+    "mobileNumber": "موبايل",
+    "email": "البريد الالكتروني",
+    "options": "خيارات",
+    "amount": "المبلغ جم",
+    "edit": "تعديل",
+    "bills": "عرض الفواتير",
+    "maininfo": "بيانات رئيسية",
+    "productCard":"كارت الصنف",
+    "address": "العنوان بالتفاصيل",
+    "country": "مدينة",
+    "governorate": "محافظة",
+    "area": "منطقة",
+    "fulladdress": "العنوان تفصيلا",
+    "creditInit":"رصيد افتتاحى",
+    "financialInfo": "معلومات مالية",
+    "delete": "حذف",
+    "details": "تفاصيل",
+    "save": "حفظ",
+    "new":"جديد",
+    "newLine":"إضافة سطر",
+    "printBarCode":"طباعة باركود",
+    "saveOpen":"حفظ وفتح جديد",
+    "cancel": "إلغاء",
+    "status": "الحالة",
+    "accept": "قبول",
+    "reject": "رفض",
+    "active": "نشط",
+    "inActive": "غير نشط",
+    "confirm": "تأكيد",
+    "confirmMessage": "هل تريد حفظ التغيرات ؟",
+    "deleteItem":"حذف العنصر",
+    "deleteConfirmMessage": "هل تريد حذف العنصر ؟",
+    "yes": "نعم",
+    "no": "لا",
+    "history": "تاريخ",
+    "import": "استيراد",
+    "uploadImage":" إرفاق صورة",
+    "savedsuccess":"تم الحفظ بنجاح",
+    "deletedSuccess":"تم الحذف بنجاح"
+  },
+  "error":{
+   "error500":"حدث خطأ داخلي",
+   "error406":"لا يمكن حذف العنصر",
+   "error405":"لا يمكن حذف العنصر الافتراضي",
+   "error4020":"لا يمكن الغاء تفعيل العنصر الافتراضي",
+   "error401":"اسم المستخدم او كلمه المرور غير صحيحه"
+  },
+  "sharedValidation":{
+   "required":"مطلوب",
+   "maxlength":"يجب الا يتعدي ",
+   "min":"يجب ان يكون اكبر من صفر",
+   "char":"حرف"
+  },
+  "sideNav": {
+    "lookup":"مفاتيح النظام",
+    "outputPermission":"إذن الصرف",
+    "inputPermission":"إذن الإضافة  ",
+
+    "home": "الرئيسية",
+    "basicData": "بيانات اساسية",
+    "measruingUnit": "وحده القياس",
+    "category": "مجموعه الاصناف",
+    "addContactperson": "اضافه مندوب",
+    "contactperson": "المندوبين",
+    "priceList":"قوائم الاسعار",
+    "addPriceList":"اضافه قائمه",
+    "addCategory": "اضافه مجموعه اصناف",
+    "categoriesManagement": "الأصناف",
+    "storesManagement": "المخازن",
+    "productNaturity":"طبيعه الصنف",
+    "roster":"اللوائح",
+    "addRoster":"اضافه لائحه",
+    "country":"الدول",
+    "city":"المدن",
+    "area":"المنطقة",
+    "currency":"العمله",
+    "stock":"المخازن",
+    "addStock":"اضافه مخزن",
+    "viewStock":"عرض جرد",
+    "product":"الاصناف",
+    "dashboard":"لوحة الأداء",
+    "stockBalance":"رصيد المخزن",
+    "inventoryList":"قائمه الجرد",
+    "inventoryAdd":"جرد المخزن",
+    "stockIncome":"تحويل وارد",
+    "stockIncomeList":"الطلبات الوارده",
+    "stockOutcome":"تحويل صادر",
+    "safeBox":"خزينه",
+    "addSafeBoxTrans":"اضافه عمليه",
+    "safeBoxTransList":"قائمه العمليات",
+    "clients":"العملاء",  
+    "addClient":"اضافه عميل",
+    "clientAccounts":"العملاء",
+    "clientBill":"كشف حساب عميل",
+    "suppliersbill":"كشف حساب مورد",
+    "suppliersManagement": {
+      "title": "الموردين",
+      "addSupplier": "اضافة مورد",
+      "supplierAccountsView": "الموردين",
+      "supplierAccountView": "عرض حساب مورد",
+      "bills": "فواتير"
+    },
+    "cutomersManagement": {
+      "title": "العملاء",
+      "addCustomer": "اضافة عميل",
+      "customerAccountsView": "عرض حسابات عملاء",
+      "customerAccountView": "عرض حساب عملاء",
+      "bills": "فواتير"
+    },
+    "customerService": "العملاء",
+    "purchasing": "المشتريات",
+    "products": {
+      "products": "الاصناف",
+      "productList": "عرض الاصناف",
+      "productAdd": "اضافة منتج"
+    },
+    "invoice": {
+      "add": "فاتورة شراء",
+      "list": "فواتير الشراء"
+    },
+    "rebate": {
+      "add": "مرتجع شراء",
+      "list": "مرتجعات الشراء"
+    },
+    "salesInvoice": {
+      "add": "فاتورة بيع",
+      "list": "فواتير البيع"
+    },
+    "salesRebate": {
+      "add": "مرتجع بيع",
+      "list": "مرتجعات البيع"
+    },
+    "branches":"الفروع",
+    "addBranch":"اضافه فرع"
+  },
+  "modules":{
+    "welcomeSystem":"اهلا بك في  نظام ادارة الحسابات",
+    "stockModule":"نظام ادارة  المستودعات",
+    "purchasesModule":"نظام ادارة المشتريات",
+    "salesModule":"نظام ادارة  المبيعات",
+    "accountingModule":"نظام ادارة المالية  والحسابات العامه",
+    "pointOfSale":"نظام ادارة نقاط البيع",
+    "assetesModule":"نظام ادارة  الاهلاكات والاصول",
+    "hrModule":"نظام ادارة الموارد البشرية",
+    "attendanceModule":"نظام ادارة الحضور والانصراف"
+  },
+  "login":{
+    "btnEnter":"دخول",
+    "username":"اسم المستخدم",
+    "password":"كلمه المرور",
+    "rememberMe":"تذكرني"
+  },
+  "supplierAccounts": {
+    "code": "كود الصنف",
+    "supplierName": "اسم المورد",
+    "branch": "الفرع",
+    "pageTitle": "الموردين",
+    "supplier": "مورد",
+    "fax": "فاكس",
+    "type": "نوع العميل",
+    "classification": "التصنيف",
+    "mobile": "موبيل",
+    "telephone": "رقم أرضي",
+    "supplierClient": "عميل مورد",
+    "communicationData": "بيانات الاتصال",
+    "connectionType": "التواصل بواسطة",
+    "customerType": "النوع ",
+    "debitCredit": "دائن/مدين",
+    "credit": "مدين",
+    "debitor": "دائن",
+    "openingBalance": "الرصيد الأفتتاحي",
+    "status": "الحالة",
+    "active": "مفعل",
+    "inactive": "غير مفعل",
+    "dealingType": "طبيعة التعامل",
+    "wholeseller": "جملة",
+    "Sectoral": "قطاعي",
+    "bills": "فواتير",
+    "customerSupplier":"مورد /عميل",
+    "addSupplier":{
+      "title":"إضافه مورد",
+      "code":"الكود",
+      "nameAR":"الاسم بالعربي",
+      "nameRepeate":"كتابه الاسم الانجيليزي مثل العربي",
+      "nameEN":"الاسم بالانجليزي",
+      "dealingNaturity":"طبيعه التعامل",
+      "country":"الدوله",
+      "city":"المدينه",
+      "area":"المنطقة",
+      "taxNumber":"الرقم الضريبي",
+      "address":"العنوان",
+      "contacts":"بيانات الإتصال",
+      "balance":"رصيد مالي",
+      "salePurchase":"البيع والشراء",
+      "phone":"التلفون",
+      "mobile":"موبيل",
+      "fax":"فاكس",
+      "email":"البريد الالكتروني",
+      "website":"الموقع",
+      "debtor":"دائن/مدين",
+      "creditor": "مدين",
+      "debitor": "دائن",
+      "initBalance":"الرصيد الإفتتاحي",
+      "notes":"ملاحظات",
+      "creditLimit":"حد الأئتمان",
+      "creditDays":"فترة الأئتمان",
+      "discountPercentage":"نسبة الخصم",
+      "achievementCondition":"شروط التحصيل",
+      "paymentCondition":"شروط السداد",
+      "sale":"البيع",
+      "purchase":"الشراء",
+      "supplier":"مورد",
+      "customerSupplier":"عميل"
+    }
+  },
+  "bill": {
+    "bill": "الفاتورة",
+    "code": "كود",
+    "name": " الشخص",
+    "date": "التاريخ",
+    "total": "الإجمالي",
+    "discount": "الخصم",
+    "totalafterdiscount": "الإجمالي بعد الخصم",
+    "type": "النوع",
+    "paidOrNot": "مدفوعة ام لا",
+    "paid": "مدفوعة",
+    "unpaid": "غير مدفوعة"
+  },
+  "customerAccounts": {
+    "code": "كود الصنف",
+    "name": "اسم العميل",
+    "branch": "الفرع",
+    "pageTitle": "العملاء",
+    "supplier": "مورد",
+    "fax": "فاكس",
+    "type": "نوع العميل",
+    "classification": "التصنيف",
+    "mobile": "موبيل",
+    "telephone": "رقم أرضي",
+    "supplierClient": "عميل مورد",
+    "communicationData": "بيانات الاتصال",
+    "connectionType": "التواصل بواسطة",
+    "customerType": "النوع ",
+    "debitCredit": "دائن/مدين",
+    "credit": "مدين",
+    "debitor": "دائن",
+    "openingBalance": "الرصيد الأفتتاحي",
+    "status": "الحالة",
+    "active": "مفعل",
+    "inactive": "غير مفعل",
+    "dealingType": "طبيعة التعامل",
+    "wholeseller": "جملة",
+    "Sectoral": "قطاعي",
+    "bills": "فواتير",
+    "customerSupplier":"مورد /عميل",
+    "addCustomer":{
+      "title":"إضافه مورد",
+      "code":"الكود",
+      "nameAR":"الاسم بالعربي",
+      "nameEN":"الاسم بالانجليزي",
+      "dealingNaturity":"طبيعه التعامل",
+      "country":"الدوله",
+      "city":"المدينه",
+      "area":"المنطقة",
+      "taxNumber":"الرقم الضريبي",
+      "address":"العنوان",
+      "contacts":"بيانات الإتصال",
+      "balance":"رصيد مالي",
+      "salePurchase":"البيع والشراء",
+      "phone":"التلفون",
+      "mobile":"موبيل",
+      "fax":"فاكس",
+      "email":"البريد الالكتروني",
+      "website":"الموقع",
+      "debtor":"دائن/مدين",
+      "creditor": "مدين",
+      "debitor": "دائن",
+      "initBalance":"الرصيد الإفتتاحي",
+      "notes":"ملاحظات",
+      "creditLimit":"حد الأئتمان",
+      "creditDays":"فترة الأئتمان",
+      "discountPercentage":"نسبة الخصم",
+      "achievementCondition":"شروط التحصيل",
+      "paymentCondition":"شروط السداد",
+      "sale":"البيع",
+      "purchase":"الشراء",
+      "customer":"عميل",
+      "customerSupplier":"مورد"
+    }
+
+  },
+  "contactperson":{
+    "pageTitle": "المندوين",
+    "code": "الكود",
+    "name": "الاسم",
+    "status":"الحاله",
+    "clientName":"اسم العميل",
+    "subjectCommission":"يخضع للعمولات",
+    "addEdit": {
+      "code": "الكود",
+      "title":  "اضافه/تعديل مندوب",
+      "nameAr": "الاسم بالعربي",
+      "nameEn": "الاسم بالانجيلزي",
+      "clientId":"اسم العميل",
+      "creditLimit":"حد الائتمان",
+      "limitationDays":"فترة الائتمان",
+      "discountPercentage":"نسبه الخصم",
+      "subjectCommission":"يخضع للعمولات",
+      "noSubjectCommission":"لا يخضع للعمولات",
+      "rosterId":"لائحه"
+    }
+  },
+  "priceList":{
+    "pageTitle": "قوائم الاسعار",
+    "code": "الكود",
+    "name": "الاسم",
+    "status":"الحاله",
+    "DurationType":"نوع الفتره",
+    "openDuration":"مفتوحه",
+    "limitDuration":"محدوده",
+    "PricingType":"الضبط",
+    "upPrice":"رفع اسعار",
+    "downPrice":"خفض اسعار",
+    "Types":"النوع",
+    "PriceFrom":"حساب من",
+    "addEdit": {
+      "code": "الكود",
+      "title":  "اضافه/تعديل قائمه",
+      "nameAr": "الاسم بالعربي",
+      "nameEn": "الاسم بالانجيلزي",
+      "durationType":"نوع الفتره",
+      "openDuration":"مفتوحه",
+      "limitDuration":"محدوده",
+      "pricingType":"الضبط",
+      "upPrice":"رفع اسعار",
+      "downPrice":"خفض اسعار",
+      "types":"النوع",
+      "priceFrom":"حساب من",
+      "dateFrom":"من",
+      "dateTo":"الي",
+      "percentage":"النسبه",
+      "expenses":"المصاريف",
+      "value":"القيمه",
+      "profitMargin":"هامش الربح",
+      "product":"المنتج",
+      "unit":"الوحدة"
+    }
+  },
+  "purchasing": {
+    "shared": {
+      "code": "رقم الفاتورة",
+      "docNumber": "رقم المستند",
+      "addValue": "القيمة المضافة",
+      "date": "تاريخ الفاتورة",
+      "vendor": "المورد",
+      "paid": "المسدد",
+      "rest": "المتبقي",
+      "safe": "الخزينة",
+      "stock": "المخزن",
+      "cash": "نقدى",
+      "postpone": "آجل",
+      "partial": "جزئي",
+      "credit": "إئتمان",
+      "amount": "القيمة",
+      "discount": "الخصم",
+      "discountPerMax": "أكبر قيمة للنسبة المئوية هي 100",
+      "totalAmountBeforeTax": "إجمالى  قبل الضريبة",
+      "totalAmountAfterTax": "إجمالى الفاتورة بعد الضريبة",
+      "totalAmount": "إجمالى الفاتورة",
+      "totalExpenses": "إجمالى المصروفات",
+      "totalDiscount": "إجمالى الخصم",
+      "netAmount": "صافى القيمة",
+      "itemCode": "كود الصنف",
+      "measurementUnit": "وحدة القياس",
+      "productCode": "كود الوحدة",
+      "quantity": "الكمية",
+      "price": "السعر",
+      "total": "الاجمالى",
+      "net": "الصافى",
+      "expenses": "المصروف",
+      "deduction": "خصم الفاتورة",
+      "inventory": "المخزن"
+    },
+    "invoice": {
+      "title": "فاتورة المشتريات",
+      "vendorInvoiceCode": "رقم فاتورة المورد",
+      "noteNumber": "الرقم الدفتري",
+      "delegateMan": "اسم المندوب",
+      "inventory": "المخزن",
+      "cash": "كاش",
+      "postpaid": "اجل",
+      "invoiceType": "نوع الفاتورة",
+      "additionalExpenses": "مصروفات إضافية",
+      "taxAmount": "قيمة الضريبة",
+      "options": "خيارات"
+    },
+    "rebate": {
+      "title": "مرتد المشتريات",
+      "totalAmount": "إجمالى الفاتورة",
+      "categories": "الاصناف",
+      "productReq": "يجب اختيار صنف واحد علي الاقل",
+      "costCenteReq": "يجب اختيار مركز التكلفة",
+      "safeReq": "يجب اختيار اسم الخزنة",
+      "additionalExpensesReq": "يجب ادخال قيمة المصروفات الاضافية",
+      "discountReq": "يجب ادخال قيمةالخصوم "
+    }
+  },
+  "sales": {
+    "salesInvoice": "فاتورة المبيعات",
+    "salesRebate": "مرتد المبيعات",
+    "sales":"المبيعات"
+  },
+  "lookups": {
+      "lookup":"مفاتيح النظام",
+      "name":"الاسم",
+      "code":"كود",
+      "id":"رقم",
+      "deleteItem":"حذف العنصر",
+
+      "addEdit": {
+        "header": "اضافة / تعديل ",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية",
+        "belongTo":"تابع ل"
+      },
+    "measruingUnit": {
+      "pageTitle": "وحدات القياس",
+      "code": "الكود",
+      "name": "الاسم",
+      "table": {
+        "code": "الكود",
+        "name": "الاسم"
+      },
+      "addEdit": {
+        "header": "اضافه / تعديل وحده قياس",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية"
+      }
+    },
+    "productNaturity": {
+      "pageTitle": "طبيعه الصنف",
+      "code": "الكود",
+      "name": "الاسم",
+      
+      "table": {
+        "code": "الكود",
+        "name": "الاسم"
+      },
+      "addEdit": {
+        "header": "اضافه / تعديل طبيعه صنف ",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية"
+      }
+    },
+    "country": {
+      "pageTitle": "الدول",
+      "code": "الكود",
+      "name": "الاسم",
+      "table": {
+        "code": "الكود",
+        "name": "الاسم",
+        "cities": "المدن"
+      },
+      "addEdit": {
+        "header": "اضافة / تعديل دولة",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية"
+      }
+    },
+    "city": {
+      "pageTitle": "المدن",
+      "code": "الكود",
+      "name": "الاسم",
+      "table": {
+        "code": "الكود",
+        "name": "الاسم",
+        "areas": "المناطق"
+      },
+      "addEdit": {
+        "header": "اضافه / تعديل مدينه",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية",
+        "country": "الدوله"
+      }
+    },
+    "area": {
+      "pageTitle": "المنطقه",
+      "code": "الكود",
+      "name": "الاسم",
+      "table": {
+        "code": "الكود",
+        "name": "الاسم"
+      },
+      "addEdit": {
+        "header": "اضافه / تعديل منطقه",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية",
+        "country": "الدوله",
+        "city": "المدينه"
+      }
+    },
+    "currency": {
+      "pageTitle": "العمله",
+      "code": "الكود",
+      "name": "الاسم",
+      "table": {
+        "code": "الكود",
+        "name": "الاسم",
+        "country": "الدوله"
+      },
+      "addEdit": {
+        "header": "اضافه / تعديل وحده قياس",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية",
+        "country": "الدوله"
+      }
+    }
+  },
+  "systemData": {
+    "category": {
+      "pageTitle": "مجموعات الاصناف",
+      "code": "الكود",
+      "name": "الاسم",
+      "active": "التفعيل",
+      "parentCategory": "التصنيف الاب",
+      "measuringUnit": "وحده القياس",
+      "table": {
+        "code": "الكود",
+        "name": "الاسم",
+        "measruingUnit": "وحده القياس",
+        "parentCategory": "التصنيف الاب",
+        "active": "التفعيل"
+      },
+      "addEdit": {
+        "title": "اضافه / تعديل تصنيف ",
+        "code":"الكود",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية",
+        "parentCategory": "التصنيف الاب"
+      }
+    },
+    "stock": {
+      "pageTitle": "المخازن",
+      "code": "الكود",
+      "name": "الاسم",
+      "status":"الحالة",
+      "stockKeeper": "امين المخزن",
+        "initBalancStatus":" حاله الرصيد الافتتاحي",
+        "initBalance":"الرصيد الإفتتاحي",
+      "addEdit": {
+        "code": "الكود",
+        "title": "اضافه / تعديل مخزن ",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية",
+        "stockKeeper": "امين المخزن",
+        "phone":"التلفون",
+        "fax":"فاكس",
+        "addressEn":"العنوان بالانجليزي",
+        "addressAr":"العنوان بالعربي",
+        "branchId":"الفرع"
+      }
+    },
+    "roster": {
+      "pageTitle": "اللوائح",
+      "code": "الكود",
+      "name": "الاسم",
+      "status":"الحالة",
+      "target":"الهدف",
+      "percentage":"النسبه",
+      "rosterType":"النوع",
+      "addEdit": {
+        "code": "الكود",
+        "title": "اضافه / تعديل لائحه ",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية",
+        "status":"الحالة",
+        "target":"الهدف",
+        "percentage":"النسبه",
+        "rosterType":"النوع",
+        "staticPercentage":"نسبه ثابته",
+        "slices":"شرائح",
+        "sliceNumber":"الشريحه",
+        "Total":"القيمه",
+        "slice0":"الاولي",
+        "slice1":"الثانيه",
+        "slice2":"الثالثه",
+        "slice3":"الرابعه",
+        "slice4":"الخامسه"
+      }
+    },
+    "safeBox": {
+      "pageTitle": "الخزائن",
+      "code": "الكود",
+      "name": "الاسم",
+      "active": "التفعيل",
+      "table": {
+        "code": "الكود",
+        "name": "الاسم",
+        "active": "التفعيل",
+        "currency": "العمله"
+      },
+      "addEdit": {
+        "header": "اضافه / تعديل الخزينه ",
+        "nameAr": "الاسم العربي",
+        "nameEn": "الاسم بالإنجليزية",
+        "currency": "العمله"
+      }
+    },
+    "product": {
+      "pageTitle": "الأصناف",
+      "code": "كود الصنف",
+      "productName":"اسم الصنف",
+      "barCode":"الباركود",
+      "documentCode":"رقم المستند",
+
+      "product": "المنتج",
+      "name": "الاسم",
+      "namear":" إسم الصنف",
+      "nameEn": "إسم الصنف en ",
+      "color":"اللون",
+      "size":"الحجم",
+      "classification": "التصنيف و التجميع",
+      "type":"النوع",
+      "description":"وصف الصنف",
+      "cost":"حساب التكلفة",
+      "productKind": "طبيعة الصنف ",
+      "groupname": "اسم المجموعة",
+      "orderLimit":"حد الطلب",
+      "model":"الموديل",
+      "image":"الصورة",
+      "storagelocation":"مكان التخزين",
+      "measurementunit": " وحدة القياس",
+      "sellPrice": "سعر البيع",
+      "buyingprice": "سعر الشراء",
+      "taxPercentage": "نسبة الضريبة % ",
+      "exporationDate": "تاريخ الصالحة",
+      "isTaxable": "خاضع للضريبة",
+      "taxable": "يخضع للضريبة",
+      "freeTax": "معفي",
+      "country": "بلد النشأ",
+      "status": "الحالة",
+      "active": "مفعل",
+      "default": "إفتراضي",
+      "inactive": "غير مفعل",
+      "conversionFactor": "معامل التحويل",
+      "cashing": "صرف",
+      "addition": "اضافة",
+      "reports": "تقارير",
+      "quantity": "الكمية",
+      "expirationDate": "تاريخ الصلاحية",
+      "purchasingPrice": "سعر الشراء",
+      "sellingPrice": "سعر البيع",
+      "unit":"الوحدة",
+      "uniqueItem":"لا يسمح بتكرار نفس العنصر",
+      "uniqueConversionFactor":"لا يسمح بتكرار  معامل التحويل"
+    }
+  },
+  "stockManagement": {
+    "title": "المستودعات",
+    "dashboard": "لوحة الأداء",
+    "inventoryList": {
+      "pageTitle": "قائمه الجرد",
+      "codeInventory": "كود الجرد",
+      "codeStock": "كود المخزن",
+      "stockName": "اسم المخزن",
+      "table": {
+        "codeInventory": "كود الجرد",
+        "codeStock": "كود مخزن",
+        "nameInventory": "المخزن",
+        "nameEmployee": "موظف الجرد",
+        "dateInventory": "تاريخ الجرد",
+        "totalQuantity": "الكميه الكليه",
+        "spendQuantity": "الكميه المنصرفه",
+        "restQuantity": "الكميه المتبقيه"
+      }
+    },
+    "inventoryAdd": {
+      "pageTitle": "جرد مخزن",
+      "codeStock": "كود المخزن",
+      "stockName": "اسم المخزن",
+      "categories": "الاصناف",
+      "table": {
+        "code": "كود الجرد",
+        "brand": "تيليفون -5",
+        "totalQuantity": "الكميه الكليه",
+        "spendQuantity": "الكميه المنصرفه",
+        "restQuantity": "الكميه المتبقيه"
+      },
+      "total": "الإجمالي",
+      "totalQuantity": "الكميه الكليه",
+      "totalValue": "اجمالي القيمه",
+      "totalSectoral": "اجمالي القطاعي",
+      "totalAll": "اجمالي الجمله"
+    },
+    "stockBalance": {
+      "pageTitle": "رصيد مخزن",
+      "openingBalance": "الرصيد الافتتاحى",
+      "description": "الوصف",
+      "descriptionAr": "وصف بالعربى",
+      "descriptionEn": "وصف بالانجليزي"
+    },
+    "stockIncomeList": {
+      "pageTitle": "تحويل وارد"
+    },
+    "stockIncome": {
+      "pageTitle": "تحويل وارد",
+      "code": "الكود",
+      "stockConvertFrom": "المخزن المحول منه",
+      "stockConvertTo": "المخزن المحول اليه",
+      "stockName": "المخزن",
+      "quantity": "الكمية",
+      "date": "التاريخ"
+    },
+    "stockOutcome": {
+      "pageTitle": "تحويل صادر",
+      "stockConvertFrom": "المخزن المحول منه",
+      "stockConvertTo": "المخزن المحول اليه"
+    },
+    
+    "permissions":{
+      "permissions":"الأذونات",
+      "outPutPermission":" إذن الصرف",
+      "inputPermission":" إذن الإضافة"
+
+    }
+  },
+  "safeBoxTransaction": {
+    "code": "الكود",
+    "pageTitle": "قائمه العمليات",
+    "safeBox": "خزينه",
+    "type": "النوع",
+    "grantee": "المستفيد",
+    "amount": "القيمة",
+    "payment": "السداد",
+    "check": "رقم الشيك",
+    "safeBoxBalance": "رصيد الخزينه",
+    "safeBoxTransList": "قائمه العمليات"
+  },
+  "users": {
+    "client": "عميل",
+    "supplier": "مورد",
+    "client/supplier": "عميل/مورد"
+  },
+  "permissions":{
+
+     "permissions":"أذونات",
+     "outputPermission":"إذن الصرف",
+     "inputPermission":"إذن الإضافة ",
+
+     "code": "كود المدخل",
+    "title": "اضافه / تعديل مخزن ",
+    "documentCode":"رقم المستند",
+     "bookCode":"الكود الدفتري",
+     "inventory":"المخزن",
+     "products":"الاصناف",
+     "repated":"تم اختيار الصنف سابقا",
+     "notes":"ملاحظات",
+     "repatedBookCode":"الكود الدفتري مستخدم سابقا",
+     "noProducts":"علي الأقل يجب إختيار صنف واحد",
+     "list":{
+      "bookCode":"الكود الدفتري",
+      "code": "كود المدخل",
+      "inventory":"أسم المخزن",
+      "from":"من",
+      "to":"إلي",
+      "date":"التاريخ",
+      "totalCost":"الإجمالي"
+     }
+  
+  },
+  "branch":{
+    "pageTitle": "الفروع",
+    "code": "الكود",
+    "name": "الاسم",
+    "status":"الحاله",
+    "addEdit": {
+      "code": "الكود",
+      "title":  "اضافه/تعديل مندوب",
+      "nameAr": "الاسم بالعربي",
+      "nameEn": "الاسم بالانجيلزي",
+      "phone":"التلفون",
+      "address":"العنوان"
+    }
+  }
+}

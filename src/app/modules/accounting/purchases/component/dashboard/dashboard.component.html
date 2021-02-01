@@ -1,0 +1,116 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="flex-box-view">
+    <div class="dashboard-block green">
+      <i class="fas fa-user-plus"></i>
+      <h2>تعريفات اساسية</h2>
+      <div>
+        <span>اضافة</span>
+        <span>صنف</span>
+      </div>
+      <div>
+        <span>اضافة</span>
+        <span>عميل</span>
+      </div>
+      <div>
+        <span>اضافة</span>
+        <span>مورد</span>
+      </div>
+    </div>
+    <div class="dashboard-block blue">
+      <i class="far fa-file-alt"></i>
+      <h2>الفواتير</h2>
+      <div>
+        <span>فاتورة</span>
+        <span>بيع</span>
+      </div>
+      <div>
+        <span>فاتورة</span>
+        <span>شراء</span>
+      </div>
+      <div>
+        <span>مرتجع</span>
+        <span>بيع</span>
+      </div>
+      <div>
+        <span>مرتجع</span>
+        <span>شراء</span>
+      </div>
+    </div>
+    <div class="dashboard-block red">
+      <i class="fas fa-database"></i>
+      <h2>المخزن</h2>
+      <div>
+        <span>رصيد</span>
+        <span>المخزن</span>
+      </div>
+      <div>
+        <span>الاصناف</span>
+        <span>الناقصة</span>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<div class="block-div">
+  <div class="chart-card">
+    <div class="chart-card-body">
+      <div class="chart-holder pie-chart">
+        <ngx-charts-pie-chart
+          [scheme]="colorScheme2"
+          [results]="pieChartData"
+          [explodeSlices]="false"
+          [labels]="true"
+          [legend]="true"
+          [legendTitle]="''"
+          [gradient]="true">
+        </ngx-charts-pie-chart>
+
+      </div>
+      <div class="chart-holder">
+        <ngx-charts-bar-vertical-2d
+          [scheme]="colorScheme"
+          [results]="graphData"
+          [gradient]="true"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="true"
+          [legendTitle]="''"
+        >
+        </ngx-charts-bar-vertical-2d>
+      </div>
+    </div>
+  </div>
+  <div class="chart-card">
+    <div class="chart-card-body">
+      <div class="chart-holder pie-chart">
+        <ngx-charts-pie-chart
+          [scheme]="colorScheme2"
+          [results]="pieChartData"
+          [explodeSlices]="false"
+          [labels]="true"
+          [legend]="true"
+          [legendTitle]="''"
+          [gradient]="true">
+        </ngx-charts-pie-chart>
+
+      </div>
+      <div class="chart-holder">
+        <ngx-charts-bar-vertical-2d
+          [scheme]="colorScheme"
+          [results]="graphData"
+          [gradient]="true"
+          [xAxis]="true"
+          [yAxis]="true"
+          [legend]="true"
+          [legendTitle]="''"
+        >
+        </ngx-charts-bar-vertical-2d>
+      </div>
+    </div>
+  </div>
+</div>
+

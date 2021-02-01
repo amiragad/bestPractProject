@@ -1,0 +1,108 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form>
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'safeBoxTransaction.code' | translate }}</label>
+          <input type="text" class="form-control" id="code" placeholder="{{ 'safeBoxTransaction.code' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'safeBoxTransaction.safeBox' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch">
+                <option> </option>
+              <option>خزنه 1 </option>
+              <option>خزنه 2</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'safeBoxTransaction.type' | translate }}</label>
+          <div class="select-box">
+            <select class="form-control" id="branch">
+                <option> </option>
+              <option>قبض </option>
+              <option> صرف</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-md-2">
+          <button class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button">{{ 'shared.search' | translate }}</button>
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a data-toggle="modal" data-target="#modalForm"><i class="fas fa-plus-circle"></i></a>
+  </div>
+  <h2>{{ 'safeBoxTransaction.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'safeBoxTransaction.code' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'safeBoxTransaction.safeBox' | translate }}
+            <app-sort></app-sort>
+          </th>
+
+          <th>
+            {{ 'safeBoxTransaction.type' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'safeBoxTransaction.grantee' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'safeBoxTransaction.amount' | translate }}
+            <app-sort></app-sort>
+          </th>
+          <th>
+            {{ 'safeBoxTransaction.payment' | translate }}
+            <app-sort></app-sort>
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of items | paginate: config">
+          <td>
+            4
+          </td>
+          <td>
+            خزنه 1
+          </td>
+          <td>
+               قبض
+            </td>
+            <td>
+                احمد
+             </td>
+             <td>
+                المبلغ
+             </td>
+          <td>
+           نقد </td>
+         
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="pageChanged($event)">
+    </pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,9 @@
+<div class="sort-div">
+  <i *ngIf="isAsc&&(currentOrder==orderBy)" class="fas fa-sort-up" (click)="sort('desc')" ></i>
+  <i *ngIf="isDesc&&(currentOrder==orderBy)" class="fas fa-sort-down" (click)="sort('asc')"></i>
+  <div 
+  *ngIf="currentOrder != orderBy">
+  <i  class="fas fa-sort-up" (click)="sort('desc')" ></i>
+  <i  class="fas fa-sort-down" (click)="sort('asc')"></i>
+</div>
+</div>

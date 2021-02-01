@@ -1,0 +1,170 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form>
+      <div class="row">
+      <div class="form-group col-md-2">
+        <label for="code">{{ 'lookups.area.code' | translate }}</label>
+        <input type="text" class="form-control" id="code" placeholder="{{ 'lookups.area.code' | translate }}">
+      </div>
+        <div class="form-group col-md-2">
+          <label for="name">{{ 'lookups.area.name' | translate }}</label>
+          <input type="text" class="form-control" id="name" placeholder="{{ 'lookups.area.name' | translate }}">
+        </div>
+
+        <div class="col-md-2">
+          <button class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button">{{ 'shared.search' | translate }}</button>
+        </div>
+
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a  data-toggle="modal" data-target="#modalForm"><i class="fas fa-plus-circle"></i></a>
+  </div>
+  <h2>{{ 'lookups.area.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+      <tr>
+        <th>
+          {{ 'lookups.area.table.code' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'lookups.area.table.name' | translate }}
+          <app-sort></app-sort>
+        </th>
+        
+        <th>
+          {{ 'shared.status' | translate }}
+          <app-sort></app-sort>
+        </th>
+
+        <th>
+          {{ 'shared.options' | translate }}
+
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr  *ngFor="let item of items | paginate: config">
+        <td>
+          4
+        </td>
+        <td>
+          المطريه
+        </td>
+        <td>
+            <label class="switch">
+              <input data-toggle="modal" data-target="#popup" type="checkbox" >
+              <span class="slider"></span>
+            </label> </td>
+        <td>
+          <a [attr.title]="'shared.edit' | translate " style="margin:5px;" data-toggle="modal" data-target="#modalForm">
+            <i class="fas fa-pen"></i>  
+          </a>
+
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+      <pagination-controls
+        class="my-pagination"
+        previousLabel=""
+        nextLabel=""
+        (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.confirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark" data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="modalForm"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'lookups.area.addEdit.header' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="apex-form">
+          <form>
+            <!--name ,code,phone number -->
+            <div class="block-div">
+
+               <div class="form-group row"> 
+                    <div class="col-md-9 flex-box">
+                      <label for="areaNameAr" class="inline-label">{{ 'lookups.area.addEdit.nameAr' | translate }}</label>
+                      <input type="text" class="form-control" id="areaNameAr" placeholder="{{ 'lookups.area.addEdit.nameAr' | translate }}">
+                    </div>
+             </div>
+             <div class="form-group row">    
+                <div class="col-md-9 flex-box">
+                    <label for="areaNameEn" class="inline-label">{{ 'lookups.area.addEdit.nameEn' | translate }}</label>
+                    <input type="text" class="form-control" id="areaNameEn" placeholder="{{ 'lookups.area.addEdit.nameEn' | translate }}">
+                  </div>
+             </div>
+             <div class="form-group row">  
+             <div class="col-md-9 flex-box">
+                <label for="branch" class="inline-label">{{ 'lookups.area.addEdit.country' | translate }}</label>
+                <div class="select-box">
+                <select class="form-control" id="branch">
+                  <option>مصر</option>
+                  <option>الكويت</option>
+                  <option>السعوديه</option>
+              </select>
+                </div>
+              </div></div>
+
+              <div class="form-group row">  
+                  <div class="col-md-9 flex-box">
+                     <label for="branch" class="inline-label">{{ 'lookups.area.addEdit.city' | translate }}</label>
+                     <div class="select-box">
+                     <select class="form-control" id="branch">
+                       <option>القاهره</option>
+                       <option>بني سويف</option>
+                       <option>الاقصر</option>
+                   </select>
+                     </div>
+                   </div></div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="button" data-dismiss="modal">{{ 'shared.save' | translate }}</button>
+        <button class="button dark" data-dismiss="modal">{{ 'shared.cancel' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

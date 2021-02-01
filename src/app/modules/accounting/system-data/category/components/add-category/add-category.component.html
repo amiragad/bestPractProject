@@ -1,0 +1,180 @@
+<div class="">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+  <div class="block-div no-padding-tp ">
+      <div class=" sec-title row">
+
+          <h2 class="col-md-4"><i class="fas fa-server"></i> {{ 'systemData.category.addEdit.title' | translate }}</h2>
+
+          <div class="col-md-8 product-actions padding-15px-tb">
+              <button (click)=" clearForm();" class="button orange"><i class="fas fa-plus"></i> {{ 'shared.new' | translate }}</button>
+              <button (click)="addEdit()" class="button green"><i class="fas fa-check"></i> {{ 'shared.save' | translate }}</button>
+              <button (click)=" AddEditRest();" class="button save-open"><i class="fas fa-save"></i> {{ 'shared.saveOpen' | translate }}</button>
+              <button (click)="cancal();" class="button cancel"><i class="fas fa-times"></i> {{ 'shared.cancel' | translate }}</button>
+
+          </div>
+      </div>
+
+      <app-alert [alertInput]="alertInput"></app-alert>
+      <div class="apex-form">
+          <form [formGroup]="addEditForm">
+
+
+              <div class="row">
+
+                  <div class="form-group col-md-5 ">
+
+                      <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                          <label for="code" class="col-md-5 inline-label">{{ 'systemData.category.addEdit.code' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7 ">
+                              <input type="text" class="form-control" [readonly]="autoCoding==1" formControlName="code" id="code"
+                                     placeholder="{{ 'systemData.category.addEdit.code' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('required') && addEditForm.get('code').touched">
+                                  {{ 'systemData.category.addEdit.code' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('code').hasError('maxlength') && addEditForm.get('code').touched">
+                                  {{ 'systemData.category.addEdit.code' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr">
+                          <label for="code" class="col-md-5 inline-label">{{ 'systemData.category.addEdit.nameAr' | translate }}
+                            <span class="red">*</span>
+                          </label>
+                          <div class="col-md-7">
+                              <input type="text" class="form-control" formControlName="nameAr" id="nameAr"
+                                     placeholder="{{ 'systemData.category.addEdit.nameAr' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('required') && addEditForm.get('nameAr').touched">
+                                  {{ 'systemData.category.addEdit.nameAr' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameAr').hasError('maxlength') && addEditForm.get('nameAr').touched">
+                                  {{ 'systemData.category.addEdit.nameAr' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                      <div class="row  margin-bottom-20px flex-box margin-15px-lr align-items-center">
+           
+             
+                        <label class="checkk font-size-13px">{{ 'supplierAccounts.addSupplier.nameRepeate' | translate }}
+                          <input type="checkbox"  checked="checked" class="checkbox" formControlName="nameRepeate" id="nameRepeate">
+                          <span class="checkmark"></span>
+                        </label>
+                      </div>
+                      <div  *ngIf="!this.addEditForm.get('nameRepeate').value" class="row margin-15px-lr  margin-bottom-20px flex-box">
+                          <label for="clientName"
+                                 class="col-md-5 inline-label">{{ 'systemData.category.addEdit.nameEn' | translate }}
+                              
+                                </label>
+
+                          <div class="col-md-7">
+                              <input type="text" formControlName="nameEn" class="form-control" id="clientName" placeholder="{{ 'systemData.category.addEdit.nameEn' | translate }}">
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('required') && addEditForm.get('nameEn').touched">
+                                  {{ 'systemData.category.addEdit.nameEn' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('nameEn').hasError('maxlength') && addEditForm.get('nameEn').touched">
+                                  {{ 'systemData.category.addEdit.nameEn' | translate }}
+                                  {{ 'sharedValidation.maxlength' | translate }}100
+                                  {{ 'sharedValidation.char' | translate }}
+                              </span>
+                          </div>
+                      </div>
+
+           
+
+
+                  </div>
+
+                  <div class="col-md-2 col-xs-12"></div>
+
+                  <div class="form-group col-md-5">
+                    <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                      <label class="col-md-5 inline-label">{{ 'shared.status' | translate }}
+                        <span class="red">*</span>
+                      </label>
+                      <div class="col-md-7">
+                          <div class=" select-box no-padding">
+                              <select class="form-control" formControlName="active" id="status">
+                                  <option value="true">{{'shared.active' | translate}} </option>
+                                  <option value="false">{{'shared.inActive' | translate}}</option>
+                              </select>
+                              <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('active').hasError('required') && addEditForm.get('active').touched">
+                                  {{ 'shared.status' | translate }}
+                                  {{ 'sharedValidation.required' | translate }}
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+
+                
+                  <div class="row margin-15px-lr  margin-bottom-20px flex-box">
+                    <label class="col-md-5 inline-label">{{ 'systemData.category.addEdit.parentCategory' | translate }}
+                     
+                    </label>
+                    <div class="col-md-7">
+                        <div class="select-box no-padding">
+                            <select class="form-control" formControlName="parentId" id="parentId">
+                                <option *ngFor="let item of parentList" [value]="item.id">{{item.name}}</option>
+                            </select>
+                            <span class="font-size-13px col-md-12 text-center red-text" *ngIf="addEditForm.get('parentId').hasError('required') && addEditForm.get('parentId').touched">
+                                {{ 'systemData.category.addEdit.parentCategory' | translate }}
+                                {{ 'sharedValidation.required' | translate }}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                    <div class="row margin-15px-lr margin-bottom-20px flex-box">
+                      <label class="col-md-5 inline-label">{{ 'systemData.product.image' | translate }}</label>
+                      <div class="col-md-7">
+                        <img src="{{imageSrc}}"  class="fixed" alt="image">
+                      </div>
+                      <div class="col-md-5"></div>
+                      <div class="col-md-7">
+                          <div class="inputfile-holder">
+   
+                                     <input #file id="file" accept="image/*" type="file" class="inputfile inputfile-1"
+                                     (change)="uploadImage($event)" />
+                              <!--    <label for="file" [ngClass]="{'file-uploaded': fileName !== null}"> -->
+                              <!--when file uploaded-->
+                              <span *ngIf="fileName!=null"><i class="fa fa-paperclip" aria-hidden="true"></i> {{fileName}}</span>
+                              <label for="file" *ngIf="fileName == null" [ngClass]="{'file-uploaded': fileName !== null}">
+                                  <span><i class="fa fa-upload" aria-hidden="true"></i> {{ 'shared.uploadImage' | translate }}</span>
+                              </label>
+                          </div>
+
+                          <!--when file uploaded-->
+                          <span class="icon-button smaller-icon" (click)="removeAttachment()" *ngIf="fileName != null">
+                              <i class="fa fa-trash" aria-hidden="true"></i>
+                          </span>
+
+
+                      </div>
+
+                  </div>
+
+             
+                  </div>
+
+              </div>
+
+
+
+        
+          </form>
+      </div>
+
+
+
+
+  </div>
+</div>

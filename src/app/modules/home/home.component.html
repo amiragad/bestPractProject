@@ -1,0 +1,142 @@
+<app-header [showMenu]="true"></app-header>
+<div class="main-home-content">
+  <div class="banner">
+
+    <img src="../../../assets/images/home-banner.png">
+  </div>
+<!--riham-->
+  <div class="menu-icons-div">
+    <div class="row">
+      <div class="col-md-4 welcome-box">
+        <p>{{ 'modules.welcomeSystem' | translate }}</p>
+
+      </div>
+      <div class="col-md-2"  *ngIf="modeules.includes('stock')">
+        <div class="icon-holder">
+          <a class="icon" (click)="loginModule('stock')">
+            <div class="icon-contents">
+            <div>
+              <img src="../../../assets/images/icons/home-1.png">
+            </div>
+            <span>{{ 'modules.stockModule' | translate }}</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2" *ngIf="modeules.includes('purchases')">
+        <div class="icon-holder">
+          <a class="icon" (click)="loginModule('purchases')">
+            <div class="icon-contents">
+            <div>
+              <img src="../../../assets/images/icons/home-2.png">
+            </div>
+            <span> {{ 'modules.purchasesModule' | translate }}</span>
+          </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2" *ngIf="modeules.includes('accounting')">
+        <div class="icon-holder">
+          <a class="icon"  (click)="loginModule('accounting')">
+            <div class="icon-contents">
+            <div>
+              <img src="../../../assets/images/icons/home-3.png">
+            </div>
+            <span>{{ 'modules.accountingModule' | translate }}</span>
+            </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2" *ngIf="modeules.includes('pointOfSale')">
+        <div class="icon-holder">
+          <a class="icon" (click)="loginModule('pointOfSale')">
+            <div class="icon-contents">
+            <div>
+              <img src="../../../assets/images/icons/home-4.png">
+            </div>
+            <span> {{ 'modules.pointOfSale' | translate }}</span>
+          </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2"  *ngIf="modeules.includes('sales')">
+        <div class="icon-holder">
+          <a class="icon" (click)="loginModule('sales')"  >
+            <div class="icon-contents">
+            <div>
+              <img src="../../../assets/images/icons/home-5.png">
+            </div>
+            <span> {{ 'modules.salesModule' | translate }}</span>
+          </div>
+          </a>
+        </div>
+
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-2"   *ngIf="modeules.includes('assets')">
+        <div class="icon-holder">
+          <a class="icon" (click)="loginModule('assets')" >
+            <div class="icon-contents">
+            <div>
+              <img src="../../../assets/images/icons/home-6.png">
+            </div>
+            <span>{{ 'modules.assetesModule' | translate }}</span>
+          </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2"  *ngIf="modeules.includes('hr')">
+        <div class="icon-holder">
+          <a class="icon" (click)="loginModule('hr')">
+            <div class="icon-contents">
+            <div>
+              <img src="../../../assets/images/icons/home-7.png">
+            </div>
+            <span>{{ 'modules.hrModule' | translate }}</span>
+          </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="col-md-2">
+      </div>
+      <div class="col-md-2" *ngIf="modeules.includes('attendance')">
+        <div class="icon-holder">
+          <a class="icon" (click)="loginModule('attendance')">
+            <div class="icon-contents">
+            <div>
+              <img src="../../../assets/images/icons/home-8.png">
+            </div>
+            <span>{{ 'modules.attendanceModule' | translate }}</span>
+          </div>
+          </a>
+        </div>
+
+      </div>
+      <div class="col-md-2">
+      </div>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
+

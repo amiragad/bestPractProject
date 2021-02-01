@@ -1,0 +1,105 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'lookups.area.code' | translate }}</label>
+          <input type="text" formControlName="code" class="form-control" id="code"
+            placeholder="{{ 'lookups.area.code' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="name"> {{ 'stockManagement.stockBalance.description' | translate }}</label>
+          <input type="text" class="form-control" id="description" formControlName="description"
+            placeholder=" {{ 'stockManagement.stockBalance.description' | translate }}">
+        </div>
+        <div class="col-md-2">
+          <label for="groupname">{{ 'stockManagement.inventoryList.table.nameInventory' | translate }}</label>
+          <div class="select-box">
+            <select formControlName="inventory" class="form-control" id="inventory">
+              <option *ngFor="let item of inventory" [value]="item.id">{{item.name}}</option>
+
+            </select>
+          </div>
+        </div>
+
+        
+
+      </div>
+      <br>
+      <div class="row">
+        <div class="col-md-12">
+          <button (click)="clearSearch();" class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button" (click)="findAll();">{{ 'shared.search' | translate }}</button>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a><i class="fas fa-plus-circle" [routerLink]="'../'+FullRoutes.ADD_OPENING_BALANCE"></i></a>
+  </div>
+  <h2>{{ 'stockManagement.stockBalance.openingBalance' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'lookups.area.code' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Code'" (sortAsc)="sortAsc('Code')" (sortDesc)="sortDesc('Code')"></app-sort>
+          </th>
+          <th>
+            {{ 'stockManagement.stockBalance.description' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Description'" (sortAsc)="sortAsc('Description')" (sortDesc)="sortDesc('Description')"></app-sort>
+          </th>
+          <th>
+            {{ 'stockManagement.inventoryList.table.nameInventory' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'InventoryId'" (sortAsc)="sortAsc('InventoryId')" (sortDesc)="sortDesc('InventoryId')"></app-sort>
+          </th>
+          <th>
+            {{ 'bill.date' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'Date'" (sortAsc)="sortAsc('Date')" (sortDesc)="sortDesc('Date')"></app-sort>
+          </th>
+          <th>
+            {{ 'shared.options' | translate }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of resultSet.data | paginate:{ 
+          itemsPerPage: resultSet.pagination.pageSize,
+          currentPage: resultSet.pagination.pageNumber,
+          totalItems: resultSet.pagination.total } ">
+          <td>
+            {{item.code}}
+          </td>
+          <td>
+            {{item.description}}
+          </td>
+          <td>
+            {{item.inventory}}
+          </td>
+          <td>
+            {{item.date| date:'mediumDate' }}
+          </td>          
+          <td>
+            <a [attr.title]="'shared.edit' | translate " [routerLink]="'../'+FullRoutes.EDIT_OPENING_BALANCE+'/'+item.id"
+              style="margin:5px;">
+              <i class="fas fa-pen"></i>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls class="my-pagination" previousLabel="" nextLabel="" (pageChange)="pageChanged($event)">
+    </pagination-controls>
+  </div>
+</div>

@@ -1,0 +1,11 @@
+$left: right;
+$right: left;
+$direction: ltr;
+ $font-default: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+/*
+$font-default: 'Cairo';*/
+$bg_img: "../../assets/images/bg-en.png";
+$folder:"/assets/images/icons/folder-en.png";
+
+@import "../shared/_base.scss";
+@import "../shared/_layout.scss";

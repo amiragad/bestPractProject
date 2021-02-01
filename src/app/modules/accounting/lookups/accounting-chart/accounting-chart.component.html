@@ -1,0 +1,88 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <!--Title Page & Buttons-->
+  <div class="row">
+    <div class="col-md-4">
+      <h2> شجرة الحسابات</h2>
+    </div>
+    <div class="col-md-8 product-actions padding-15px-tb">
+      <button class="button orange"><i class="fas fa-plus"></i>
+        جديد</button>
+
+      <button class="button green"><i class="fas fa-check"></i>
+        تعديل
+      </button>
+
+      <button class="button cancel"><i class="fas fa-times"></i>
+        حذف
+      </button>
+    </div>
+  </div>
+  <!--Tree Starts-->
+
+    <div class="row css-treeview">
+      <ul class="col-md-12">
+
+        <li><input type="checkbox" id="item-1" /><label for="item-1">
+          Can You Believe...</label>
+          <ul>
+            <li><input type="checkbox" id="item-1-0" /><label for="item-2-0">That This Treeview...</label>
+              <ul>
+                <li><input type="checkbox" id="item-1-1-0" /><label for="item-1-1-0">Does Not Use Any
+                    JavaScript...</label>
+                  <ul>
+                    <li><a href="#">But Relies Only</a></li>
+                    <li><a href="#">On the Power</a></li>
+                    <li><a href="#">Of CSS3</a></li>
+                  </ul>
+                </li>
+                <li><a href="./">Item 1</a></li>
+                <li><a href="./">Item 2</a></li>
+                <li><a href="./">Item 3</a></li>
+              </ul>
+            </li>
+            <li><input type="checkbox" id="item-2-1" /><label for="item-1-1">This is a Folder With...</label>
+              <ul>
+                <li><a href="./">Some Nested Items...</a></li>
+                <li><a href="./">Some Nested Items...</a></li>
+                <li><a href="./">Some Nested Items...</a></li>
+                <li><a href="./">Some Nested Items...</a></li>
+                <li><a href="./">Some Nested Items...</a></li>
+              </ul>
+            </li>
+        
+          </ul>
+        </li>
+        <li><input type="checkbox" id="item-2" /><label for="item-2">Can You Believe...</label>
+          <ul>
+            <li><input type="checkbox" id="item-2-0" /><label for="item-2-0">Item</label>
+              <ul>
+                <li><input type="checkbox" id="item-2-2-0" /><label for="item-2-2-0">Item</label>
+                  <ul>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                    <li><a href="#">Item</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">Item 1</a></li>
+                <li><a href="#">Item 2</a></li>
+                <li><a href="#">Item 3</a></li>
+              </ul>
+            </li>
+            <li><input type="checkbox" id="item-2-1" /><label for="item-2-1">This is a Folder With...</label>
+              <ul>
+                <li><a href="#">Some Nested Items...</a></li>
+                <li><a href="#">Some Nested Items...</a></li>
+                <li><a href="#">Some Nested Items...</a></li>
+                <li><a href="#">Some Nested Items...</a></li>
+                <li><a href="#">Some Nested Items...</a></li>
+              </ul>
+            </li>
+        
+          </ul>
+        </li>
+      </ul>
+    </div>
+ 
+</div>

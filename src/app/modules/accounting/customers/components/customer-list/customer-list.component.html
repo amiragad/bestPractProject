@@ -1,0 +1,186 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form [formGroup]="searchForm">
+      <div class="row">
+        <div class="form-group col-md-2">
+          <label for="code">{{ 'customerAccounts.code' | translate }}</label>
+          <input formControlName="code" autocomplete="off" type="text" class="form-control" id="code" placeholder="{{ 'customerAccounts.code' | translate }}">
+        </div>
+        <div class="form-group col-md-2">
+          <label for="name">{{ 'customerAccounts.name' | translate }}</label>
+          <input formControlName="name" autocomplete="off"  type="text" class="form-control" id="name"
+            placeholder="{{ 'customerAccounts.name' | translate }}">
+        </div>
+
+        <div class="form-group col-md-2">
+          <br>
+          <button (click)="clearSearch();" class="button dark"><i class="fas fa-eraser"></i></button>
+          <button class="button" (click)="findAll();">{{ 'shared.search' | translate }}</button>
+        </div>
+      </div>
+      <br>
+    </form>
+  </div>
+</div>
+<app-alert [alertInput]="alertInput"></app-alert>
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a><i class="fas fa-plus-circle" [routerLink]="'../'+FullRoutes.ADD_CUSTOMER"></i></a>
+  </div>
+  <h2>{{ 'customerAccounts.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+        <tr>
+          <th>
+            {{ 'customerAccounts.code' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'code'" (sortAsc)="sortAsc('code')" (sortDesc)="sortDesc('code')"></app-sort>
+          </th>
+          <th>
+            {{ 'customerAccounts.name' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'name'" (sortAsc)="sortAsc('name')" (sortDesc)="sortDesc('name')"></app-sort>
+          </th>
+          <th>
+            {{ 'customerAccounts.debitCredit' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'debter'" (sortAsc)="sortAsc('debter')" (sortDesc)="sortDesc('debter')"></app-sort>
+          </th>
+          <th>
+            {{ 'shared.amount' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'balance'" (sortAsc)="sortAsc('balance')" (sortDesc)="sortDesc('balance')"></app-sort>
+          </th>
+          <th>
+            {{ 'customerAccounts.customerSupplier' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'clientType'" (sortAsc)="sortAsc('clientType')" (sortDesc)="sortDesc('clientType')"></app-sort>
+          </th>
+          <th>
+            {{ 'customerAccounts.dealingType' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'dealingNaturity'" (sortAsc)="sortAsc('dealingNaturity')" (sortDesc)="sortDesc('dealingNaturity')"></app-sort>
+          </th>
+          <th>
+            {{ 'customerAccounts.status' | translate }}
+            <app-sort  [currentOrder]="orderInfo.orderBy" [orderBy]="'active'" (sortAsc)="sortAsc('active')" (sortDesc)="sortDesc('active')"></app-sort>
+          </th>
+
+          <th>
+            {{ 'shared.options' | translate }}
+          </th>
+          <th>
+            {{ 'shared.delete' | translate }}
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr   *ngFor="let item of resultSet.data | paginate:{ 
+          itemsPerPage: resultSet.pagination.pageSize,
+          currentPage: resultSet.pagination.pageNumber,
+          totalItems: resultSet.pagination.total } ">
+          <td>
+            {{item.code}}
+          </td>
+          <td>
+            {{item.name}}
+          </td>
+          <td>
+            <span *ngIf="item.debter">
+              {{'customerAccounts.credit' | translate}}
+            </span>
+
+            <span *ngIf="!item.debter">
+              {{'customerAccounts.debitor' | translate}}
+            </span>
+          </td>
+          <td>
+            {{item.balance}}
+          </td>
+          <td>
+            {{item.clientType}}
+          </td>
+          <td>
+            {{item.dealingNaturity}}
+          </td>
+          <td>
+            <div class="custom-control custom-switch">
+              <input   data-toggle="modal" data-target="#popup"
+               type="checkbox" class="custom-control-input" id="customSwitch{{item.id}}" (change)="id=item.id" [(ngModel)]="item.active" >
+              <label class="custom-control-label" for="customSwitch{{item.id}}"></label>
+            </div>
+          </td>
+          <td>
+            <a [attr.title]="'shared.edit' | translate "
+             [routerLink]="'../'+FullRoutes.ADD_CUSTOMER+'/'+item.id" 
+             style="margin:5px;">
+              <i class="fas fa-pen"></i>
+            </a>
+<!--             <a [attr.title]="'shared.bills' | translate "
+            
+            [routerLink]="[ '../supplier-bills' ]"
+           
+            style="margin:5px;">
+              <i class="fas fa-money-bill"></i> </a> -->
+
+          </td>
+          <td>
+            <a href="#" data-toggle="modal" data-target="#popupdelete" [attr.title]="'shared.delete' | translate " (click)="id=item.id"
+            style="margin:5px;">
+            <i class="fas fa-trash"></i> </a>
+          </td>
+        </tr>
+
+
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+    <pagination-controls
+      class="my-pagination"
+      previousLabel=""
+      nextLabel=""
+      (pageChange)="pageChanged($event)"></pagination-controls>
+  </div>
+
+</div>
+
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.confirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="activate()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark" (click)="stopActivate()" data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="popupdelete" tabindex="-1" role="dialog" aria-labelledby="popupdelete"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.deleteItem' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.deleteConfirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" (click)="deleteItem()" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark"  data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

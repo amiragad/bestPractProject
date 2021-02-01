@@ -1,0 +1,12 @@
+$left: left;
+$right: right;
+$direction: rtl;
+$font-default: -apple-system, BlinkMacSystemFont, "Cairo", Cairo, "Cairo", Cairo, "Cairo", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$bg_img: "../../assets/images/bg.png";
+$folder:"/assets/images/icons/folder.png";
+
+
+@import "../shared/_base.scss";
+@import "../shared/_layout.scss";
+

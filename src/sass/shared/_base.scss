@@ -1,0 +1,426 @@
+@import "_variables";
+@import "mixins";
+@import "_forms";
+@import "_card";
+@import "_alert";
+@import "treeView";
+@import "_cardDetails";
+@import "pagination";
+@import "modal";
+
+@font-face {
+  font-family: GESSTextLight;
+  src: url("../fonts/gessTextLight/GESSTextLight-Light.svg") format('svg'),
+  url("../fonts/gessTextLight/GESSTextLight-Light.eot") format('embedded-opentype'),
+  url("../fonts/gessTextLight/GESSTextLight-Light.ttf") format('truetype'),
+  url("../fonts/gessTextLight/GESSTextLight-Light.woff") format('woff');
+ 
+}
+
+@font-face {
+  font-family: Cairo;
+  src: url("../fonts/gessTextLight/Cairo-SemiBold.ttf") format('ttf'),
+}
+
+div, table, tbody {
+  &::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+  }
+
+  /* Track */
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 2px;
+  }
+
+  /* Handle */
+  &::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 2px;
+  }
+
+  /* Handle on hover */
+  &::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+}
+
+label{
+  margin-bottom: 0px;
+}
+.center{
+  text-align: center;
+}
+
+.cus-breadcrumb{
+  ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    li{
+      display: inline-block;
+      &::after{
+        @include slash-content($direction);
+        margin: 0px 5px;
+      }
+    }
+    li:last-child{
+      &::after{
+        display: none;
+      }
+    }
+  }
+}
+
+.block-div{
+  background-color: white;
+  margin: 10px 0px;
+  padding: 12px;
+  border-radius: 5px;
+  h2{
+    display: inline-block;
+    font-size: $h2_fontsize;
+    font-weight: bold;
+    position: relative;
+    padding-bottom: 15px;
+    padding-top: 15px;
+    &::after{
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      width: 40px;
+      height: 2px;
+      #{$right}: 0px;
+      background-color: $base_color;
+
+    }
+  }
+  .sec-title{
+    background: #f7f7f7;
+    border: 1px solid #eee;
+    border-radius: 5px 5px 0 0;
+    margin-bottom: 20px;
+   h2{
+     margin-bottom: 0;
+    &::after{
+      background-color: transparent;
+    }
+   }
+  }
+  .add-product{
+    background: #ff9849ee;
+    color: #fff;
+    padding: 10px;
+    text-align: right;
+    width: 200px;
+    font-weight: 500;
+    font-size: 20px;
+    border-radius: 5px;
+    &::after{
+      background: transparent;
+    }
+    i{
+      margin-left: 10px;
+      font-size: 15px;
+    }
+  }
+  .side-links{
+    a{
+      display: inline-block;
+      color: $base_color;
+      font-size: 25px;
+      margin-#{$left}: 10px;
+    }
+    a:last-child{
+      margin-#{$left}: 0px;
+    }
+  }
+  .seprator {
+    border-bottom: 1px solid #ced4da;
+    margin: 15px;
+    height: 10px;
+}
+}
+.validation-saved {
+  padding: 10px;
+  background: #59c44d;
+  border-radius: 5px;
+  h5{
+    color: #fff;
+    margin-bottom: 0;
+    i{
+      padding-#{$left}: 10px;
+      padding-#{$right}: 10px;
+    }
+  }
+
+}
+.flex-box{
+  display: flex !important;
+  align-items: start;
+  -webkit-box-align: baseline;
+  -moz-box-align: baseline;
+  
+}
+.inline-block{
+  display: inline-block !important;
+}
+.margin-pos-10{
+  margin-#{$right}: 10px;
+}
+.margin-oppo-pos-10{
+  margin-#{$left}: 10px;
+}
+.margin-10{
+  margin-right: 10px;
+  margin-left: 10px;
+}
+
+
+.float-oppo-dir{
+  float: $left;
+}
+
+
+.customized-table-holder {
+  max-height: 250px;
+  overflow: auto;
+  table {
+    color: #838383;
+    min-width: 100%;
+    th, td {
+      min-width: 120px;
+      padding: 5px;
+      text-align: center;
+      font-size: 14px !important;
+    }
+    thead {
+
+      th {
+        position: sticky;
+        z-index: 3;
+        top: 0;
+        background-color: $base_color;
+        color: #ffffff;
+        font-weight: 600;
+        white-space: nowrap;
+        border-#{$left}: 1px solid #ffffff;
+        border-bottom: 1px solid #ffffff;
+        min-width: 150px;
+        text-align: center;
+      }
+      th:last-child {
+        border-#{$left}: 0;
+      }
+    }
+    i {
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .icon_with_margin {
+      margin: 0 5px;
+    }
+    a.edit {
+      color: $base_color;
+    }
+    a.details {
+      color: black;
+    }
+    a.delete{
+      color: red;
+    }
+
+    td.align-direction {
+      text-align: $right !important;
+    }
+    tbody {
+      tr {
+        border-bottom: 1px solid #dedede;
+      }
+      tr:last-child {
+        border-bottom: 0;
+      }
+    }
+  }
+}
+
+.sort-div{
+  float: $left;
+  color: #ffffff;
+  font-size: 16px;
+  margin-top: 8px;
+  i{
+    cursor: pointer;
+    display: block;
+    line-height: 3px;
+  }
+}
+
+.chart-card{
+  width: 50%;
+  display: inline-block;
+  .chart-card-body{
+    margin: 0px 20px;
+    padding: 20px;
+    min-height: 100%;
+    border-radius: 5px;
+    border: 1px solid #f0f0f0;
+    text-align: center;
+    .chart-holder{
+      direction: ltr;
+      height: 200px;
+      margin-bottom: 40px;
+      /*Makes the chart container expand to the full width of the parent container*/
+      .ngx-charts-outer {
+        width: 100% !important;
+      }
+      /*!* Sets the legend width to auto expand to fit labels, but caps at 200px *!
+      .chart-legend > div {
+        width: auto !important;
+        max-width: 200px;
+      }
+
+      !* Some extra space is needed to offset the way the labels display *!
+      .legend-labels {
+        width: calc(100% + 10px) !important;
+      }
+
+      !* Wrap the label text if it ends up being longer than the max width *!
+      .legend-label-text {
+        white-space: normal !important;
+        width: 100% !important;
+      }*/
+      &.pie-chart{
+        height: 250px;
+      }
+    }
+  }
+}
+.flex-box-view{
+  display: flex !important;
+}
+.dashboard-block{
+  margin-#{$left}: 20px;
+  display: inline-block;
+  color: #ffffff;
+  padding-top: 10px;
+  padding-#{$right}: 10px;
+  padding-#{$left}: 45px;
+  padding-bottom: 30px;
+  position: relative;
+  h2{
+    display: block;
+    font-weight: bold;
+    &::after{
+      display: none;
+    }
+  }
+  div{
+    display: inline-block;
+    padding: 0px 10px;
+    border-#{$left}: 2px solid rgba(0, 0, 0, 0.1);
+    span{
+      display: block;
+    }
+    span:nth-child(2){
+      font-weight: bold;
+    }
+  }
+  div:last-child{
+    border-#{$left}: 0;
+  }
+  &.red{
+    background-color: #f35958;
+  }
+  &.green{
+    background-color: #0aa699;
+  }
+  &.blue{
+    background-color: #0090d9;
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    #{$left}: 10px;
+    width: calc(50% - 10px);
+    height: 2px;
+    background-color: rgba(0,0,0,0.1);
+  }
+  &::before{
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    #{$right}: 10px;
+    width: calc(50% - 10px);
+    height: 2px;
+    background-color: rgba(255,255,255,1);
+  }
+  i{
+    position: absolute;
+    color: rgba(0,0,0,0.1);
+    bottom: 20px;
+    font-size: 50px;
+    #{$left}: 10px;
+  }
+}
+
+.margins{
+  &.tb-margin-10{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+}
+.padding{
+  &.no-padding-after{
+    padding-#{$left}: 0px !important;
+  }
+}
+
+
+/* --- customize-table ---*/
+
+
+table.table-bordered.customize-table {
+	thead {
+		tr {
+			th {
+				background-color: #2e71c8!important;
+				font-weight: 600;
+				text-align: center;
+				font-size: 14px;
+				border-color: #ffffff!important;
+				padding: 6px;
+			}
+		}
+	}
+	tbody {
+		tr {
+			td {
+        padding: 2px;
+        border-color: #fff;
+        width: 40px;
+      
+    
+        a{
+          margin-#{$right}: 0px !important;
+        }
+        a i {
+          color: #787878;
+          font-size: 17px;
+        }
+			}
+		}
+  }
+  .form-control {
+    font-size: 13px !important;
+    padding:5px!important;
+    height: 30px!important;
+    min-width: 95px;
+    max-width: 130px;
+  }
+
+}
+
+ 

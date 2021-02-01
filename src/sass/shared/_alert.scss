@@ -1,0 +1,13 @@
+.alert {
+    display: block;
+    .alert-dismissible{
+        font-size: 16px;
+        font-weight: 600;
+        margin: 0;
+        padding-#{$right}: 0;
+        .close{
+            #{$left}: 0;
+            #{$right}: auto;
+        }
+    }
+}

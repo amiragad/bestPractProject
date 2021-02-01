@@ -1,0 +1,220 @@
+<app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+<div class="block-div">
+  <div class="apex-form">
+    <form>
+      <div class="row">
+      <div class="form-group col-md-2">
+        <label for="code">{{ 'systemData.safeBox.code' | translate }}</label>
+        <input type="text" class="form-control" id="code" placeholder="{{ 'systemData.safeBox.code' | translate }}">
+      </div>
+        <div class="form-group col-md-2">
+          <label for="name">{{ 'systemData.safeBox.name' | translate }}</label>
+          <input type="text" class="form-control" id="name" placeholder="{{ 'systemData.safeBox.name' | translate }}">
+        </div>
+        <div class="col-md-2">
+            <button class="button dark"><i class="fas fa-eraser"></i></button>
+            <button class="button">{{ 'shared.search' | translate }}</button>
+          </div>
+      </div>
+      <br>
+    </form>
+  </div>
+</div>
+
+
+<div class="block-div">
+  <div class="side-links float-oppo-dir">
+    <a data-toggle="modal" data-target="#modalForm"><i class="fas fa-plus-circle"></i></a>
+  </div>
+  <h2>{{ 'systemData.safeBox.pageTitle' | translate }}</h2>
+
+  <div class="customized-table-holder">
+    <table>
+      <thead>
+      <tr>
+        <th>
+          {{ 'systemData.safeBox.table.code' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'systemData.safeBox.table.name' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'systemData.safeBox.table.currency' | translate }}
+          <app-sort></app-sort>
+        </th>
+        <th>
+          {{ 'shared.status' | translate }}
+          <app-sort></app-sort>
+        </th>
+
+        <th>
+          {{ 'shared.options' | translate }}
+
+        </th>
+      </tr>
+      </thead>
+      <tbody>
+            <tr *ngFor="let item of items | paginate: config">
+                <td>
+                  5
+                </td>
+                <td>
+                  خزنه 5
+                </td>
+                <td>
+                  الجنيه
+                </td>
+                <td>
+                    <label class="switch">
+                      <input data-toggle="modal" data-target="#popup" type="checkbox" >
+                      <span class="slider"></span>
+                    </label>
+                  </td>
+                <td>
+                  <a data-toggle="modal" data-target="#modalForm" [attr.title]="'shared.edit' | translate " style="margin:5px;">
+                    <i class="fas fa-pen"></i>
+                  </a>
+
+                </td>
+              </tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="pagination-holder">
+      <pagination-controls
+        class="my-pagination"
+        previousLabel=""
+        nextLabel=""
+        (pageChange)="pageChanged($event)"></pagination-controls>
+    </div>
+</div>
+<div class="modal fade" id="popup" tabindex="-1" role="dialog" aria-labelledby="popup"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'shared.confirm' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>{{ 'shared.confirmMessage' | translate }}</p>
+      </div>
+      <div class="modal-footer">
+        <button class="button" data-dismiss="modal">{{ 'shared.yes' | translate }}</button>
+        <button class="button dark" data-dismiss="modal">{{ 'shared.no' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!--<div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="modalForm"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'systemData.safeBox.addEdit.header' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="apex-form">
+          <form>
+            &lt;!&ndash;name ,code,phone number &ndash;&gt;
+            <div class="block-div">
+
+               <div class="form-group row">
+                    <div class="col-md-9 flex-box">
+                      <label for="currencyNameAr" class="inline-label">{{ 'systemData.safeBox.addEdit.nameAr' | translate }}</label>
+                      <input type="text" class="form-control" id="safeboxNameAr" placeholder="{{ 'systemData.safeBox.addEdit.nameAr' | translate }}">
+                    </div>
+             </div>
+             <div class="form-group row">
+                <div class="col-md-9 flex-box">
+                    <label for="currencyNameEn" class="inline-label">{{ 'systemData.safeBox.addEdit.nameEn' | translate }}</label>
+                    <input type="text" class="form-control" id="currencyNameEn" placeholder="{{ 'systemData.safeBox.addEdit.nameEn' | translate }}">
+                  </div>
+             </div>
+             <div class="form-group row">
+                <div class="col-md-9 flex-box">
+                    <label for="branch" class="inline-label">{{ 'systemData.safeBox.addEdit.currency' | translate }}</label>
+                    <div class="select-box">
+                    <select class="form-control" id="branch">
+                      <option>الدينار</option>
+                      <option>الجينيه</option>
+                      <option>الدولار</option>
+                  </select>
+                    </div>
+                  </div>
+             </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="button" data-dismiss="modal">{{ 'shared.save' | translate }}</button>
+        <button class="button dark" data-dismiss="modal">{{ 'shared.cancel' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>-->
+<div class="modal fade" id="modalForm" tabindex="-1" role="dialog" aria-labelledby="modalForm"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ 'systemData.safeBox.addEdit.header' | translate }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="apex-form">
+          <form class="inline-form">
+            <!--name ,code,phone number -->
+            <div class="row">
+              <div class="col-md-3 padding no-padding-after">
+                <span class="font-weight-bold">{{ 'systemData.safeBox.addEdit.nameAr' | translate }}</span>
+              </div>
+              <div class="col-md-8">
+                <input type="text" class="form-control" placeholder="{{ 'systemData.safeBox.addEdit.nameAr' | translate }}">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 padding no-padding-after">
+                <span class="font-weight-bold">{{ 'systemData.safeBox.addEdit.nameEn' | translate }}</span>
+              </div>
+              <div class="col-md-8">
+                <input type="text" class="form-control" placeholder="{{ 'systemData.safeBox.addEdit.nameEn' | translate }}">
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-3 padding no-padding-after">
+                <span class="font-weight-bold">{{ 'systemData.safeBox.addEdit.currency' | translate }}</span>
+              </div>
+              <div class="col-md-8">
+                <div class="select-box">
+                  <select class="form-control">
+                    <option>الدينار</option>
+                    <option>الجينيه</option>
+                    <option>الدولار</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="button" data-dismiss="modal">{{ 'shared.save' | translate }}</button>
+        <button class="button dark" data-dismiss="modal">{{ 'shared.cancel' | translate }}</button>
+      </div>
+    </div>
+  </div>
+</div>

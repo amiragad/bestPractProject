@@ -1,0 +1,45 @@
+<div class="login">
+  <div class="login-header">
+    <div class="lang">
+      <a *ngIf="currentLang == 'ar'" (click)="onChangeLang('en')">EN</a>
+      <a *ngIf="currentLang == 'en'" (click)="onChangeLang('ar')">AR</a>
+    </div>
+  </div>
+  <form [formGroup]="formData" (submit)="login()">
+    <div class="login-box">
+      <div class="center">
+        <div class="logo">
+          <img src="../../../assets/images/logo.png" title="Apex" alt="Apex" />
+        </div>
+      </div>
+      <div class="login-form">
+        <div class="login-form-header"><i class="fas fa-lock"></i></div>
+        <div class="form-holder">
+          <input type="text"autocomplete="new-password" formControlName="username" class="inp username" placeholder="{{ 'login.username' | translate }}">
+          <span class="font-size-13px col-md-12 text-center red-text" *ngIf="formData.get('username').hasError('required') && formData.get('username').touched">
+            {{ 'login.username' | translate }}
+            {{ 'sharedValidation.required' | translate }}
+        </span>
+          <input type="password" autocomplete="new-password"   formControlName="password" class="inp password" placeholder="{{ 'login.password' | translate }}">
+          <span class="font-size-13px col-md-12 text-center red-text" *ngIf="formData.get('password').hasError('required') && formData.get('password').touched">
+            {{ 'login.password' | translate }}
+            {{ 'sharedValidation.required' | translate }}
+        </span>
+
+        <!--   <div class="remember-me">
+            <label class="switch">
+              <input type="checkbox">
+              <span class="slider"></span>
+            </label>
+            <span class="text">{{ 'login.rememberMe' | translate }}</span>
+          </div> -->
+
+          <div class="remember-me">
+            <button type="submit" class="button">{{ 'login.btnEnter' | translate }}</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<app-login-footer></app-login-footer>

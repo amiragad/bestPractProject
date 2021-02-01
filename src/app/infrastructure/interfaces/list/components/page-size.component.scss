@@ -1,0 +1,17 @@
+.pagination-block {
+
+  font-size: 0;
+  text-align: center;
+  margin: auto;
+  margin-top: 20px;
+
+  .page-size-block {
+    font-size: 15px;
+    display: inline-block;
+    .pagination {
+      display: block;
+    }
+  }
+}
+
+

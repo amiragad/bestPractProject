@@ -1,0 +1,120 @@
+<div class="height750">
+  <app-breadcrumb [list]="breadCrumbItems"></app-breadcrumb>
+
+  <div class="block-div">
+    <h2><i class="far fa-user"></i> {{ 'sideNav.addSafeBoxTrans' | translate }}</h2>
+    <div class="apex-form">
+      <form>
+        <!--name ,code,phone number -->
+        <div class="block-div">
+          <h2><i class="fas fa-info-circle"></i> {{ 'shared.maininfo' | translate }}</h2>
+          <div class="form-group row">
+
+            <div class="col-md-3 flex-box">
+              <label for="code" class="inline-label">{{ 'safeBoxTransaction.code' | translate }}</label>
+              <input type="text" class="form-control" disabled value="apex-102" id="code"
+                placeholder="{{ 'safeBoxTransaction.code' | translate }}">
+            </div>
+
+            <div class="col-md-3 flex-box">
+              <label for="connectionType" class="inline-label">{{ 'safeBoxTransaction.safeBox' | translate }}</label>
+              <div class="select-box">
+                <select class="form-control" id="connectionType">
+                  <option> </option>
+                  <option>خزنه 1</option>
+                  <option>خزنه 2</option>
+                  <option>خزنه 3</option>
+                  <option>خزنه 4</option>
+                </select>
+              </div>
+            </div>
+            <div class="col-md-3 flex-box">
+              <label for="connectionType" class="inline-label">{{ 'safeBoxTransaction.type' | translate }}</label>
+              <div class="select-box">
+                <select class="form-control" id="connectionType">
+                  <option> </option>
+                  <option>قبض</option>
+                  <option>صرف</option>
+                </select>
+              </div>
+            </div>
+
+
+
+          </div>
+
+
+        </div>
+
+
+
+
+      </form>
+    </div>
+  </div>
+  <!--End name ,code,phone number -->
+
+
+
+
+  <div class="block-div">
+    <h2><i class="fas fa-money-check-alt"></i> {{ 'shared.financialInfo' | translate }}</h2>
+    <div class="apex-form">
+      <form>
+        <div class="form-group row">
+
+          <div class="col-md-3 flex-box">
+            <label for="branch" class="inline-label">{{ 'safeBoxTransaction.grantee' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control" id="branch">
+                <option> </option>
+                <option>احمد </option>
+                <option>محمد</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 flex-box">
+            <label for="branch" class="inline-label">{{ 'safeBoxTransaction.payment' | translate }}</label>
+            <div class="select-box">
+              <select class="form-control" id="branch">
+                <option> </option>
+                <option>نقدي </option>
+                <option>شيك</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-3 flex-box">
+            <label for="clientName" class="inline-label">{{ 'safeBoxTransaction.amount' | translate }}</label>
+            <input type="text" class="form-control" id="clientName"
+              placeholder="{{ 'safeBoxTransaction.amount' | translate }}">
+          </div>
+        </div>
+        <div class="form-group row">
+          <div class="col-md-3 flex-box">
+            <label for="clientName" class="inline-label">{{ 'safeBoxTransaction.check' | translate }}</label>
+            <input type="text" class="form-control" id="clientName"
+              placeholder="{{ 'safeBoxTransaction.amount' | translate }}">
+          </div>
+          <div class="col-md-3 flex-box">
+            <label for="clientName" class="inline-label">{{ 'safeBoxTransaction.safeBoxBalance' | translate }}</label>
+            <input disabled value="5000" type="text" class="form-control" id="clientName"
+              placeholder="{{ 'safeBoxTransaction.safeBoxBalance' | translate }}">
+          </div>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  <div class="block-div">
+    <div class="apex-form">
+      <div class="row">
+        <div class="col-md-12">
+            <button class="button" ><i class="fas fa-save"></i> {{ 'shared.save' | translate }}</button>
+            <button class="button dark"><i class="fas fa-backspace" ></i> {{ 'shared.cancel' | translate }}</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
